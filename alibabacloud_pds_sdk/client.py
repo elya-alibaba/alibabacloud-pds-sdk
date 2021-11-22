@@ -8,7 +8,7 @@ from Tea.core import TeaCore
 
 from alibabacloud_pds_credentials.client import Client as AccessTokenCredentialClient
 from alibabacloud_credentials.client import Client as CredentialClient
-from alibabacloud_pds_sdk import models as pds_models
+from alibabacloud_standard_sdk import models as standard_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_pds_credentials import models as access_token_credential_models
 from alibabacloud_credentials import models as credential_models
@@ -28,8 +28,8 @@ class Client:
     _credential: CredentialClient = None
 
     def __init__(
-        self, 
-        config: pds_models.Config,
+        self,
+        config: standard_models.Config,
     ):
         if UtilClient.is_unset(config):
             raise TeaException({
@@ -66,9 +66,9 @@ class Client:
 
     def cancel_link_ex(
         self,
-        request: pds_models.CancelLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CancelLinkModel:
+        request: standard_models.CancelLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CancelLinkModel:
         """
         取消绑定关系，生成新用户，返回访问令牌
         @tags account
@@ -145,7 +145,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CancelLinkModel(),
+                        standard_models.CancelLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -178,9 +178,9 @@ class Client:
 
     async def cancel_link_ex_async(
         self,
-        request: pds_models.CancelLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CancelLinkModel:
+        request: standard_models.CancelLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CancelLinkModel:
         """
         取消绑定关系，生成新用户，返回访问令牌
         @tags account
@@ -257,7 +257,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CancelLinkModel(),
+                        standard_models.CancelLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -290,9 +290,9 @@ class Client:
 
     def check_exist_ex(
         self,
-        request: pds_models.CheckExistRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CheckExistModel:
+        request: standard_models.CheckExistRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CheckExistModel:
         """
         查询手机号是否已被注册
         @tags account
@@ -370,7 +370,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CheckExistModel(),
+                        standard_models.CheckExistModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -403,9 +403,9 @@ class Client:
 
     async def check_exist_ex_async(
         self,
-        request: pds_models.CheckExistRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CheckExistModel:
+        request: standard_models.CheckExistRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CheckExistModel:
         """
         查询手机号是否已被注册
         @tags account
@@ -483,7 +483,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CheckExistModel(),
+                        standard_models.CheckExistModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -516,9 +516,9 @@ class Client:
 
     def confirm_link_ex(
         self,
-        request: pds_models.ConfirmLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ConfirmLinkModel:
+        request: standard_models.ConfirmLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ConfirmLinkModel:
         """
         确认绑定关系, 成功后返回访问令牌
         @tags account
@@ -597,7 +597,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ConfirmLinkModel(),
+                        standard_models.ConfirmLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -630,9 +630,9 @@ class Client:
 
     async def confirm_link_ex_async(
         self,
-        request: pds_models.ConfirmLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ConfirmLinkModel:
+        request: standard_models.ConfirmLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ConfirmLinkModel:
         """
         确认绑定关系, 成功后返回访问令牌
         @tags account
@@ -711,7 +711,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ConfirmLinkModel(),
+                        standard_models.ConfirmLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -744,9 +744,9 @@ class Client:
 
     def verify_code_ex(
         self,
-        request: pds_models.VerifyCodeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.VerifyCodeModel:
+        request: standard_models.VerifyCodeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.VerifyCodeModel:
         """
         校验手机短信验证码，用于重置密码时校验手机，通过校验后返回state，可通过state重新设置密码
         @tags account
@@ -824,7 +824,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.VerifyCodeModel(),
+                        standard_models.VerifyCodeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -857,9 +857,9 @@ class Client:
 
     async def verify_code_ex_async(
         self,
-        request: pds_models.VerifyCodeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.VerifyCodeModel:
+        request: standard_models.VerifyCodeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.VerifyCodeModel:
         """
         校验手机短信验证码，用于重置密码时校验手机，通过校验后返回state，可通过state重新设置密码
         @tags account
@@ -937,7 +937,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.VerifyCodeModel(),
+                        standard_models.VerifyCodeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -970,9 +970,9 @@ class Client:
 
     def get_access_token_by_link_info_ex(
         self,
-        request: pds_models.GetAccessTokenByLinkInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetAccessTokenByLinkInfoModel:
+        request: standard_models.GetAccessTokenByLinkInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetAccessTokenByLinkInfoModel:
         """
         管理员通过账号信息直接获取用户的访问令牌
         @tags account
@@ -1050,7 +1050,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetAccessTokenByLinkInfoModel(),
+                        standard_models.GetAccessTokenByLinkInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1083,9 +1083,9 @@ class Client:
 
     async def get_access_token_by_link_info_ex_async(
         self,
-        request: pds_models.GetAccessTokenByLinkInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetAccessTokenByLinkInfoModel:
+        request: standard_models.GetAccessTokenByLinkInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetAccessTokenByLinkInfoModel:
         """
         管理员通过账号信息直接获取用户的访问令牌
         @tags account
@@ -1163,7 +1163,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetAccessTokenByLinkInfoModel(),
+                        standard_models.GetAccessTokenByLinkInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1196,9 +1196,9 @@ class Client:
 
     def get_link_info_ex(
         self,
-        request: pds_models.GetByLinkInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetLinkInfoModel:
+        request: standard_models.GetByLinkInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetLinkInfoModel:
         """
         获取用户认证方式详情
         @tags account
@@ -1276,7 +1276,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetLinkInfoModel(),
+                        standard_models.GetLinkInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1309,9 +1309,9 @@ class Client:
 
     async def get_link_info_ex_async(
         self,
-        request: pds_models.GetByLinkInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetLinkInfoModel:
+        request: standard_models.GetByLinkInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetLinkInfoModel:
         """
         获取用户认证方式详情
         @tags account
@@ -1389,7 +1389,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetLinkInfoModel(),
+                        standard_models.GetLinkInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1422,9 +1422,9 @@ class Client:
 
     def get_link_info_by_user_id_ex(
         self,
-        request: pds_models.GetLinkInfoByUserIDRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetLinkInfoByUserIdModel:
+        request: standard_models.GetLinkInfoByUserIDRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetLinkInfoByUserIdModel:
         """
         获取用户的所有绑定信息
         @tags account
@@ -1501,7 +1501,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetLinkInfoByUserIdModel(),
+                        standard_models.GetLinkInfoByUserIdModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1534,9 +1534,9 @@ class Client:
 
     async def get_link_info_by_user_id_ex_async(
         self,
-        request: pds_models.GetLinkInfoByUserIDRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetLinkInfoByUserIdModel:
+        request: standard_models.GetLinkInfoByUserIDRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetLinkInfoByUserIdModel:
         """
         获取用户的所有绑定信息
         @tags account
@@ -1613,7 +1613,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetLinkInfoByUserIdModel(),
+                        standard_models.GetLinkInfoByUserIdModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1646,9 +1646,9 @@ class Client:
 
     def get_public_key_ex(
         self,
-        request: pds_models.GetPublicKeyRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetPublicKeyModel:
+        request: standard_models.GetPublicKeyRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetPublicKeyModel:
         """
         获取公钥，用于加密对称密钥
         @tags account
@@ -1726,7 +1726,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetPublicKeyModel(),
+                        standard_models.GetPublicKeyModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1759,9 +1759,9 @@ class Client:
 
     async def get_public_key_ex_async(
         self,
-        request: pds_models.GetPublicKeyRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetPublicKeyModel:
+        request: standard_models.GetPublicKeyRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetPublicKeyModel:
         """
         获取公钥，用于加密对称密钥
         @tags account
@@ -1839,7 +1839,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetPublicKeyModel(),
+                        standard_models.GetPublicKeyModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1872,9 +1872,9 @@ class Client:
 
     def link_ex(
         self,
-        request: pds_models.AccountLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.LinkModel:
+        request: standard_models.AccountLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.LinkModel:
         """
         绑定用户认证方式
         @tags account
@@ -1953,7 +1953,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.LinkModel(),
+                        standard_models.LinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -1986,9 +1986,9 @@ class Client:
 
     async def link_ex_async(
         self,
-        request: pds_models.AccountLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.LinkModel:
+        request: standard_models.AccountLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.LinkModel:
         """
         绑定用户认证方式
         @tags account
@@ -2067,7 +2067,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.LinkModel(),
+                        standard_models.LinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -2100,9 +2100,9 @@ class Client:
 
     def login_ex(
         self,
-        request: pds_models.LoginRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.LoginModel:
+        request: standard_models.LoginRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.LoginModel:
         """
         通过手机号+短信或密码登录，返回刷新令牌和访问令牌
         @tags account
@@ -2180,7 +2180,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.LoginModel(),
+                        standard_models.LoginModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -2213,9 +2213,9 @@ class Client:
 
     async def login_ex_async(
         self,
-        request: pds_models.LoginRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.LoginModel:
+        request: standard_models.LoginRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.LoginModel:
         """
         通过手机号+短信或密码登录，返回刷新令牌和访问令牌
         @tags account
@@ -2293,7 +2293,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.LoginModel(),
+                        standard_models.LoginModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -2326,9 +2326,9 @@ class Client:
 
     def register_ex(
         self,
-        request: pds_models.RegisterRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RegisterModel:
+        request: standard_models.RegisterRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RegisterModel:
         """
         通过手机号+短信验证码注册账号
         @tags account
@@ -2407,7 +2407,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.RegisterModel(),
+                        standard_models.RegisterModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -2440,9 +2440,9 @@ class Client:
 
     async def register_ex_async(
         self,
-        request: pds_models.RegisterRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RegisterModel:
+        request: standard_models.RegisterRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RegisterModel:
         """
         通过手机号+短信验证码注册账号
         @tags account
@@ -2521,7 +2521,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.RegisterModel(),
+                        standard_models.RegisterModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -2554,9 +2554,9 @@ class Client:
 
     def account_revoke_ex(
         self,
-        request: pds_models.RevokeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AccountRevokeModel:
+        request: standard_models.RevokeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AccountRevokeModel:
         """
         用户退出登录
         @tags account
@@ -2632,7 +2632,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.AccountRevokeModel(),
+                        standard_models.AccountRevokeModel(),
                         {
                             'headers': _response.headers
                         }
@@ -2664,9 +2664,9 @@ class Client:
 
     async def account_revoke_ex_async(
         self,
-        request: pds_models.RevokeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AccountRevokeModel:
+        request: standard_models.RevokeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AccountRevokeModel:
         """
         用户退出登录
         @tags account
@@ -2742,7 +2742,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.AccountRevokeModel(),
+                        standard_models.AccountRevokeModel(),
                         {
                             'headers': _response.headers
                         }
@@ -2774,9 +2774,9 @@ class Client:
 
     def send_sms_code_ex(
         self,
-        request: pds_models.SendSmsCodeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SendSmsCodeModel:
+        request: standard_models.SendSmsCodeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SendSmsCodeModel:
         """
         发送短信验证码，用于登录、注册、修改密码、绑定等
         @tags account
@@ -2854,7 +2854,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SendSmsCodeModel(),
+                        standard_models.SendSmsCodeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -2887,9 +2887,9 @@ class Client:
 
     async def send_sms_code_ex_async(
         self,
-        request: pds_models.SendSmsCodeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SendSmsCodeModel:
+        request: standard_models.SendSmsCodeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SendSmsCodeModel:
         """
         发送短信验证码，用于登录、注册、修改密码、绑定等
         @tags account
@@ -2967,7 +2967,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SendSmsCodeModel(),
+                        standard_models.SendSmsCodeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3000,9 +3000,9 @@ class Client:
 
     def account_token_ex(
         self,
-        request: pds_models.AccountTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AccountTokenModel:
+        request: standard_models.AccountTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
         @tags account
@@ -3080,7 +3080,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.AccountTokenModel(),
+                        standard_models.AccountTokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3113,9 +3113,9 @@ class Client:
 
     async def account_token_ex_async(
         self,
-        request: pds_models.AccountTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AccountTokenModel:
+        request: standard_models.AccountTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
         @tags account
@@ -3193,7 +3193,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.AccountTokenModel(),
+                        standard_models.AccountTokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3226,9 +3226,9 @@ class Client:
 
     def export_audit_log_ex(
         self,
-        request: pds_models.ExportAuditLogRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ExportAuditLogModel:
+        request: standard_models.ExportAuditLogRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ExportAuditLogModel:
         """
         export audit log
         @tags audit_log
@@ -3305,7 +3305,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ExportAuditLogModel(),
+                        standard_models.ExportAuditLogModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3338,9 +3338,9 @@ class Client:
 
     async def export_audit_log_ex_async(
         self,
-        request: pds_models.ExportAuditLogRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ExportAuditLogModel:
+        request: standard_models.ExportAuditLogRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ExportAuditLogModel:
         """
         export audit log
         @tags audit_log
@@ -3417,7 +3417,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ExportAuditLogModel(),
+                        standard_models.ExportAuditLogModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3450,9 +3450,9 @@ class Client:
 
     def search_audit_log_ex(
         self,
-        request: pds_models.SearchAuditLogRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchAuditLogModel:
+        request: standard_models.SearchAuditLogRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchAuditLogModel:
         """
         search audit log
         @tags audit_log
@@ -3529,7 +3529,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchAuditLogModel(),
+                        standard_models.SearchAuditLogModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3562,9 +3562,9 @@ class Client:
 
     async def search_audit_log_ex_async(
         self,
-        request: pds_models.SearchAuditLogRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchAuditLogModel:
+        request: standard_models.SearchAuditLogRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchAuditLogModel:
         """
         search audit log
         @tags audit_log
@@ -3641,7 +3641,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchAuditLogModel(),
+                        standard_models.SearchAuditLogModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3674,9 +3674,9 @@ class Client:
 
     def create_identity_to_benefit_pkg_mapping_ex(
         self,
-        request: pds_models.CreateIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateIdentityToBenefitPkgMappingModel:
+        request: standard_models.CreateIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateIdentityToBenefitPkgMappingModel:
         """
         创建实体权益包关联
         @tags benefit
@@ -3755,7 +3755,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateIdentityToBenefitPkgMappingModel(),
+                        standard_models.CreateIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3788,9 +3788,9 @@ class Client:
 
     async def create_identity_to_benefit_pkg_mapping_ex_async(
         self,
-        request: pds_models.CreateIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateIdentityToBenefitPkgMappingModel:
+        request: standard_models.CreateIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateIdentityToBenefitPkgMappingModel:
         """
         创建实体权益包关联
         @tags benefit
@@ -3869,7 +3869,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateIdentityToBenefitPkgMappingModel(),
+                        standard_models.CreateIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3902,9 +3902,9 @@ class Client:
 
     def delete_identity_to_benefit_pkg_mapping_ex(
         self,
-        request: pds_models.DeleteIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteIdentityToBenefitPkgMappingModel:
+        request: standard_models.DeleteIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteIdentityToBenefitPkgMappingModel:
         """
         删除实体权益包关联
         @tags benefit
@@ -3982,7 +3982,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteIdentityToBenefitPkgMappingModel(),
+                        standard_models.DeleteIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4015,9 +4015,9 @@ class Client:
 
     async def delete_identity_to_benefit_pkg_mapping_ex_async(
         self,
-        request: pds_models.DeleteIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteIdentityToBenefitPkgMappingModel:
+        request: standard_models.DeleteIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteIdentityToBenefitPkgMappingModel:
         """
         删除实体权益包关联
         @tags benefit
@@ -4095,7 +4095,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteIdentityToBenefitPkgMappingModel(),
+                        standard_models.DeleteIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4128,9 +4128,9 @@ class Client:
 
     def get_identity_to_benefit_pkg_mapping_ex(
         self,
-        request: pds_models.GetIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetIdentityToBenefitPkgMappingModel:
+        request: standard_models.GetIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetIdentityToBenefitPkgMappingModel:
         """
         获取实体权益包关联
         @tags benefit
@@ -4209,7 +4209,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetIdentityToBenefitPkgMappingModel(),
+                        standard_models.GetIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4242,9 +4242,9 @@ class Client:
 
     async def get_identity_to_benefit_pkg_mapping_ex_async(
         self,
-        request: pds_models.GetIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetIdentityToBenefitPkgMappingModel:
+        request: standard_models.GetIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetIdentityToBenefitPkgMappingModel:
         """
         获取实体权益包关联
         @tags benefit
@@ -4323,7 +4323,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetIdentityToBenefitPkgMappingModel(),
+                        standard_models.GetIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4356,9 +4356,9 @@ class Client:
 
     def list_identity_to_benefit_pkg_mapping_ex(
         self,
-        request: pds_models.ListIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListIdentityToBenefitPkgMappingModel:
+        request: standard_models.ListIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListIdentityToBenefitPkgMappingModel:
         """
         列举实体关联的所有权益包
         @tags benefit
@@ -4436,7 +4436,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListIdentityToBenefitPkgMappingModel(),
+                        standard_models.ListIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4469,9 +4469,9 @@ class Client:
 
     async def list_identity_to_benefit_pkg_mapping_ex_async(
         self,
-        request: pds_models.ListIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListIdentityToBenefitPkgMappingModel:
+        request: standard_models.ListIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListIdentityToBenefitPkgMappingModel:
         """
         列举实体关联的所有权益包
         @tags benefit
@@ -4549,7 +4549,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListIdentityToBenefitPkgMappingModel(),
+                        standard_models.ListIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4582,9 +4582,9 @@ class Client:
 
     def update_identity_to_benefit_pkg_mapping_ex(
         self,
-        request: pds_models.UpdateIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateIdentityToBenefitPkgMappingModel:
+        request: standard_models.UpdateIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateIdentityToBenefitPkgMappingModel:
         """
         更新实体权益包关联
         @tags benefit
@@ -4663,7 +4663,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateIdentityToBenefitPkgMappingModel(),
+                        standard_models.UpdateIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4696,9 +4696,9 @@ class Client:
 
     async def update_identity_to_benefit_pkg_mapping_ex_async(
         self,
-        request: pds_models.UpdateIdentityToBenefitPkgMappingRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateIdentityToBenefitPkgMappingModel:
+        request: standard_models.UpdateIdentityToBenefitPkgMappingRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateIdentityToBenefitPkgMappingModel:
         """
         更新实体权益包关联
         @tags benefit
@@ -4777,7 +4777,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateIdentityToBenefitPkgMappingModel(),
+                        standard_models.UpdateIdentityToBenefitPkgMappingModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4810,9 +4810,9 @@ class Client:
 
     def list_identity_benefit_pkg_ex(
         self,
-        request: pds_models.ListIdentityBenefitPkgRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListIdentityBenefitPkgModel:
+        request: standard_models.ListIdentityBenefitPkgRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListIdentityBenefitPkgModel:
         """
         列举实体的权益
         @tags benefit
@@ -4891,7 +4891,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListIdentityBenefitPkgModel(),
+                        standard_models.ListIdentityBenefitPkgModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -4924,9 +4924,9 @@ class Client:
 
     async def list_identity_benefit_pkg_ex_async(
         self,
-        request: pds_models.ListIdentityBenefitPkgRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListIdentityBenefitPkgModel:
+        request: standard_models.ListIdentityBenefitPkgRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListIdentityBenefitPkgModel:
         """
         列举实体的权益
         @tags benefit
@@ -5005,7 +5005,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListIdentityBenefitPkgModel(),
+                        standard_models.ListIdentityBenefitPkgModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5038,9 +5038,9 @@ class Client:
 
     def admin_list_stores_ex(
         self,
-        request: pds_models.AdminListStoresRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AdminListStoresModel:
+        request: standard_models.AdminListStoresRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AdminListStoresModel:
         """
         列举Store列表
         @tags admin
@@ -5117,7 +5117,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.AdminListStoresModel(),
+                        standard_models.AdminListStoresModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5150,9 +5150,9 @@ class Client:
 
     async def admin_list_stores_ex_async(
         self,
-        request: pds_models.AdminListStoresRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AdminListStoresModel:
+        request: standard_models.AdminListStoresRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AdminListStoresModel:
         """
         列举Store列表
         @tags admin
@@ -5229,7 +5229,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.AdminListStoresModel(),
+                        standard_models.AdminListStoresModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5262,9 +5262,9 @@ class Client:
 
     def create_subdomain_ex(
         self,
-        request: pds_models.CreateSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateSubdomainModel:
+        request: standard_models.CreateSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateSubdomainModel:
         """
         create subdomain
         @tags subdomain
@@ -5341,7 +5341,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateSubdomainModel(),
+                        standard_models.CreateSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5374,9 +5374,9 @@ class Client:
 
     async def create_subdomain_ex_async(
         self,
-        request: pds_models.CreateSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateSubdomainModel:
+        request: standard_models.CreateSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateSubdomainModel:
         """
         create subdomain
         @tags subdomain
@@ -5453,7 +5453,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateSubdomainModel(),
+                        standard_models.CreateSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5486,9 +5486,9 @@ class Client:
 
     def delete_subdomain_ex(
         self,
-        request: pds_models.DeleteSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteSubdomainModel:
+        request: standard_models.DeleteSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteSubdomainModel:
         """
         delete subdomain
         @tags subdomain
@@ -5565,7 +5565,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteSubdomainModel(),
+                        standard_models.DeleteSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5598,9 +5598,9 @@ class Client:
 
     async def delete_subdomain_ex_async(
         self,
-        request: pds_models.DeleteSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteSubdomainModel:
+        request: standard_models.DeleteSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteSubdomainModel:
         """
         delete subdomain
         @tags subdomain
@@ -5677,7 +5677,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteSubdomainModel(),
+                        standard_models.DeleteSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5710,9 +5710,9 @@ class Client:
 
     def get_subdomain_ex(
         self,
-        request: pds_models.GetSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetSubdomainModel:
+        request: standard_models.GetSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetSubdomainModel:
         """
         get subdomain
         @tags subdomain
@@ -5789,7 +5789,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetSubdomainModel(),
+                        standard_models.GetSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5822,9 +5822,9 @@ class Client:
 
     async def get_subdomain_ex_async(
         self,
-        request: pds_models.GetSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetSubdomainModel:
+        request: standard_models.GetSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetSubdomainModel:
         """
         get subdomain
         @tags subdomain
@@ -5901,7 +5901,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetSubdomainModel(),
+                        standard_models.GetSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -5934,9 +5934,9 @@ class Client:
 
     def list_subdomains_ex(
         self,
-        request: pds_models.ListSubdomainsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListSubdomainsModel:
+        request: standard_models.ListSubdomainsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListSubdomainsModel:
         """
         list subdomain
         @tags subdomain
@@ -6013,7 +6013,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListSubdomainsModel(),
+                        standard_models.ListSubdomainsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6046,9 +6046,9 @@ class Client:
 
     async def list_subdomains_ex_async(
         self,
-        request: pds_models.ListSubdomainsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListSubdomainsModel:
+        request: standard_models.ListSubdomainsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListSubdomainsModel:
         """
         list subdomain
         @tags subdomain
@@ -6125,7 +6125,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListSubdomainsModel(),
+                        standard_models.ListSubdomainsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6158,9 +6158,9 @@ class Client:
 
     def update_subdomain_ex(
         self,
-        request: pds_models.UpdateSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateSubdomainModel:
+        request: standard_models.UpdateSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateSubdomainModel:
         """
         update subdomain
         @tags subdomain
@@ -6237,7 +6237,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateSubdomainModel(),
+                        standard_models.UpdateSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6270,9 +6270,9 @@ class Client:
 
     async def update_subdomain_ex_async(
         self,
-        request: pds_models.UpdateSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateSubdomainModel:
+        request: standard_models.UpdateSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateSubdomainModel:
         """
         update subdomain
         @tags subdomain
@@ -6349,7 +6349,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateSubdomainModel(),
+                        standard_models.UpdateSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6382,9 +6382,9 @@ class Client:
 
     def get_user_access_token_ex(
         self,
-        request: pds_models.GetUserAccessTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetUserAccessTokenModel:
+        request: standard_models.GetUserAccessTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetUserAccessTokenModel:
         """
         获取用户的accessToken
         @tags admin
@@ -6463,7 +6463,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetUserAccessTokenModel(),
+                        standard_models.GetUserAccessTokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6496,9 +6496,9 @@ class Client:
 
     async def get_user_access_token_ex_async(
         self,
-        request: pds_models.GetUserAccessTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetUserAccessTokenModel:
+        request: standard_models.GetUserAccessTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetUserAccessTokenModel:
         """
         获取用户的accessToken
         @tags admin
@@ -6577,7 +6577,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetUserAccessTokenModel(),
+                        standard_models.GetUserAccessTokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6608,233 +6608,11 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def punish_file_ex(
-        self,
-        request: pds_models.PunishFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.PunishFileModel:
-        """
-        指定文件或文件夹ID，删除文件或者文件夹。
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/csi/business/punish_file')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.httpheaders)
-                real_req['httpheaders'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 204):
-                    return TeaCore.from_map(
-                        pds_models.PunishFileModel(),
-                        {
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def punish_file_ex_async(
-        self,
-        request: pds_models.PunishFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.PunishFileModel:
-        """
-        指定文件或文件夹ID，删除文件或者文件夹。
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/csi/business/punish_file')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.httpheaders)
-                real_req['httpheaders'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 204):
-                    return TeaCore.from_map(
-                        pds_models.PunishFileModel(),
-                        {
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
     def get_async_task_info_ex(
         self,
-        request: pds_models.GetAsyncTaskRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetAsyncTaskInfoModel:
+        request: standard_models.GetAsyncTaskRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetAsyncTaskInfoModel:
         """
         如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
         通过此接口获取异步任务的信息，以确定任务是否执行成功。
@@ -6915,7 +6693,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetAsyncTaskInfoModel(),
+                        standard_models.GetAsyncTaskInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6948,9 +6726,9 @@ class Client:
 
     async def get_async_task_info_ex_async(
         self,
-        request: pds_models.GetAsyncTaskRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetAsyncTaskInfoModel:
+        request: standard_models.GetAsyncTaskRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetAsyncTaskInfoModel:
         """
         如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
         通过此接口获取异步任务的信息，以确定任务是否执行成功。
@@ -7031,7 +6809,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetAsyncTaskInfoModel(),
+                        standard_models.GetAsyncTaskInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7064,9 +6842,9 @@ class Client:
 
     def batch_operation_ex(
         self,
-        request: pds_models.BatchRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.BatchOperationModel:
+        request: standard_models.BatchRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.BatchOperationModel:
         """
         对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
         支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
@@ -7146,7 +6924,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.BatchOperationModel(),
+                        standard_models.BatchOperationModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7179,9 +6957,9 @@ class Client:
 
     async def batch_operation_ex_async(
         self,
-        request: pds_models.BatchRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.BatchOperationModel:
+        request: standard_models.BatchRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.BatchOperationModel:
         """
         对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
         支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
@@ -7261,7 +7039,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.BatchOperationModel(),
+                        standard_models.BatchOperationModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7294,9 +7072,9 @@ class Client:
 
     def create_drive_ex(
         self,
-        request: pds_models.CreateDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateDriveModel:
+        request: standard_models.CreateDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateDriveModel:
         """
         支持normal和large两种drive，
         large类型的drive用于文件数多的场景，不支持list操作，
@@ -7377,7 +7155,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateDriveModel(),
+                        standard_models.CreateDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7410,9 +7188,9 @@ class Client:
 
     async def create_drive_ex_async(
         self,
-        request: pds_models.CreateDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateDriveModel:
+        request: standard_models.CreateDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateDriveModel:
         """
         支持normal和large两种drive，
         large类型的drive用于文件数多的场景，不支持list操作，
@@ -7493,7 +7271,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateDriveModel(),
+                        standard_models.CreateDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7526,9 +7304,9 @@ class Client:
 
     def delete_drive_ex(
         self,
-        request: pds_models.DeleteDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteDriveModel:
+        request: standard_models.DeleteDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteDriveModel:
         """
         删除指定drive_id对应的Drive
         @tags drive
@@ -7605,7 +7383,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteDriveModel(),
+                        standard_models.DeleteDriveModel(),
                         {
                             'headers': _response.headers
                         }
@@ -7637,9 +7415,9 @@ class Client:
 
     async def delete_drive_ex_async(
         self,
-        request: pds_models.DeleteDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteDriveModel:
+        request: standard_models.DeleteDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteDriveModel:
         """
         删除指定drive_id对应的Drive
         @tags drive
@@ -7716,7 +7494,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteDriveModel(),
+                        standard_models.DeleteDriveModel(),
                         {
                             'headers': _response.headers
                         }
@@ -7748,9 +7526,9 @@ class Client:
 
     def get_drive_ex(
         self,
-        request: pds_models.GetDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDriveModel:
+        request: standard_models.GetDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDriveModel:
         """
         获取指定drive_id对应的Drive详细信息。
         @tags drive
@@ -7830,7 +7608,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDriveModel(),
+                        standard_models.GetDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7863,9 +7641,9 @@ class Client:
 
     async def get_drive_ex_async(
         self,
-        request: pds_models.GetDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDriveModel:
+        request: standard_models.GetDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDriveModel:
         """
         获取指定drive_id对应的Drive详细信息。
         @tags drive
@@ -7945,7 +7723,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDriveModel(),
+                        standard_models.GetDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -7978,9 +7756,9 @@ class Client:
 
     def get_default_drive_ex(
         self,
-        request: pds_models.GetDefaultDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDefaultDriveModel:
+        request: standard_models.GetDefaultDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDefaultDriveModel:
         """
         一个用户可拥有多个drive，在创建drive时通过参数指定是否为这个用户的默认drive，
         每个用户只能设置一个默认drive。
@@ -8061,7 +7839,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDefaultDriveModel(),
+                        standard_models.GetDefaultDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8094,9 +7872,9 @@ class Client:
 
     async def get_default_drive_ex_async(
         self,
-        request: pds_models.GetDefaultDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDefaultDriveModel:
+        request: standard_models.GetDefaultDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDefaultDriveModel:
         """
         一个用户可拥有多个drive，在创建drive时通过参数指定是否为这个用户的默认drive，
         每个用户只能设置一个默认drive。
@@ -8177,7 +7955,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDefaultDriveModel(),
+                        standard_models.GetDefaultDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8210,9 +7988,9 @@ class Client:
 
     def list_drives_ex(
         self,
-        request: pds_models.ListDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDrivesModel:
+        request: standard_models.ListDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDrivesModel:
         """
         管理员列举指定用户的Drive
         @tags drive
@@ -8291,7 +8069,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDrivesModel(),
+                        standard_models.ListDrivesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8324,9 +8102,9 @@ class Client:
 
     async def list_drives_ex_async(
         self,
-        request: pds_models.ListDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDrivesModel:
+        request: standard_models.ListDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDrivesModel:
         """
         管理员列举指定用户的Drive
         @tags drive
@@ -8405,7 +8183,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDrivesModel(),
+                        standard_models.ListDrivesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8438,9 +8216,9 @@ class Client:
 
     def list_my_drives_ex(
         self,
-        request: pds_models.ListMyDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListMyDrivesModel:
+        request: standard_models.ListMyDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListMyDrivesModel:
         """
         列举当前用户（访问令牌）的Drive
         @tags drive
@@ -8519,7 +8297,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListMyDrivesModel(),
+                        standard_models.ListMyDrivesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8552,9 +8330,9 @@ class Client:
 
     async def list_my_drives_ex_async(
         self,
-        request: pds_models.ListMyDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListMyDrivesModel:
+        request: standard_models.ListMyDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListMyDrivesModel:
         """
         列举当前用户（访问令牌）的Drive
         @tags drive
@@ -8633,7 +8411,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListMyDrivesModel(),
+                        standard_models.ListMyDrivesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8666,9 +8444,9 @@ class Client:
 
     def search_drives_ex(
         self,
-        request: pds_models.SearchDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchDrivesModel:
+        request: standard_models.SearchDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchDrivesModel:
         """
         按照名称或拥有者搜索相关Drive
         @tags drive
@@ -8747,7 +8525,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchDrivesModel(),
+                        standard_models.SearchDrivesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8780,9 +8558,9 @@ class Client:
 
     async def search_drives_ex_async(
         self,
-        request: pds_models.SearchDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchDrivesModel:
+        request: standard_models.SearchDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchDrivesModel:
         """
         按照名称或拥有者搜索相关Drive
         @tags drive
@@ -8861,7 +8639,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchDrivesModel(),
+                        standard_models.SearchDrivesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8894,9 +8672,9 @@ class Client:
 
     def update_drive_ex(
         self,
-        request: pds_models.UpdateDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateDriveModel:
+        request: standard_models.UpdateDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateDriveModel:
         """
         更新指定drive_id的Drive信息
         @tags drive
@@ -8976,7 +8754,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateDriveModel(),
+                        standard_models.UpdateDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9009,9 +8787,9 @@ class Client:
 
     async def update_drive_ex_async(
         self,
-        request: pds_models.UpdateDriveRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateDriveModel:
+        request: standard_models.UpdateDriveRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateDriveModel:
         """
         更新指定drive_id的Drive信息
         @tags drive
@@ -9091,7 +8869,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateDriveModel(),
+                        standard_models.UpdateDriveModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9124,9 +8902,9 @@ class Client:
 
     def add_permission_ex(
         self,
-        request: pds_models.FileAddPermissionRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AddPermissionModel:
+        request: standard_models.FileAddPermissionRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AddPermissionModel:
         """
         将文件共享/授权给其他用户或团队
         @tags file
@@ -9204,7 +8982,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.AddPermissionModel(),
+                        standard_models.AddPermissionModel(),
                         {
                             'headers': _response.headers
                         }
@@ -9236,9 +9014,9 @@ class Client:
 
     async def add_permission_ex_async(
         self,
-        request: pds_models.FileAddPermissionRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AddPermissionModel:
+        request: standard_models.FileAddPermissionRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AddPermissionModel:
         """
         将文件共享/授权给其他用户或团队
         @tags file
@@ -9316,7 +9094,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.AddPermissionModel(),
+                        standard_models.AddPermissionModel(),
                         {
                             'headers': _response.headers
                         }
@@ -9348,9 +9126,9 @@ class Client:
 
     def archive_files_ex(
         self,
-        request: pds_models.CCPArchiveFilesRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ArchiveFilesModel:
+        request: standard_models.CCPArchiveFilesRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ArchiveFilesModel:
         """
         archive_files
         @tags file
@@ -9429,7 +9207,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ArchiveFilesModel(),
+                        standard_models.ArchiveFilesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9462,9 +9240,9 @@ class Client:
 
     async def archive_files_ex_async(
         self,
-        request: pds_models.CCPArchiveFilesRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ArchiveFilesModel:
+        request: standard_models.CCPArchiveFilesRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ArchiveFilesModel:
         """
         archive_files
         @tags file
@@ -9543,7 +9321,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ArchiveFilesModel(),
+                        standard_models.ArchiveFilesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9576,9 +9354,9 @@ class Client:
 
     def complete_file_ex(
         self,
-        request: pds_models.CompleteFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CompleteFileModel:
+        request: standard_models.CompleteFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CompleteFileModel:
         """
         完成文件上传。
         @tags file
@@ -9658,7 +9436,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CompleteFileModel(),
+                        standard_models.CompleteFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9691,9 +9469,9 @@ class Client:
 
     async def complete_file_ex_async(
         self,
-        request: pds_models.CompleteFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CompleteFileModel:
+        request: standard_models.CompleteFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CompleteFileModel:
         """
         完成文件上传。
         @tags file
@@ -9773,7 +9551,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CompleteFileModel(),
+                        standard_models.CompleteFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9806,9 +9584,9 @@ class Client:
 
     def complete_file_with_store_info_ex(
         self,
-        request: pds_models.UCCompleteFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CompleteFileWithStoreInfoModel:
+        request: standard_models.UCCompleteFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CompleteFileWithStoreInfoModel:
         """
         UCCompleteFileRequest
         @tags file
@@ -9887,7 +9665,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CompleteFileWithStoreInfoModel(),
+                        standard_models.CompleteFileWithStoreInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -9920,9 +9698,9 @@ class Client:
 
     async def complete_file_with_store_info_ex_async(
         self,
-        request: pds_models.UCCompleteFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CompleteFileWithStoreInfoModel:
+        request: standard_models.UCCompleteFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CompleteFileWithStoreInfoModel:
         """
         UCCompleteFileRequest
         @tags file
@@ -10001,7 +9779,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CompleteFileWithStoreInfoModel(),
+                        standard_models.CompleteFileWithStoreInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10034,9 +9812,9 @@ class Client:
 
     def copy_file_ex(
         self,
-        request: pds_models.CopyFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CopyFileModel:
+        request: standard_models.CopyFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CopyFileModel:
         """
         指定源文件或文件夹，拷贝到指定的文件夹。
         @tags file
@@ -10116,7 +9894,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CopyFileModel(),
+                        standard_models.CopyFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10126,7 +9904,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CopyFileModel(),
+                        standard_models.CopyFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10159,9 +9937,9 @@ class Client:
 
     async def copy_file_ex_async(
         self,
-        request: pds_models.CopyFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CopyFileModel:
+        request: standard_models.CopyFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CopyFileModel:
         """
         指定源文件或文件夹，拷贝到指定的文件夹。
         @tags file
@@ -10241,7 +10019,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CopyFileModel(),
+                        standard_models.CopyFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10251,7 +10029,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CopyFileModel(),
+                        standard_models.CopyFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10284,9 +10062,9 @@ class Client:
 
     def create_file_ex(
         self,
-        request: pds_models.CreateFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateFileModel:
+        request: standard_models.CreateFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateFileModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -10368,7 +10146,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateFileModel(),
+                        standard_models.CreateFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10401,9 +10179,9 @@ class Client:
 
     async def create_file_ex_async(
         self,
-        request: pds_models.CreateFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateFileModel:
+        request: standard_models.CreateFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateFileModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -10485,7 +10263,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateFileModel(),
+                        standard_models.CreateFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10518,9 +10296,9 @@ class Client:
 
     def create_file_with_proof_ex(
         self,
-        request: pds_models.CreateFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateFileWithProofModel:
+        request: standard_models.CreateFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateFileWithProofModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -10602,7 +10380,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateFileWithProofModel(),
+                        standard_models.CreateFileWithProofModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10635,9 +10413,9 @@ class Client:
 
     async def create_file_with_proof_ex_async(
         self,
-        request: pds_models.CreateFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateFileWithProofModel:
+        request: standard_models.CreateFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateFileWithProofModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -10719,7 +10497,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateFileWithProofModel(),
+                        standard_models.CreateFileWithProofModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10752,9 +10530,9 @@ class Client:
 
     def create_file_with_signature_ex(
         self,
-        request: pds_models.UCCreateFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateFileWithSignatureModel:
+        request: standard_models.UCCreateFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateFileWithSignatureModel:
         """
         CreateFileWithSignature
         @tags file
@@ -10833,7 +10611,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateFileWithSignatureModel(),
+                        standard_models.CreateFileWithSignatureModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10866,9 +10644,9 @@ class Client:
 
     async def create_file_with_signature_ex_async(
         self,
-        request: pds_models.UCCreateFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateFileWithSignatureModel:
+        request: standard_models.UCCreateFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateFileWithSignatureModel:
         """
         CreateFileWithSignature
         @tags file
@@ -10947,7 +10725,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateFileWithSignatureModel(),
+                        standard_models.CreateFileWithSignatureModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -10980,9 +10758,9 @@ class Client:
 
     def delete_file_ex(
         self,
-        request: pds_models.DeleteFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteFileModel:
+        request: standard_models.DeleteFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteFileModel:
         """
         指定文件或文件夹ID，删除文件或者文件夹。
         @tags file
@@ -11062,7 +10840,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteFileModel(),
+                        standard_models.DeleteFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11070,7 +10848,7 @@ class Client:
                     )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteFileModel(),
+                        standard_models.DeleteFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -11102,9 +10880,9 @@ class Client:
 
     async def delete_file_ex_async(
         self,
-        request: pds_models.DeleteFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteFileModel:
+        request: standard_models.DeleteFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteFileModel:
         """
         指定文件或文件夹ID，删除文件或者文件夹。
         @tags file
@@ -11184,7 +10962,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteFileModel(),
+                        standard_models.DeleteFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11192,7 +10970,7 @@ class Client:
                     )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteFileModel(),
+                        standard_models.DeleteFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -11224,9 +11002,9 @@ class Client:
 
     def delete_usertags_ex(
         self,
-        request: pds_models.DeleteFileUserTagsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteUsertagsModel:
+        request: standard_models.DeleteFileUserTagsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteUsertagsModel:
         """
         对指定的文件或文件夹删除 user tags。
         @tags file
@@ -11305,7 +11083,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteUsertagsModel(),
+                        standard_models.DeleteUsertagsModel(),
                         {
                             'headers': _response.headers
                         }
@@ -11337,9 +11115,9 @@ class Client:
 
     async def delete_usertags_ex_async(
         self,
-        request: pds_models.DeleteFileUserTagsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteUsertagsModel:
+        request: standard_models.DeleteFileUserTagsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteUsertagsModel:
         """
         对指定的文件或文件夹删除 user tags。
         @tags file
@@ -11418,7 +11196,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteUsertagsModel(),
+                        standard_models.DeleteUsertagsModel(),
                         {
                             'headers': _response.headers
                         }
@@ -11450,9 +11228,9 @@ class Client:
 
     def get_file_ex(
         self,
-        request: pds_models.GetFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileModel:
+        request: standard_models.GetFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileModel:
         """
         获取指定文件或文件夹ID的信息。
         @tags file
@@ -11532,7 +11310,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileModel(),
+                        standard_models.GetFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11565,9 +11343,9 @@ class Client:
 
     async def get_file_ex_async(
         self,
-        request: pds_models.GetFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileModel:
+        request: standard_models.GetFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileModel:
         """
         获取指定文件或文件夹ID的信息。
         @tags file
@@ -11647,7 +11425,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileModel(),
+                        standard_models.GetFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11680,9 +11458,9 @@ class Client:
 
     def get_file_by_path_ex(
         self,
-        request: pds_models.GetFileByPathRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileByPathModel:
+        request: standard_models.GetFileByPathRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileByPathModel:
         """
         根据路径获取指定文件或文件夹的信息。
         @tags file
@@ -11762,7 +11540,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileByPathModel(),
+                        standard_models.GetFileByPathModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11795,9 +11573,9 @@ class Client:
 
     async def get_file_by_path_ex_async(
         self,
-        request: pds_models.GetFileByPathRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileByPathModel:
+        request: standard_models.GetFileByPathRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileByPathModel:
         """
         根据路径获取指定文件或文件夹的信息。
         @tags file
@@ -11877,7 +11655,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileByPathModel(),
+                        standard_models.GetFileByPathModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11910,9 +11688,9 @@ class Client:
 
     def get_download_url_ex(
         self,
-        request: pds_models.GetDownloadUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDownloadUrlModel:
+        request: standard_models.GetDownloadUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDownloadUrlModel:
         """
         获取文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -11992,7 +11770,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDownloadUrlModel(),
+                        standard_models.GetDownloadUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12025,9 +11803,9 @@ class Client:
 
     async def get_download_url_ex_async(
         self,
-        request: pds_models.GetDownloadUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDownloadUrlModel:
+        request: standard_models.GetDownloadUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDownloadUrlModel:
         """
         获取文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -12107,7 +11885,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDownloadUrlModel(),
+                        standard_models.GetDownloadUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12140,9 +11918,9 @@ class Client:
 
     def get_last_cursor_ex(
         self,
-        request: pds_models.GetLastCursorRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetLastCursorModel:
+        request: standard_models.GetLastCursorRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetLastCursorModel:
         """
         获取drive内，增量数据最新的游标
         @tags file_delta
@@ -12222,7 +12000,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetLastCursorModel(),
+                        standard_models.GetLastCursorModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12255,9 +12033,9 @@ class Client:
 
     async def get_last_cursor_ex_async(
         self,
-        request: pds_models.GetLastCursorRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetLastCursorModel:
+        request: standard_models.GetLastCursorRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetLastCursorModel:
         """
         获取drive内，增量数据最新的游标
         @tags file_delta
@@ -12337,7 +12115,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetLastCursorModel(),
+                        standard_models.GetLastCursorModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12370,9 +12148,9 @@ class Client:
 
     def get_media_play_url_ex(
         self,
-        request: pds_models.GetMediaPlayURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetMediaPlayUrlModel:
+        request: standard_models.GetMediaPlayURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetMediaPlayUrlModel:
         """
         获取media文件播放URL地址（当前仅支持m3u8）
         @tags file
@@ -12451,7 +12229,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetMediaPlayUrlModel(),
+                        standard_models.GetMediaPlayUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12484,9 +12262,9 @@ class Client:
 
     async def get_media_play_url_ex_async(
         self,
-        request: pds_models.GetMediaPlayURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetMediaPlayUrlModel:
+        request: standard_models.GetMediaPlayURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetMediaPlayUrlModel:
         """
         获取media文件播放URL地址（当前仅支持m3u8）
         @tags file
@@ -12565,7 +12343,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetMediaPlayUrlModel(),
+                        standard_models.GetMediaPlayUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12598,9 +12376,9 @@ class Client:
 
     def get_office_edit_url_ex(
         self,
-        request: pds_models.GetOfficeEditUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetOfficeEditUrlModel:
+        request: standard_models.GetOfficeEditUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetOfficeEditUrlModel:
         """
         获取文档的在线编辑地址
         @tags file
@@ -12680,7 +12458,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetOfficeEditUrlModel(),
+                        standard_models.GetOfficeEditUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12713,9 +12491,9 @@ class Client:
 
     async def get_office_edit_url_ex_async(
         self,
-        request: pds_models.GetOfficeEditUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetOfficeEditUrlModel:
+        request: standard_models.GetOfficeEditUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetOfficeEditUrlModel:
         """
         获取文档的在线编辑地址
         @tags file
@@ -12795,7 +12573,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetOfficeEditUrlModel(),
+                        standard_models.GetOfficeEditUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12828,9 +12606,9 @@ class Client:
 
     def get_office_preview_url_ex(
         self,
-        request: pds_models.GetOfficePreviewUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetOfficePreviewUrlModel:
+        request: standard_models.GetOfficePreviewUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetOfficePreviewUrlModel:
         """
         获取文档的预览地址（office文档）
         @tags file
@@ -12910,7 +12688,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetOfficePreviewUrlModel(),
+                        standard_models.GetOfficePreviewUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -12943,9 +12721,9 @@ class Client:
 
     async def get_office_preview_url_ex_async(
         self,
-        request: pds_models.GetOfficePreviewUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetOfficePreviewUrlModel:
+        request: standard_models.GetOfficePreviewUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetOfficePreviewUrlModel:
         """
         获取文档的预览地址（office文档）
         @tags file
@@ -13025,7 +12803,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetOfficePreviewUrlModel(),
+                        standard_models.GetOfficePreviewUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13058,9 +12836,9 @@ class Client:
 
     def get_share_link_download_url_ex(
         self,
-        request: pds_models.GetShareLinkDownloadURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareLinkDownloadUrlModel:
+        request: standard_models.GetShareLinkDownloadURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareLinkDownloadUrlModel:
         """
         获取分享中文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -13140,7 +12918,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareLinkDownloadUrlModel(),
+                        standard_models.GetShareLinkDownloadUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13173,9 +12951,9 @@ class Client:
 
     async def get_share_link_download_url_ex_async(
         self,
-        request: pds_models.GetShareLinkDownloadURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareLinkDownloadUrlModel:
+        request: standard_models.GetShareLinkDownloadURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareLinkDownloadUrlModel:
         """
         获取分享中文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -13255,7 +13033,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareLinkDownloadUrlModel(),
+                        standard_models.GetShareLinkDownloadUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13288,9 +13066,9 @@ class Client:
 
     def get_share_link_video_preview_play_info_ex(
         self,
-        request: pds_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareLinkVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareLinkVideoPreviewPlayInfoModel:
         """
         获取分享中文件播放信息
         @tags file
@@ -13370,7 +13148,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareLinkVideoPreviewPlayInfoModel(),
+                        standard_models.GetShareLinkVideoPreviewPlayInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13403,9 +13181,9 @@ class Client:
 
     async def get_share_link_video_preview_play_info_ex_async(
         self,
-        request: pds_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareLinkVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareLinkVideoPreviewPlayInfoModel:
         """
         获取分享中文件播放信息
         @tags file
@@ -13485,7 +13263,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareLinkVideoPreviewPlayInfoModel(),
+                        standard_models.GetShareLinkVideoPreviewPlayInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13518,9 +13296,9 @@ class Client:
 
     def get_file_signature_ex(
         self,
-        request: pds_models.UCFileGetSignatureRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileSignatureModel:
+        request: standard_models.UCFileGetSignatureRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileSignatureModel:
         """
         GetFileSignature
         @tags file
@@ -13599,7 +13377,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileSignatureModel(),
+                        standard_models.GetFileSignatureModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13632,9 +13410,9 @@ class Client:
 
     async def get_file_signature_ex_async(
         self,
-        request: pds_models.UCFileGetSignatureRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileSignatureModel:
+        request: standard_models.UCFileGetSignatureRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileSignatureModel:
         """
         GetFileSignature
         @tags file
@@ -13713,7 +13491,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileSignatureModel(),
+                        standard_models.GetFileSignatureModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13746,9 +13524,9 @@ class Client:
 
     def get_upload_url_ex(
         self,
-        request: pds_models.GetUploadUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetUploadUrlModel:
+        request: standard_models.GetUploadUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetUploadUrlModel:
         """
         可指定分片信息，一次获取多个分片的上传地址。
         @tags file
@@ -13828,7 +13606,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetUploadUrlModel(),
+                        standard_models.GetUploadUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13861,9 +13639,9 @@ class Client:
 
     async def get_upload_url_ex_async(
         self,
-        request: pds_models.GetUploadUrlRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetUploadUrlModel:
+        request: standard_models.GetUploadUrlRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetUploadUrlModel:
         """
         可指定分片信息，一次获取多个分片的上传地址。
         @tags file
@@ -13943,7 +13721,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetUploadUrlModel(),
+                        standard_models.GetUploadUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13976,9 +13754,9 @@ class Client:
 
     def get_video_preview_play_info_ex(
         self,
-        request: pds_models.CCPGetVideoPreviewPlayInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetVideoPreviewPlayInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetVideoPreviewPlayInfoModel:
         """
         获取视频文件播放信息
         @tags file
@@ -14056,7 +13834,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetVideoPreviewPlayInfoModel(),
+                        standard_models.GetVideoPreviewPlayInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14089,9 +13867,9 @@ class Client:
 
     async def get_video_preview_play_info_ex_async(
         self,
-        request: pds_models.CCPGetVideoPreviewPlayInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetVideoPreviewPlayInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetVideoPreviewPlayInfoModel:
         """
         获取视频文件播放信息
         @tags file
@@ -14169,7 +13947,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetVideoPreviewPlayInfoModel(),
+                        standard_models.GetVideoPreviewPlayInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14202,9 +13980,9 @@ class Client:
 
     def get_video_preview_sprite_url_ex(
         self,
-        request: pds_models.GetVideoPreviewSpriteURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetVideoPreviewSpriteUrlModel:
+        request: standard_models.GetVideoPreviewSpriteURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetVideoPreviewSpriteUrlModel:
         """
         获取视频雪碧图地址
         @tags file
@@ -14284,7 +14062,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetVideoPreviewSpriteUrlModel(),
+                        standard_models.GetVideoPreviewSpriteUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14317,9 +14095,9 @@ class Client:
 
     async def get_video_preview_sprite_url_ex_async(
         self,
-        request: pds_models.GetVideoPreviewSpriteURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetVideoPreviewSpriteUrlModel:
+        request: standard_models.GetVideoPreviewSpriteURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetVideoPreviewSpriteUrlModel:
         """
         获取视频雪碧图地址
         @tags file
@@ -14399,7 +14177,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetVideoPreviewSpriteUrlModel(),
+                        standard_models.GetVideoPreviewSpriteUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14432,9 +14210,9 @@ class Client:
 
     def get_video_preview_url_ex(
         self,
-        request: pds_models.GetVideoPreviewURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetVideoPreviewUrlModel:
+        request: standard_models.GetVideoPreviewURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetVideoPreviewUrlModel:
         """
         获取视频播放地址
         @tags file
@@ -14514,7 +14292,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetVideoPreviewUrlModel(),
+                        standard_models.GetVideoPreviewUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14547,9 +14325,9 @@ class Client:
 
     async def get_video_preview_url_ex_async(
         self,
-        request: pds_models.GetVideoPreviewURLRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetVideoPreviewUrlModel:
+        request: standard_models.GetVideoPreviewURLRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetVideoPreviewUrlModel:
         """
         获取视频播放地址
         @tags file
@@ -14629,7 +14407,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetVideoPreviewUrlModel(),
+                        standard_models.GetVideoPreviewUrlModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14662,9 +14440,9 @@ class Client:
 
     def list_file_ex(
         self,
-        request: pds_models.ListFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileModel:
+        request: standard_models.ListFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileModel:
         """
         列举指定目录下的文件或文件夹。
         @tags file
@@ -14744,7 +14522,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileModel(),
+                        standard_models.ListFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14777,9 +14555,9 @@ class Client:
 
     async def list_file_ex_async(
         self,
-        request: pds_models.ListFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileModel:
+        request: standard_models.ListFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileModel:
         """
         列举指定目录下的文件或文件夹。
         @tags file
@@ -14859,7 +14637,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileModel(),
+                        standard_models.ListFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -14892,9 +14670,9 @@ class Client:
 
     def list_file_activity_ex(
         self,
-        request: pds_models.ListFileActivityRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileActivityModel:
+        request: standard_models.ListFileActivityRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileActivityModel:
         """
         list file activity
         @tags file
@@ -14974,7 +14752,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileActivityModel(),
+                        standard_models.ListFileActivityModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15007,9 +14785,9 @@ class Client:
 
     async def list_file_activity_ex_async(
         self,
-        request: pds_models.ListFileActivityRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileActivityModel:
+        request: standard_models.ListFileActivityRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileActivityModel:
         """
         list file activity
         @tags file
@@ -15089,7 +14867,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileActivityModel(),
+                        standard_models.ListFileActivityModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15122,9 +14900,9 @@ class Client:
 
     def list_file_by_anonymous_ex(
         self,
-        request: pds_models.ListByAnonymousRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileByAnonymousModel:
+        request: standard_models.ListByAnonymousRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileByAnonymousModel:
         """
         查看分享中的文件列表
         @tags share_link
@@ -15203,7 +14981,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileByAnonymousModel(),
+                        standard_models.ListFileByAnonymousModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15236,9 +15014,9 @@ class Client:
 
     async def list_file_by_anonymous_ex_async(
         self,
-        request: pds_models.ListByAnonymousRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileByAnonymousModel:
+        request: standard_models.ListByAnonymousRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileByAnonymousModel:
         """
         查看分享中的文件列表
         @tags share_link
@@ -15317,7 +15095,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileByAnonymousModel(),
+                        standard_models.ListFileByAnonymousModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15350,9 +15128,9 @@ class Client:
 
     def list_file_by_custom_index_key_ex(
         self,
-        request: pds_models.ListFileByCustomIndexKeyRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileByCustomIndexKeyModel:
+        request: standard_models.ListFileByCustomIndexKeyRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileByCustomIndexKeyModel:
         """
         根据自定义同步索引键列举文件或文件夹。
         @tags file
@@ -15432,7 +15210,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileByCustomIndexKeyModel(),
+                        standard_models.ListFileByCustomIndexKeyModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15465,9 +15243,9 @@ class Client:
 
     async def list_file_by_custom_index_key_ex_async(
         self,
-        request: pds_models.ListFileByCustomIndexKeyRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileByCustomIndexKeyModel:
+        request: standard_models.ListFileByCustomIndexKeyRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileByCustomIndexKeyModel:
         """
         根据自定义同步索引键列举文件或文件夹。
         @tags file
@@ -15547,7 +15325,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileByCustomIndexKeyModel(),
+                        standard_models.ListFileByCustomIndexKeyModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15580,9 +15358,9 @@ class Client:
 
     def list_file_delta_ex(
         self,
-        request: pds_models.ListFileDeltaRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileDeltaModel:
+        request: standard_models.ListFileDeltaRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileDeltaModel:
         """
         获取drive内，增量数据列表
         @tags file_delta
@@ -15662,7 +15440,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileDeltaModel(),
+                        standard_models.ListFileDeltaModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15695,9 +15473,9 @@ class Client:
 
     async def list_file_delta_ex_async(
         self,
-        request: pds_models.ListFileDeltaRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileDeltaModel:
+        request: standard_models.ListFileDeltaRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileDeltaModel:
         """
         获取drive内，增量数据列表
         @tags file_delta
@@ -15777,7 +15555,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileDeltaModel(),
+                        standard_models.ListFileDeltaModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15810,9 +15588,9 @@ class Client:
 
     def list_manage_sharing_file_ex(
         self,
-        request: pds_models.ListMangeSharingFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListManageSharingFileModel:
+        request: standard_models.ListMangeSharingFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListManageSharingFileModel:
         """
         列举当前用户管理的共享记录
         @tags file
@@ -15891,7 +15669,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListManageSharingFileModel(),
+                        standard_models.ListManageSharingFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -15924,9 +15702,9 @@ class Client:
 
     async def list_manage_sharing_file_ex_async(
         self,
-        request: pds_models.ListMangeSharingFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListManageSharingFileModel:
+        request: standard_models.ListMangeSharingFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListManageSharingFileModel:
         """
         列举当前用户管理的共享记录
         @tags file
@@ -16005,7 +15783,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListManageSharingFileModel(),
+                        standard_models.ListManageSharingFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16038,9 +15816,9 @@ class Client:
 
     def list_permission_ex(
         self,
-        request: pds_models.FileListPermissionRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListPermissionModel:
+        request: standard_models.FileListPermissionRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListPermissionModel:
         """
         列举文件的共享/授权记录
         @tags file
@@ -16120,7 +15898,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListPermissionModel(),
+                        standard_models.ListPermissionModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16153,9 +15931,9 @@ class Client:
 
     async def list_permission_ex_async(
         self,
-        request: pds_models.FileListPermissionRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListPermissionModel:
+        request: standard_models.FileListPermissionRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListPermissionModel:
         """
         列举文件的共享/授权记录
         @tags file
@@ -16235,7 +16013,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListPermissionModel(),
+                        standard_models.ListPermissionModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16268,9 +16046,9 @@ class Client:
 
     def list_received_file_ex(
         self,
-        request: pds_models.ListReceivedFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListReceivedFileModel:
+        request: standard_models.ListReceivedFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListReceivedFileModel:
         """
         列举当前用户收到的共享记录
         @tags file
@@ -16349,7 +16127,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListReceivedFileModel(),
+                        standard_models.ListReceivedFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16382,9 +16160,9 @@ class Client:
 
     async def list_received_file_ex_async(
         self,
-        request: pds_models.ListReceivedFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListReceivedFileModel:
+        request: standard_models.ListReceivedFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListReceivedFileModel:
         """
         列举当前用户收到的共享记录
         @tags file
@@ -16463,7 +16241,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListReceivedFileModel(),
+                        standard_models.ListReceivedFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16496,9 +16274,9 @@ class Client:
 
     def list_sharing_file_ex(
         self,
-        request: pds_models.ListSharingFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListSharingFileModel:
+        request: standard_models.ListSharingFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListSharingFileModel:
         """
         列举当前用户的共享记录
         @tags file
@@ -16577,7 +16355,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListSharingFileModel(),
+                        standard_models.ListSharingFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16610,9 +16388,9 @@ class Client:
 
     async def list_sharing_file_ex_async(
         self,
-        request: pds_models.ListSharingFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListSharingFileModel:
+        request: standard_models.ListSharingFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListSharingFileModel:
         """
         列举当前用户的共享记录
         @tags file
@@ -16691,7 +16469,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListSharingFileModel(),
+                        standard_models.ListSharingFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16724,9 +16502,9 @@ class Client:
 
     def list_uploaded_parts_ex(
         self,
-        request: pds_models.ListUploadedPartRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListUploadedPartsModel:
+        request: standard_models.ListUploadedPartRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListUploadedPartsModel:
         """
         列举upload_id对应的已上传分片。
         @tags file
@@ -16806,7 +16584,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListUploadedPartsModel(),
+                        standard_models.ListUploadedPartsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16839,9 +16617,9 @@ class Client:
 
     async def list_uploaded_parts_ex_async(
         self,
-        request: pds_models.ListUploadedPartRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListUploadedPartsModel:
+        request: standard_models.ListUploadedPartRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListUploadedPartsModel:
         """
         列举upload_id对应的已上传分片。
         @tags file
@@ -16921,7 +16699,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListUploadedPartsModel(),
+                        standard_models.ListUploadedPartsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16954,9 +16732,9 @@ class Client:
 
     def live_transcode_ex(
         self,
-        request: pds_models.CCPLiveTranscodeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.LiveTranscodeModel:
+        request: standard_models.CCPLiveTranscodeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.LiveTranscodeModel:
         """
         live_transcode
         @tags file
@@ -17034,7 +16812,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.LiveTranscodeModel(),
+                        standard_models.LiveTranscodeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17067,9 +16845,9 @@ class Client:
 
     async def live_transcode_ex_async(
         self,
-        request: pds_models.CCPLiveTranscodeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.LiveTranscodeModel:
+        request: standard_models.CCPLiveTranscodeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.LiveTranscodeModel:
         """
         live_transcode
         @tags file
@@ -17147,7 +16925,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.LiveTranscodeModel(),
+                        standard_models.LiveTranscodeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17180,9 +16958,9 @@ class Client:
 
     def move_file_ex(
         self,
-        request: pds_models.MoveFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.MoveFileModel:
+        request: standard_models.MoveFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.MoveFileModel:
         """
         指定源文件或文件夹，移动到指定的文件夹。
         @tags file
@@ -17262,7 +17040,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.MoveFileModel(),
+                        standard_models.MoveFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17295,9 +17073,9 @@ class Client:
 
     async def move_file_ex_async(
         self,
-        request: pds_models.MoveFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.MoveFileModel:
+        request: standard_models.MoveFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.MoveFileModel:
         """
         指定源文件或文件夹，移动到指定的文件夹。
         @tags file
@@ -17377,7 +17155,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.MoveFileModel(),
+                        standard_models.MoveFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17410,9 +17188,9 @@ class Client:
 
     def put_usertags_ex(
         self,
-        request: pds_models.PutFileUserTagsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.PutUsertagsModel:
+        request: standard_models.PutFileUserTagsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.PutUsertagsModel:
         """
         对指定的文件或文件夹更新 user tags。
         @tags file
@@ -17493,7 +17271,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.PutUsertagsModel(),
+                        standard_models.PutUsertagsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17526,9 +17304,9 @@ class Client:
 
     async def put_usertags_ex_async(
         self,
-        request: pds_models.PutFileUserTagsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.PutUsertagsModel:
+        request: standard_models.PutFileUserTagsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.PutUsertagsModel:
         """
         对指定的文件或文件夹更新 user tags。
         @tags file
@@ -17609,7 +17387,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.PutUsertagsModel(),
+                        standard_models.PutUsertagsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17642,9 +17420,9 @@ class Client:
 
     def token_ex(
         self,
-        request: pds_models.RefreshOfficeEditTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.TokenModel:
+        request: standard_models.RefreshOfficeEditTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.TokenModel:
         """
         刷新在线编辑Token
         @tags file, refresh, office, edit
@@ -17724,7 +17502,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.TokenModel(),
+                        standard_models.TokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17757,9 +17535,9 @@ class Client:
 
     async def token_ex_async(
         self,
-        request: pds_models.RefreshOfficeEditTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.TokenModel:
+        request: standard_models.RefreshOfficeEditTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.TokenModel:
         """
         刷新在线编辑Token
         @tags file, refresh, office, edit
@@ -17839,7 +17617,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.TokenModel(),
+                        standard_models.TokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -17872,9 +17650,9 @@ class Client:
 
     def remove_permission_ex(
         self,
-        request: pds_models.FileRemovePermissionRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RemovePermissionModel:
+        request: standard_models.FileRemovePermissionRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RemovePermissionModel:
         """
         取消文件共享/授权
         @tags file
@@ -17952,7 +17730,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.RemovePermissionModel(),
+                        standard_models.RemovePermissionModel(),
                         {
                             'headers': _response.headers
                         }
@@ -17984,9 +17762,9 @@ class Client:
 
     async def remove_permission_ex_async(
         self,
-        request: pds_models.FileRemovePermissionRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RemovePermissionModel:
+        request: standard_models.FileRemovePermissionRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RemovePermissionModel:
         """
         取消文件共享/授权
         @tags file
@@ -18064,7 +17842,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.RemovePermissionModel(),
+                        standard_models.RemovePermissionModel(),
                         {
                             'headers': _response.headers
                         }
@@ -18096,9 +17874,9 @@ class Client:
 
     def scan_file_meta_ex(
         self,
-        request: pds_models.ScanFileMetaRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ScanFileMetaModel:
+        request: standard_models.ScanFileMetaRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ScanFileMetaModel:
         """
         在指定drive下全量获取文件元信息。
         @tags file
@@ -18178,7 +17956,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ScanFileMetaModel(),
+                        standard_models.ScanFileMetaModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18211,9 +17989,9 @@ class Client:
 
     async def scan_file_meta_ex_async(
         self,
-        request: pds_models.ScanFileMetaRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ScanFileMetaModel:
+        request: standard_models.ScanFileMetaRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ScanFileMetaModel:
         """
         在指定drive下全量获取文件元信息。
         @tags file
@@ -18293,7 +18071,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ScanFileMetaModel(),
+                        standard_models.ScanFileMetaModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18326,9 +18104,9 @@ class Client:
 
     def search_file_ex(
         self,
-        request: pds_models.SearchFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchFileModel:
+        request: standard_models.SearchFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchFileModel:
         """
         根据筛选条件，在指定drive下搜索文件。
         @tags file
@@ -18408,7 +18186,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchFileModel(),
+                        standard_models.SearchFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18441,9 +18219,9 @@ class Client:
 
     async def search_file_ex_async(
         self,
-        request: pds_models.SearchFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchFileModel:
+        request: standard_models.SearchFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchFileModel:
         """
         根据筛选条件，在指定drive下搜索文件。
         @tags file
@@ -18523,7 +18301,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchFileModel(),
+                        standard_models.SearchFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18556,9 +18334,9 @@ class Client:
 
     def update_file_ex(
         self,
-        request: pds_models.UpdateFileMetaRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateFileModel:
+        request: standard_models.UpdateFileMetaRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateFileModel:
         """
         对指定的文件或文件夹更新信息。
         @tags file
@@ -18639,7 +18417,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateFileModel(),
+                        standard_models.UpdateFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18672,9 +18450,9 @@ class Client:
 
     async def update_file_ex_async(
         self,
-        request: pds_models.UpdateFileMetaRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateFileModel:
+        request: standard_models.UpdateFileMetaRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateFileModel:
         """
         对指定的文件或文件夹更新信息。
         @tags file
@@ -18755,7 +18533,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateFileModel(),
+                        standard_models.UpdateFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18788,9 +18566,9 @@ class Client:
 
     def update_file_upload_content_hash_ex(
         self,
-        request: pds_models.UCUpdateUploadContentHashRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateFileUploadContentHashModel:
+        request: standard_models.UCUpdateUploadContentHashRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateFileUploadContentHashModel:
         """
         UpdateFileUploadContentHash
         @tags file
@@ -18869,7 +18647,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateFileUploadContentHashModel(),
+                        standard_models.UpdateFileUploadContentHashModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -18902,9 +18680,9 @@ class Client:
 
     async def update_file_upload_content_hash_ex_async(
         self,
-        request: pds_models.UCUpdateUploadContentHashRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateFileUploadContentHashModel:
+        request: standard_models.UCUpdateUploadContentHashRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateFileUploadContentHashModel:
         """
         UpdateFileUploadContentHash
         @tags file
@@ -18983,7 +18761,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateFileUploadContentHashModel(),
+                        standard_models.UpdateFileUploadContentHashModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19016,9 +18794,9 @@ class Client:
 
     def walk_file_ex(
         self,
-        request: pds_models.CCPWalkFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.WalkFileModel:
+        request: standard_models.CCPWalkFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.WalkFileModel:
         """
         walk file
         @tags file
@@ -19098,7 +18876,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.WalkFileModel(),
+                        standard_models.WalkFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19131,9 +18909,9 @@ class Client:
 
     async def walk_file_ex_async(
         self,
-        request: pds_models.CCPWalkFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.WalkFileModel:
+        request: standard_models.CCPWalkFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.WalkFileModel:
         """
         walk file
         @tags file
@@ -19213,7 +18991,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.WalkFileModel(),
+                        standard_models.WalkFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19246,9 +19024,9 @@ class Client:
 
     def clear_recyclebin_ex(
         self,
-        request: pds_models.ClearRecycleBinRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ClearRecyclebinModel:
+        request: standard_models.ClearRecycleBinRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ClearRecyclebinModel:
         """
         clear_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -19325,7 +19103,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ClearRecyclebinModel(),
+                        standard_models.ClearRecyclebinModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19358,9 +19136,9 @@ class Client:
 
     async def clear_recyclebin_ex_async(
         self,
-        request: pds_models.ClearRecycleBinRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ClearRecyclebinModel:
+        request: standard_models.ClearRecycleBinRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ClearRecyclebinModel:
         """
         clear_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -19437,7 +19215,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ClearRecyclebinModel(),
+                        standard_models.ClearRecyclebinModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19470,9 +19248,9 @@ class Client:
 
     def list_recyclebin_ex(
         self,
-        request: pds_models.ListFileInRecycleBinRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListRecyclebinModel:
+        request: standard_models.ListFileInRecycleBinRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListRecyclebinModel:
         """
         list_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -19549,7 +19327,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListRecyclebinModel(),
+                        standard_models.ListRecyclebinModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19582,9 +19360,9 @@ class Client:
 
     async def list_recyclebin_ex_async(
         self,
-        request: pds_models.ListFileInRecycleBinRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListRecyclebinModel:
+        request: standard_models.ListFileInRecycleBinRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListRecyclebinModel:
         """
         list_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -19661,7 +19439,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListRecyclebinModel(),
+                        standard_models.ListRecyclebinModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19694,9 +19472,9 @@ class Client:
 
     def restore_file_ex(
         self,
-        request: pds_models.RestoreFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RestoreFileModel:
+        request: standard_models.RestoreFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RestoreFileModel:
         """
         restore_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -19773,7 +19551,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.RestoreFileModel(),
+                        standard_models.RestoreFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19781,7 +19559,7 @@ class Client:
                     )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.RestoreFileModel(),
+                        standard_models.RestoreFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -19813,9 +19591,9 @@ class Client:
 
     async def restore_file_ex_async(
         self,
-        request: pds_models.RestoreFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RestoreFileModel:
+        request: standard_models.RestoreFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RestoreFileModel:
         """
         restore_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -19892,7 +19670,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.RestoreFileModel(),
+                        standard_models.RestoreFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19900,7 +19678,7 @@ class Client:
                     )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.RestoreFileModel(),
+                        standard_models.RestoreFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -19932,9 +19710,9 @@ class Client:
 
     def trash_file_ex(
         self,
-        request: pds_models.TrashFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.TrashFileModel:
+        request: standard_models.TrashFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.TrashFileModel:
         """
         trash_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20011,7 +19789,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.TrashFileModel(),
+                        standard_models.TrashFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20019,7 +19797,7 @@ class Client:
                     )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.TrashFileModel(),
+                        standard_models.TrashFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -20051,9 +19829,9 @@ class Client:
 
     async def trash_file_ex_async(
         self,
-        request: pds_models.TrashFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.TrashFileModel:
+        request: standard_models.TrashFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.TrashFileModel:
         """
         trash_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20130,7 +19908,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.TrashFileModel(),
+                        standard_models.TrashFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20138,7 +19916,7 @@ class Client:
                     )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.TrashFileModel(),
+                        standard_models.TrashFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -20170,9 +19948,9 @@ class Client:
 
     def report_event_ex(
         self,
-        request: pds_models.ReportEventRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ReportEventModel:
+        request: standard_models.ReportEventRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ReportEventModel:
         """
         上报事件
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20250,7 +20028,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ReportEventModel(),
+                        standard_models.ReportEventModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20283,9 +20061,9 @@ class Client:
 
     async def report_event_ex_async(
         self,
-        request: pds_models.ReportEventRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ReportEventModel:
+        request: standard_models.ReportEventRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ReportEventModel:
         """
         上报事件
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20363,7 +20141,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ReportEventModel(),
+                        standard_models.ReportEventModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20396,9 +20174,9 @@ class Client:
 
     def create_share_ex(
         self,
-        request: pds_models.CreateShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateShareModel:
+        request: standard_models.CreateShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateShareModel:
         """
         创建共享。
         @tags share
@@ -20478,7 +20256,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateShareModel(),
+                        standard_models.CreateShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20511,9 +20289,9 @@ class Client:
 
     async def create_share_ex_async(
         self,
-        request: pds_models.CreateShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateShareModel:
+        request: standard_models.CreateShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateShareModel:
         """
         创建共享。
         @tags share
@@ -20593,7 +20371,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateShareModel(),
+                        standard_models.CreateShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20626,9 +20404,9 @@ class Client:
 
     def delete_share_ex(
         self,
-        request: pds_models.DeleteShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteShareModel:
+        request: standard_models.DeleteShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteShareModel:
         """
         删除指定共享
         @tags share
@@ -20705,7 +20483,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteShareModel(),
+                        standard_models.DeleteShareModel(),
                         {
                             'headers': _response.headers
                         }
@@ -20737,9 +20515,9 @@ class Client:
 
     async def delete_share_ex_async(
         self,
-        request: pds_models.DeleteShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteShareModel:
+        request: standard_models.DeleteShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteShareModel:
         """
         删除指定共享
         @tags share
@@ -20816,7 +20594,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteShareModel(),
+                        standard_models.DeleteShareModel(),
                         {
                             'headers': _response.headers
                         }
@@ -20848,9 +20626,9 @@ class Client:
 
     def get_share_ex(
         self,
-        request: pds_models.GetShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareModel:
+        request: standard_models.GetShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareModel:
         """
         获取共享信息。
         @tags share
@@ -20930,7 +20708,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareModel(),
+                        standard_models.GetShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20963,9 +20741,9 @@ class Client:
 
     async def get_share_ex_async(
         self,
-        request: pds_models.GetShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareModel:
+        request: standard_models.GetShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareModel:
         """
         获取共享信息。
         @tags share
@@ -21045,7 +20823,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareModel(),
+                        standard_models.GetShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21078,9 +20856,9 @@ class Client:
 
     def list_share_ex(
         self,
-        request: pds_models.ListShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListShareModel:
+        request: standard_models.ListShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListShareModel:
         """
         列举指定用户的共享
         @tags share
@@ -21159,7 +20937,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListShareModel(),
+                        standard_models.ListShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21192,9 +20970,9 @@ class Client:
 
     async def list_share_ex_async(
         self,
-        request: pds_models.ListShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListShareModel:
+        request: standard_models.ListShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListShareModel:
         """
         列举指定用户的共享
         @tags share
@@ -21273,7 +21051,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListShareModel(),
+                        standard_models.ListShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21306,9 +21084,9 @@ class Client:
 
     def update_share_ex(
         self,
-        request: pds_models.UpdateShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateShareModel:
+        request: standard_models.UpdateShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateShareModel:
         """
         修改指定共享
         @tags share
@@ -21388,7 +21166,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateShareModel(),
+                        standard_models.UpdateShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21421,9 +21199,9 @@ class Client:
 
     async def update_share_ex_async(
         self,
-        request: pds_models.UpdateShareRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateShareModel:
+        request: standard_models.UpdateShareRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateShareModel:
         """
         修改指定共享
         @tags share
@@ -21503,7 +21281,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateShareModel(),
+                        standard_models.UpdateShareModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21536,9 +21314,9 @@ class Client:
 
     def cancel_share_link_ex(
         self,
-        request: pds_models.CancelShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CancelShareLinkModel:
+        request: standard_models.CancelShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CancelShareLinkModel:
         """
         取消指定分享
         @tags share_link
@@ -21615,7 +21393,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.CancelShareLinkModel(),
+                        standard_models.CancelShareLinkModel(),
                         {
                             'headers': _response.headers
                         }
@@ -21647,9 +21425,9 @@ class Client:
 
     async def cancel_share_link_ex_async(
         self,
-        request: pds_models.CancelShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CancelShareLinkModel:
+        request: standard_models.CancelShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CancelShareLinkModel:
         """
         取消指定分享
         @tags share_link
@@ -21726,7 +21504,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.CancelShareLinkModel(),
+                        standard_models.CancelShareLinkModel(),
                         {
                             'headers': _response.headers
                         }
@@ -21758,9 +21536,9 @@ class Client:
 
     def create_share_link_ex(
         self,
-        request: pds_models.CreateShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateShareLinkModel:
+        request: standard_models.CreateShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateShareLinkModel:
         """
         创建分享。
         @tags share_link
@@ -21840,7 +21618,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateShareLinkModel(),
+                        standard_models.CreateShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21873,9 +21651,9 @@ class Client:
 
     async def create_share_link_ex_async(
         self,
-        request: pds_models.CreateShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateShareLinkModel:
+        request: standard_models.CreateShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateShareLinkModel:
         """
         创建分享。
         @tags share_link
@@ -21955,7 +21733,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateShareLinkModel(),
+                        standard_models.CreateShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -21988,9 +21766,9 @@ class Client:
 
     def get_share_link_ex(
         self,
-        request: pds_models.GetShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareLinkModel:
+        request: standard_models.GetShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareLinkModel:
         """
         查看分享的所有信息
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -22067,7 +21845,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareLinkModel(),
+                        standard_models.GetShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22100,9 +21878,9 @@ class Client:
 
     async def get_share_link_ex_async(
         self,
-        request: pds_models.GetShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareLinkModel:
+        request: standard_models.GetShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareLinkModel:
         """
         查看分享的所有信息
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -22179,7 +21957,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareLinkModel(),
+                        standard_models.GetShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22212,9 +21990,9 @@ class Client:
 
     def get_share_by_anonymous_ex(
         self,
-        request: pds_models.GetShareLinkByAnonymousRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareByAnonymousModel:
+        request: standard_models.GetShareLinkByAnonymousRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareByAnonymousModel:
         """
         查看分享的基本信息，比如分享者、到期时间等
         @tags share_link
@@ -22292,7 +22070,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareByAnonymousModel(),
+                        standard_models.GetShareByAnonymousModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22325,9 +22103,9 @@ class Client:
 
     async def get_share_by_anonymous_ex_async(
         self,
-        request: pds_models.GetShareLinkByAnonymousRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareByAnonymousModel:
+        request: standard_models.GetShareLinkByAnonymousRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareByAnonymousModel:
         """
         查看分享的基本信息，比如分享者、到期时间等
         @tags share_link
@@ -22405,7 +22183,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareByAnonymousModel(),
+                        standard_models.GetShareByAnonymousModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22438,9 +22216,9 @@ class Client:
 
     def get_share_id_ex(
         self,
-        request: pds_models.GetShareLinkIDRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareIdModel:
+        request: standard_models.GetShareLinkIDRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareIdModel:
         """
         使用分享口令换取分享id
         @tags share_link
@@ -22519,7 +22297,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareIdModel(),
+                        standard_models.GetShareIdModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22552,9 +22330,9 @@ class Client:
 
     async def get_share_id_ex_async(
         self,
-        request: pds_models.GetShareLinkIDRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareIdModel:
+        request: standard_models.GetShareLinkIDRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareIdModel:
         """
         使用分享口令换取分享id
         @tags share_link
@@ -22633,7 +22411,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareIdModel(),
+                        standard_models.GetShareIdModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22666,9 +22444,9 @@ class Client:
 
     def get_share_token_ex(
         self,
-        request: pds_models.GetShareLinkTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareTokenModel:
+        request: standard_models.GetShareLinkTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareTokenModel:
         """
         使用分享码+提取码换取分享token
         @tags share_link
@@ -22746,7 +22524,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareTokenModel(),
+                        standard_models.GetShareTokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22779,9 +22557,9 @@ class Client:
 
     async def get_share_token_ex_async(
         self,
-        request: pds_models.GetShareLinkTokenRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetShareTokenModel:
+        request: standard_models.GetShareLinkTokenRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetShareTokenModel:
         """
         使用分享码+提取码换取分享token
         @tags share_link
@@ -22859,7 +22637,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetShareTokenModel(),
+                        standard_models.GetShareTokenModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -22892,9 +22670,9 @@ class Client:
 
     def list_share_link_ex(
         self,
-        request: pds_models.ListShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListShareLinkModel:
+        request: standard_models.ListShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListShareLinkModel:
         """
         列举指定用户的分享
         @tags share_link
@@ -22973,7 +22751,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListShareLinkModel(),
+                        standard_models.ListShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23006,9 +22784,9 @@ class Client:
 
     async def list_share_link_ex_async(
         self,
-        request: pds_models.ListShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListShareLinkModel:
+        request: standard_models.ListShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListShareLinkModel:
         """
         列举指定用户的分享
         @tags share_link
@@ -23087,7 +22865,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListShareLinkModel(),
+                        standard_models.ListShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23120,9 +22898,9 @@ class Client:
 
     def update_share_link_ex(
         self,
-        request: pds_models.UpdateShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateShareLinkModel:
+        request: standard_models.UpdateShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateShareLinkModel:
         """
         更新分享。
         @tags share_link
@@ -23201,7 +22979,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateShareLinkModel(),
+                        standard_models.UpdateShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23234,9 +23012,9 @@ class Client:
 
     async def update_share_link_ex_async(
         self,
-        request: pds_models.UpdateShareLinkRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateShareLinkModel:
+        request: standard_models.UpdateShareLinkRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateShareLinkModel:
         """
         更新分享。
         @tags share_link
@@ -23315,7 +23093,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateShareLinkModel(),
+                        standard_models.UpdateShareLinkModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23348,9 +23126,9 @@ class Client:
 
     def get_drive_used_size_ex(
         self,
-        request: pds_models.GetDriveUsedSizeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDriveUsedSizeModel:
+        request: standard_models.GetDriveUsedSizeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDriveUsedSizeModel:
         """
         查询 Drive 使用空间
         @tags statistics
@@ -23429,7 +23207,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDriveUsedSizeModel(),
+                        standard_models.GetDriveUsedSizeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23462,9 +23240,9 @@ class Client:
 
     async def get_drive_used_size_ex_async(
         self,
-        request: pds_models.GetDriveUsedSizeRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDriveUsedSizeModel:
+        request: standard_models.GetDriveUsedSizeRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDriveUsedSizeModel:
         """
         查询 Drive 使用空间
         @tags statistics
@@ -23543,7 +23321,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDriveUsedSizeModel(),
+                        standard_models.GetDriveUsedSizeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23576,9 +23354,9 @@ class Client:
 
     def get_file_count_ex(
         self,
-        request: pds_models.GetFileCountRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileCountModel:
+        request: standard_models.GetFileCountRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileCountModel:
         """
         查询 Domain 或 Drive 下文件数
         @tags statistics
@@ -23657,7 +23435,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileCountModel(),
+                        standard_models.GetFileCountModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23690,9 +23468,9 @@ class Client:
 
     async def get_file_count_ex_async(
         self,
-        request: pds_models.GetFileCountRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetFileCountModel:
+        request: standard_models.GetFileCountRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetFileCountModel:
         """
         查询 Domain 或 Drive 下文件数
         @tags statistics
@@ -23771,7 +23549,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetFileCountModel(),
+                        standard_models.GetFileCountModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23804,9 +23582,9 @@ class Client:
 
     def get_subdomain_summary_ex(
         self,
-        request: pds_models.GetSubdomainSummaryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetSubdomainSummaryModel:
+        request: standard_models.GetSubdomainSummaryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetSubdomainSummaryModel:
         """
         获取 Subdomain summary
         @tags statistics
@@ -23885,7 +23663,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetSubdomainSummaryModel(),
+                        standard_models.GetSubdomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23895,7 +23673,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetSubdomainSummaryModel(),
+                        standard_models.GetSubdomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -23928,9 +23706,9 @@ class Client:
 
     async def get_subdomain_summary_ex_async(
         self,
-        request: pds_models.GetSubdomainSummaryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetSubdomainSummaryModel:
+        request: standard_models.GetSubdomainSummaryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetSubdomainSummaryModel:
         """
         获取 Subdomain summary
         @tags statistics
@@ -24009,7 +23787,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetSubdomainSummaryModel(),
+                        standard_models.GetSubdomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24019,7 +23797,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetSubdomainSummaryModel(),
+                        standard_models.GetSubdomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24052,9 +23830,9 @@ class Client:
 
     def get_domain_summary_ex(
         self,
-        request: pds_models.GetDomainSummaryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDomainSummaryModel:
+        request: standard_models.GetDomainSummaryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDomainSummaryModel:
         """
         获取 Domain summary
         @tags statistics
@@ -24133,7 +23911,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDomainSummaryModel(),
+                        standard_models.GetDomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24143,7 +23921,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDomainSummaryModel(),
+                        standard_models.GetDomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24176,9 +23954,9 @@ class Client:
 
     async def get_domain_summary_ex_async(
         self,
-        request: pds_models.GetDomainSummaryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetDomainSummaryModel:
+        request: standard_models.GetDomainSummaryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetDomainSummaryModel:
         """
         获取 Domain summary
         @tags statistics
@@ -24257,7 +24035,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDomainSummaryModel(),
+                        standard_models.GetDomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24267,7 +24045,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetDomainSummaryModel(),
+                        standard_models.GetDomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24300,9 +24078,9 @@ class Client:
 
     def create_group_ex(
         self,
-        request: pds_models.CreateGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateGroupModel:
+        request: standard_models.CreateGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateGroupModel:
         """
         创建用户组
         @tags group
@@ -24381,7 +24159,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateGroupModel(),
+                        standard_models.CreateGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24414,9 +24192,9 @@ class Client:
 
     async def create_group_ex_async(
         self,
-        request: pds_models.CreateGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateGroupModel:
+        request: standard_models.CreateGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateGroupModel:
         """
         创建用户组
         @tags group
@@ -24495,7 +24273,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateGroupModel(),
+                        standard_models.CreateGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24528,9 +24306,9 @@ class Client:
 
     def delete_group_ex(
         self,
-        request: pds_models.DeleteGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteGroupModel:
+        request: standard_models.DeleteGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteGroupModel:
         """
         删除用户组
         @tags group
@@ -24607,7 +24385,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteGroupModel(),
+                        standard_models.DeleteGroupModel(),
                         {
                             'headers': _response.headers
                         }
@@ -24639,9 +24417,9 @@ class Client:
 
     async def delete_group_ex_async(
         self,
-        request: pds_models.DeleteGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteGroupModel:
+        request: standard_models.DeleteGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteGroupModel:
         """
         删除用户组
         @tags group
@@ -24718,7 +24496,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteGroupModel(),
+                        standard_models.DeleteGroupModel(),
                         {
                             'headers': _response.headers
                         }
@@ -24750,9 +24528,9 @@ class Client:
 
     def get_group_ex(
         self,
-        request: pds_models.GetGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetGroupModel:
+        request: standard_models.GetGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetGroupModel:
         """
         获取用户组
         @tags group
@@ -24831,7 +24609,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetGroupModel(),
+                        standard_models.GetGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24864,9 +24642,9 @@ class Client:
 
     async def get_group_ex_async(
         self,
-        request: pds_models.GetGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetGroupModel:
+        request: standard_models.GetGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetGroupModel:
         """
         获取用户组
         @tags group
@@ -24945,7 +24723,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetGroupModel(),
+                        standard_models.GetGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24978,9 +24756,9 @@ class Client:
 
     def list_group_ex(
         self,
-        request: pds_models.ListGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListGroupModel:
+        request: standard_models.ListGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListGroupModel:
         """
         列举用户组
         @tags group
@@ -25059,7 +24837,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListGroupModel(),
+                        standard_models.ListGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25092,9 +24870,9 @@ class Client:
 
     async def list_group_ex_async(
         self,
-        request: pds_models.ListGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListGroupModel:
+        request: standard_models.ListGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListGroupModel:
         """
         列举用户组
         @tags group
@@ -25173,7 +24951,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListGroupModel(),
+                        standard_models.ListGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25206,9 +24984,9 @@ class Client:
 
     def search_group_ex(
         self,
-        request: pds_models.SearchGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchGroupModel:
+        request: standard_models.SearchGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchGroupModel:
         """
         搜索用户组
         @tags group
@@ -25287,7 +25065,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchGroupModel(),
+                        standard_models.SearchGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25320,9 +25098,9 @@ class Client:
 
     async def search_group_ex_async(
         self,
-        request: pds_models.SearchGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchGroupModel:
+        request: standard_models.SearchGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchGroupModel:
         """
         搜索用户组
         @tags group
@@ -25401,7 +25179,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchGroupModel(),
+                        standard_models.SearchGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25434,9 +25212,9 @@ class Client:
 
     def update_group_ex(
         self,
-        request: pds_models.UpdateGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateGroupModel:
+        request: standard_models.UpdateGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateGroupModel:
         """
         更新用户组
         @tags group
@@ -25515,7 +25293,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateGroupModel(),
+                        standard_models.UpdateGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25548,9 +25326,9 @@ class Client:
 
     async def update_group_ex_async(
         self,
-        request: pds_models.UpdateGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateGroupModel:
+        request: standard_models.UpdateGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateGroupModel:
         """
         更新用户组
         @tags group
@@ -25629,7 +25407,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateGroupModel(),
+                        standard_models.UpdateGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25662,9 +25440,9 @@ class Client:
 
     def create_membership_ex(
         self,
-        request: pds_models.CreateMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateMembershipModel:
+        request: standard_models.CreateMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateMembershipModel:
         """
         创建membership
         @tags membership
@@ -25743,7 +25521,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateMembershipModel(),
+                        standard_models.CreateMembershipModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25776,9 +25554,9 @@ class Client:
 
     async def create_membership_ex_async(
         self,
-        request: pds_models.CreateMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateMembershipModel:
+        request: standard_models.CreateMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateMembershipModel:
         """
         创建membership
         @tags membership
@@ -25857,7 +25635,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateMembershipModel(),
+                        standard_models.CreateMembershipModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -25890,9 +25668,9 @@ class Client:
 
     def delete_membership_ex(
         self,
-        request: pds_models.DeleteMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteMembershipModel:
+        request: standard_models.DeleteMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteMembershipModel:
         """
         删除membership
         @tags membership
@@ -25969,7 +25747,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteMembershipModel(),
+                        standard_models.DeleteMembershipModel(),
                         {
                             'headers': _response.headers
                         }
@@ -26001,9 +25779,9 @@ class Client:
 
     async def delete_membership_ex_async(
         self,
-        request: pds_models.DeleteMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteMembershipModel:
+        request: standard_models.DeleteMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteMembershipModel:
         """
         删除membership
         @tags membership
@@ -26080,7 +25858,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteMembershipModel(),
+                        standard_models.DeleteMembershipModel(),
                         {
                             'headers': _response.headers
                         }
@@ -26112,9 +25890,9 @@ class Client:
 
     def get_membership_ex(
         self,
-        request: pds_models.GetMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetMembershipModel:
+        request: standard_models.GetMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetMembershipModel:
         """
         获取membership
         @tags membership
@@ -26193,7 +25971,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetMembershipModel(),
+                        standard_models.GetMembershipModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26226,9 +26004,9 @@ class Client:
 
     async def get_membership_ex_async(
         self,
-        request: pds_models.GetMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetMembershipModel:
+        request: standard_models.GetMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetMembershipModel:
         """
         获取membership
         @tags membership
@@ -26307,7 +26085,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetMembershipModel(),
+                        standard_models.GetMembershipModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26340,9 +26118,9 @@ class Client:
 
     def has_member_ex(
         self,
-        request: pds_models.HasMemberRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.HasMemberModel:
+        request: standard_models.HasMemberRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.HasMemberModel:
         """
         检查group是否包含某个member
         @tags membership
@@ -26421,7 +26199,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.HasMemberModel(),
+                        standard_models.HasMemberModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26454,9 +26232,9 @@ class Client:
 
     async def has_member_ex_async(
         self,
-        request: pds_models.HasMemberRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.HasMemberModel:
+        request: standard_models.HasMemberRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.HasMemberModel:
         """
         检查group是否包含某个member
         @tags membership
@@ -26535,7 +26313,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.HasMemberModel(),
+                        standard_models.HasMemberModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26568,9 +26346,9 @@ class Client:
 
     def list_direct_child_memberships_ex(
         self,
-        request: pds_models.ListDirectChildMembershipsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDirectChildMembershipsModel:
+        request: standard_models.ListDirectChildMembershipsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDirectChildMembershipsModel:
         """
         列举直属的子membership
         @tags membership
@@ -26649,7 +26427,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDirectChildMembershipsModel(),
+                        standard_models.ListDirectChildMembershipsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26682,9 +26460,9 @@ class Client:
 
     async def list_direct_child_memberships_ex_async(
         self,
-        request: pds_models.ListDirectChildMembershipsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDirectChildMembershipsModel:
+        request: standard_models.ListDirectChildMembershipsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDirectChildMembershipsModel:
         """
         列举直属的子membership
         @tags membership
@@ -26763,7 +26541,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDirectChildMembershipsModel(),
+                        standard_models.ListDirectChildMembershipsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26796,9 +26574,9 @@ class Client:
 
     def list_direct_memberships_ex(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDirectMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDirectMembershipsModel:
         """
         列举直属的membership
         @tags membership
@@ -26877,7 +26655,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDirectMembershipsModel(),
+                        standard_models.ListDirectMembershipsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -26910,9 +26688,9 @@ class Client:
 
     async def list_direct_memberships_ex_async(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDirectMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDirectMembershipsModel:
         """
         列举直属的membership
         @tags membership
@@ -26991,7 +26769,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDirectMembershipsModel(),
+                        standard_models.ListDirectMembershipsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27024,9 +26802,9 @@ class Client:
 
     def list_direct_parent_memberships_ex(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDirectParentMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDirectParentMembershipsModel:
         """
         列举直属的父membership
         @tags membership
@@ -27105,7 +26883,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDirectParentMembershipsModel(),
+                        standard_models.ListDirectParentMembershipsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27138,9 +26916,9 @@ class Client:
 
     async def list_direct_parent_memberships_ex_async(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListDirectParentMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListDirectParentMembershipsModel:
         """
         列举直属的父membership
         @tags membership
@@ -27219,7 +26997,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListDirectParentMembershipsModel(),
+                        standard_models.ListDirectParentMembershipsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27252,9 +27030,9 @@ class Client:
 
     def update_membership_ex(
         self,
-        request: pds_models.UpdateMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateMembershipModel:
+        request: standard_models.UpdateMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateMembershipModel:
         """
         更新membership
         @tags membership
@@ -27333,7 +27111,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateMembershipModel(),
+                        standard_models.UpdateMembershipModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27366,9 +27144,9 @@ class Client:
 
     async def update_membership_ex_async(
         self,
-        request: pds_models.UpdateMembershipRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateMembershipModel:
+        request: standard_models.UpdateMembershipRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateMembershipModel:
         """
         更新membership
         @tags membership
@@ -27447,7 +27225,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateMembershipModel(),
+                        standard_models.UpdateMembershipModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27480,9 +27258,9 @@ class Client:
 
     def add_user_to_subdomain_ex(
         self,
-        request: pds_models.AddUserToSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AddUserToSubdomainModel:
+        request: standard_models.AddUserToSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AddUserToSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -27559,7 +27337,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 200):
                     return TeaCore.from_map(
-                        pds_models.AddUserToSubdomainModel(),
+                        standard_models.AddUserToSubdomainModel(),
                         {
                             'headers': _response.headers
                         }
@@ -27591,9 +27369,9 @@ class Client:
 
     async def add_user_to_subdomain_ex_async(
         self,
-        request: pds_models.AddUserToSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AddUserToSubdomainModel:
+        request: standard_models.AddUserToSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AddUserToSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -27670,7 +27448,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 200):
                     return TeaCore.from_map(
-                        pds_models.AddUserToSubdomainModel(),
+                        standard_models.AddUserToSubdomainModel(),
                         {
                             'headers': _response.headers
                         }
@@ -27702,9 +27480,9 @@ class Client:
 
     def create_user_ex(
         self,
-        request: pds_models.CreateUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateUserModel:
+        request: standard_models.CreateUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateUserModel:
         """
         创建用户，只有管理员可以调用
         @tags user
@@ -27783,7 +27561,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateUserModel(),
+                        standard_models.CreateUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27816,9 +27594,9 @@ class Client:
 
     async def create_user_ex_async(
         self,
-        request: pds_models.CreateUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateUserModel:
+        request: standard_models.CreateUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateUserModel:
         """
         创建用户，只有管理员可以调用
         @tags user
@@ -27897,7 +27675,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateUserModel(),
+                        standard_models.CreateUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -27930,9 +27708,9 @@ class Client:
 
     def delete_user_ex(
         self,
-        request: pds_models.DeleteUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteUserModel:
+        request: standard_models.DeleteUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -28009,7 +27787,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteUserModel(),
+                        standard_models.DeleteUserModel(),
                         {
                             'headers': _response.headers
                         }
@@ -28041,9 +27819,9 @@ class Client:
 
     async def delete_user_ex_async(
         self,
-        request: pds_models.DeleteUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteUserModel:
+        request: standard_models.DeleteUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -28120,7 +27898,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteUserModel(),
+                        standard_models.DeleteUserModel(),
                         {
                             'headers': _response.headers
                         }
@@ -28152,9 +27930,9 @@ class Client:
 
     def get_user_ex(
         self,
-        request: pds_models.GetUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetUserModel:
+        request: standard_models.GetUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetUserModel:
         """
         获取用户详细信息，普通用户只能获取自己的信息，管理员可以获取任意用户的信息。
         @tags user
@@ -28234,7 +28012,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetUserModel(),
+                        standard_models.GetUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28267,9 +28045,9 @@ class Client:
 
     async def get_user_ex_async(
         self,
-        request: pds_models.GetUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetUserModel:
+        request: standard_models.GetUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetUserModel:
         """
         获取用户详细信息，普通用户只能获取自己的信息，管理员可以获取任意用户的信息。
         @tags user
@@ -28349,7 +28127,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetUserModel(),
+                        standard_models.GetUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28382,9 +28160,9 @@ class Client:
 
     def import_user_ex(
         self,
-        request: pds_models.ImportUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ImportUserModel:
+        request: standard_models.ImportUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ImportUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -28463,7 +28241,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ImportUserModel(),
+                        standard_models.ImportUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28496,9 +28274,9 @@ class Client:
 
     async def import_user_ex_async(
         self,
-        request: pds_models.ImportUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ImportUserModel:
+        request: standard_models.ImportUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ImportUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -28577,7 +28355,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ImportUserModel(),
+                        standard_models.ImportUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28610,9 +28388,9 @@ class Client:
 
     def list_users_ex(
         self,
-        request: pds_models.ListUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListUsersModel:
+        request: standard_models.ListUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListUsersModel:
         """
         只有管理员可以调用
         @tags user
@@ -28691,7 +28469,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListUsersModel(),
+                        standard_models.ListUsersModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28724,9 +28502,9 @@ class Client:
 
     async def list_users_ex_async(
         self,
-        request: pds_models.ListUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListUsersModel:
+        request: standard_models.ListUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListUsersModel:
         """
         只有管理员可以调用
         @tags user
@@ -28805,7 +28583,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListUsersModel(),
+                        standard_models.ListUsersModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28838,9 +28616,9 @@ class Client:
 
     def migrate_user_to_subdomain_ex(
         self,
-        request: pds_models.MigrateUserToSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.MigrateUserToSubdomainModel:
+        request: standard_models.MigrateUserToSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.MigrateUserToSubdomainModel:
         """
         migrate_user_to_subdomain
         @tags user
@@ -28919,7 +28697,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.MigrateUserToSubdomainModel(),
+                        standard_models.MigrateUserToSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -28952,9 +28730,9 @@ class Client:
 
     async def migrate_user_to_subdomain_ex_async(
         self,
-        request: pds_models.MigrateUserToSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.MigrateUserToSubdomainModel:
+        request: standard_models.MigrateUserToSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.MigrateUserToSubdomainModel:
         """
         migrate_user_to_subdomain
         @tags user
@@ -29033,7 +28811,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.MigrateUserToSubdomainModel(),
+                        standard_models.MigrateUserToSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29066,9 +28844,9 @@ class Client:
 
     def remove_user_from_subdomain_ex(
         self,
-        request: pds_models.RemoveUserFromSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RemoveUserFromSubdomainModel:
+        request: standard_models.RemoveUserFromSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RemoveUserFromSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -29145,7 +28923,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 200):
                     return TeaCore.from_map(
-                        pds_models.RemoveUserFromSubdomainModel(),
+                        standard_models.RemoveUserFromSubdomainModel(),
                         {
                             'headers': _response.headers
                         }
@@ -29177,9 +28955,9 @@ class Client:
 
     async def remove_user_from_subdomain_ex_async(
         self,
-        request: pds_models.RemoveUserFromSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RemoveUserFromSubdomainModel:
+        request: standard_models.RemoveUserFromSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RemoveUserFromSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -29256,7 +29034,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 200):
                     return TeaCore.from_map(
-                        pds_models.RemoveUserFromSubdomainModel(),
+                        standard_models.RemoveUserFromSubdomainModel(),
                         {
                             'headers': _response.headers
                         }
@@ -29288,9 +29066,9 @@ class Client:
 
     def rollback_user_from_subdomain_ex(
         self,
-        request: pds_models.RollbackUserFromSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RollbackUserFromSubdomainModel:
+        request: standard_models.RollbackUserFromSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RollbackUserFromSubdomainModel:
         """
         rollback_from_subdomain
         @tags user
@@ -29369,7 +29147,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.RollbackUserFromSubdomainModel(),
+                        standard_models.RollbackUserFromSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29402,9 +29180,9 @@ class Client:
 
     async def rollback_user_from_subdomain_ex_async(
         self,
-        request: pds_models.RollbackUserFromSubdomainRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RollbackUserFromSubdomainModel:
+        request: standard_models.RollbackUserFromSubdomainRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RollbackUserFromSubdomainModel:
         """
         rollback_from_subdomain
         @tags user
@@ -29483,7 +29261,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.RollbackUserFromSubdomainModel(),
+                        standard_models.RollbackUserFromSubdomainModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29516,9 +29294,9 @@ class Client:
 
     def search_user_ex(
         self,
-        request: pds_models.SearchUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchUserModel:
+        request: standard_models.SearchUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchUserModel:
         """
         该接口将会根据条件查询用户，只有管理员可以调用
         @tags user
@@ -29597,7 +29375,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchUserModel(),
+                        standard_models.SearchUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29630,9 +29408,9 @@ class Client:
 
     async def search_user_ex_async(
         self,
-        request: pds_models.SearchUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchUserModel:
+        request: standard_models.SearchUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchUserModel:
         """
         该接口将会根据条件查询用户，只有管理员可以调用
         @tags user
@@ -29711,7 +29489,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchUserModel(),
+                        standard_models.SearchUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29744,9 +29522,9 @@ class Client:
 
     def update_user_ex(
         self,
-        request: pds_models.UpdateUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateUserModel:
+        request: standard_models.UpdateUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateUserModel:
         """
         用户可以修改自己的description，nick_name，avatar；
         管理员在用户基础上还可修改status（可以修改任意用户）；
@@ -29828,7 +29606,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateUserModel(),
+                        standard_models.UpdateUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29861,9 +29639,9 @@ class Client:
 
     async def update_user_ex_async(
         self,
-        request: pds_models.UpdateUserRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateUserModel:
+        request: standard_models.UpdateUserRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateUserModel:
         """
         用户可以修改自己的description，nick_name，avatar；
         管理员在用户基础上还可修改status（可以修改任意用户）；
@@ -29945,7 +29723,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateUserModel(),
+                        standard_models.UpdateUserModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -29978,9 +29756,9 @@ class Client:
 
     def search_user_group_ex(
         self,
-        request: pds_models.SearchUserAndGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchUserGroupModel:
+        request: standard_models.SearchUserAndGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchUserGroupModel:
         """
         该接口将会根据条件查询用户和团队，只有管理员可以调用
         @tags user_group
@@ -30059,7 +29837,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchUserGroupModel(),
+                        standard_models.SearchUserGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -30092,9 +29870,9 @@ class Client:
 
     async def search_user_group_ex_async(
         self,
-        request: pds_models.SearchUserAndGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchUserGroupModel:
+        request: standard_models.SearchUserAndGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchUserGroupModel:
         """
         该接口将会根据条件查询用户和团队，只有管理员可以调用
         @tags user_group
@@ -30173,7 +29951,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchUserGroupModel(),
+                        standard_models.SearchUserGroupModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -30206,9 +29984,9 @@ class Client:
 
     def merge_ex(
         self,
-        request: pds_models.MergeFaceGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.MergeModel:
+        request: standard_models.MergeFaceGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.MergeModel:
         """
         该接口将会对两个人脸分组进行合并
         @tags face_group
@@ -30287,7 +30065,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.MergeModel(),
+                        standard_models.MergeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -30320,9 +30098,9 @@ class Client:
 
     async def merge_ex_async(
         self,
-        request: pds_models.MergeFaceGroupRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.MergeModel:
+        request: standard_models.MergeFaceGroupRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.MergeModel:
         """
         该接口将会对两个人脸分组进行合并
         @tags face_group
@@ -30401,7 +30179,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.MergeModel(),
+                        standard_models.MergeModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -30434,9 +30212,9 @@ class Client:
 
     def unassign_facegroup_item_ex(
         self,
-        request: pds_models.UnAssignFaceGroupItemRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UnassignFacegroupItemModel:
+        request: standard_models.UnAssignFaceGroupItemRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UnassignFacegroupItemModel:
         """
         该接口将会对移除人脸分组中指定的图片
         @tags albums
@@ -30513,7 +30291,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.UnassignFacegroupItemModel(),
+                        standard_models.UnassignFacegroupItemModel(),
                         {
                             'headers': _response.headers
                         }
@@ -30545,9 +30323,9 @@ class Client:
 
     async def unassign_facegroup_item_ex_async(
         self,
-        request: pds_models.UnAssignFaceGroupItemRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UnassignFacegroupItemModel:
+        request: standard_models.UnAssignFaceGroupItemRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UnassignFacegroupItemModel:
         """
         该接口将会对移除人脸分组中指定的图片
         @tags albums
@@ -30624,7 +30402,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.UnassignFacegroupItemModel(),
+                        standard_models.UnassignFacegroupItemModel(),
                         {
                             'headers': _response.headers
                         }
@@ -30656,9 +30434,9 @@ class Client:
 
     def create_story_ex(
         self,
-        request: pds_models.CreateStoryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateStoryModel:
+        request: standard_models.CreateStoryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateStoryModel:
         """
         该接口将会创建故事
         @tags image
@@ -30738,7 +30516,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateStoryModel(),
+                        standard_models.CreateStoryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -30771,9 +30549,9 @@ class Client:
 
     async def create_story_ex_async(
         self,
-        request: pds_models.CreateStoryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateStoryModel:
+        request: standard_models.CreateStoryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateStoryModel:
         """
         该接口将会创建故事
         @tags image
@@ -30853,7 +30631,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateStoryModel(),
+                        standard_models.CreateStoryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -30886,9 +30664,9 @@ class Client:
 
     def delete_story_ex(
         self,
-        request: pds_models.DeleteStoryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteStoryModel:
+        request: standard_models.DeleteStoryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteStoryModel:
         """
         该接口将会删除故事
         @tags image
@@ -30968,7 +30746,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteStoryModel(),
+                        standard_models.DeleteStoryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31001,9 +30779,9 @@ class Client:
 
     async def delete_story_ex_async(
         self,
-        request: pds_models.DeleteStoryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteStoryModel:
+        request: standard_models.DeleteStoryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteStoryModel:
         """
         该接口将会删除故事
         @tags image
@@ -31083,7 +30861,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.DeleteStoryModel(),
+                        standard_models.DeleteStoryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31116,9 +30894,9 @@ class Client:
 
     def find_stories_ex(
         self,
-        request: pds_models.FindStoriesRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.FindStoriesModel:
+        request: standard_models.FindStoriesRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.FindStoriesModel:
         """
         该接口将会查询故事列表
         @tags image
@@ -31198,7 +30976,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.FindStoriesModel(),
+                        standard_models.FindStoriesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31231,9 +31009,9 @@ class Client:
 
     async def find_stories_ex_async(
         self,
-        request: pds_models.FindStoriesRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.FindStoriesModel:
+        request: standard_models.FindStoriesRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.FindStoriesModel:
         """
         该接口将会查询故事列表
         @tags image
@@ -31313,7 +31091,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.FindStoriesModel(),
+                        standard_models.FindStoriesModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31346,9 +31124,9 @@ class Client:
 
     def get_photo_count_ex(
         self,
-        request: pds_models.GetImageCountRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetPhotoCountModel:
+        request: standard_models.GetImageCountRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetPhotoCountModel:
         """
         该接口将返回用户Drive下的云照片个数
         @tags image
@@ -31428,7 +31206,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetPhotoCountModel(),
+                        standard_models.GetPhotoCountModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31461,9 +31239,9 @@ class Client:
 
     async def get_photo_count_ex_async(
         self,
-        request: pds_models.GetImageCountRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetPhotoCountModel:
+        request: standard_models.GetImageCountRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetPhotoCountModel:
         """
         该接口将返回用户Drive下的云照片个数
         @tags image
@@ -31543,7 +31321,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetPhotoCountModel(),
+                        standard_models.GetPhotoCountModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31576,9 +31354,9 @@ class Client:
 
     def get_story_ex(
         self,
-        request: pds_models.GetStoryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetStoryModel:
+        request: standard_models.GetStoryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetStoryModel:
         """
         该接口将会获取故事详情
         @tags image
@@ -31658,7 +31436,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetStoryModel(),
+                        standard_models.GetStoryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31691,9 +31469,9 @@ class Client:
 
     async def get_story_ex_async(
         self,
-        request: pds_models.GetStoryRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetStoryModel:
+        request: standard_models.GetStoryRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetStoryModel:
         """
         该接口将会获取故事详情
         @tags image
@@ -31773,7 +31551,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetStoryModel(),
+                        standard_models.GetStoryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31806,9 +31584,9 @@ class Client:
 
     def list_address_groups_ex(
         self,
-        request: pds_models.ListImageAddressGroupsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListAddressGroupsModel:
+        request: standard_models.ListImageAddressGroupsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -31888,7 +31666,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListAddressGroupsModel(),
+                        standard_models.ListAddressGroupsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -31921,9 +31699,9 @@ class Client:
 
     async def list_address_groups_ex_async(
         self,
-        request: pds_models.ListImageAddressGroupsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListAddressGroupsModel:
+        request: standard_models.ListImageAddressGroupsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -32003,7 +31781,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListAddressGroupsModel(),
+                        standard_models.ListAddressGroupsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32036,9 +31814,9 @@ class Client:
 
     def list_facegroups_ex(
         self,
-        request: pds_models.ListImageFaceGroupsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFacegroupsModel:
+        request: standard_models.ListImageFaceGroupsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -32118,7 +31896,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFacegroupsModel(),
+                        standard_models.ListFacegroupsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32151,9 +31929,9 @@ class Client:
 
     async def list_facegroups_ex_async(
         self,
-        request: pds_models.ListImageFaceGroupsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFacegroupsModel:
+        request: standard_models.ListImageFaceGroupsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -32233,7 +32011,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFacegroupsModel(),
+                        standard_models.ListFacegroupsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32266,9 +32044,9 @@ class Client:
 
     def list_tags_ex(
         self,
-        request: pds_models.ListImageTagsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListTagsModel:
+        request: standard_models.ListImageTagsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListTagsModel:
         """
         该接口将会展示场景标记
         @tags image
@@ -32348,7 +32126,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListTagsModel(),
+                        standard_models.ListTagsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32381,9 +32159,9 @@ class Client:
 
     async def list_tags_ex_async(
         self,
-        request: pds_models.ListImageTagsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListTagsModel:
+        request: standard_models.ListImageTagsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListTagsModel:
         """
         该接口将会展示场景标记
         @tags image
@@ -32463,7 +32241,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListTagsModel(),
+                        standard_models.ListTagsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32496,9 +32274,9 @@ class Client:
 
     def parse_keywords_ex(
         self,
-        request: pds_models.ParseKeywordsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ParseKeywordsModel:
+        request: standard_models.ParseKeywordsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ParseKeywordsModel:
         """
         该接口将会对用户输入内容语义解析出标签，地点，时间
         @tags image
@@ -32577,7 +32355,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ParseKeywordsModel(),
+                        standard_models.ParseKeywordsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32610,9 +32388,9 @@ class Client:
 
     async def parse_keywords_ex_async(
         self,
-        request: pds_models.ParseKeywordsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ParseKeywordsModel:
+        request: standard_models.ParseKeywordsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ParseKeywordsModel:
         """
         该接口将会对用户输入内容语义解析出标签，地点，时间
         @tags image
@@ -32691,7 +32469,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ParseKeywordsModel(),
+                        standard_models.ParseKeywordsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32724,9 +32502,9 @@ class Client:
 
     def search_address_groups_ex(
         self,
-        request: pds_models.SearchImageAddressGroupsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchAddressGroupsModel:
+        request: standard_models.SearchImageAddressGroupsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -32806,7 +32584,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchAddressGroupsModel(),
+                        standard_models.SearchAddressGroupsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32839,9 +32617,9 @@ class Client:
 
     async def search_address_groups_ex_async(
         self,
-        request: pds_models.SearchImageAddressGroupsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchAddressGroupsModel:
+        request: standard_models.SearchImageAddressGroupsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -32921,7 +32699,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchAddressGroupsModel(),
+                        standard_models.SearchAddressGroupsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -32954,9 +32732,9 @@ class Client:
 
     def update_facegroup_info_ex(
         self,
-        request: pds_models.UpdateFaceGroupInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateFacegroupInfoModel:
+        request: standard_models.UpdateFaceGroupInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateFacegroupInfoModel:
         """
         该接口将会更新人脸分组信息
         @tags image
@@ -33036,7 +32814,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateFacegroupInfoModel(),
+                        standard_models.UpdateFacegroupInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33069,9 +32847,9 @@ class Client:
 
     async def update_facegroup_info_ex_async(
         self,
-        request: pds_models.UpdateFaceGroupInfoRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateFacegroupInfoModel:
+        request: standard_models.UpdateFaceGroupInfoRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateFacegroupInfoModel:
         """
         该接口将会更新人脸分组信息
         @tags image
@@ -33151,7 +32929,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.UpdateFacegroupInfoModel(),
+                        standard_models.UpdateFacegroupInfoModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33184,9 +32962,9 @@ class Client:
 
     def add_file_ex(
         self,
-        request: pds_models.AddViewFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AddFileModel:
+        request: standard_models.AddViewFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AddFileModel:
         """
         视图添加文件
         @tags view
@@ -33267,7 +33045,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.AddFileModel(),
+                        standard_models.AddFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33300,9 +33078,9 @@ class Client:
 
     async def add_file_ex_async(
         self,
-        request: pds_models.AddViewFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.AddFileModel:
+        request: standard_models.AddViewFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.AddFileModel:
         """
         视图添加文件
         @tags view
@@ -33383,7 +33161,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.AddFileModel(),
+                        standard_models.AddFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33416,9 +33194,9 @@ class Client:
 
     def create_view_ex(
         self,
-        request: pds_models.CreateViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateViewModel:
+        request: standard_models.CreateViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateViewModel:
         """
         该接口将会创建一个逻辑视图
         @tags view
@@ -33498,7 +33276,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateViewModel(),
+                        standard_models.CreateViewModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33531,9 +33309,9 @@ class Client:
 
     async def create_view_ex_async(
         self,
-        request: pds_models.CreateViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.CreateViewModel:
+        request: standard_models.CreateViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.CreateViewModel:
         """
         该接口将会创建一个逻辑视图
         @tags view
@@ -33613,7 +33391,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.CreateViewModel(),
+                        standard_models.CreateViewModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33646,9 +33424,9 @@ class Client:
 
     def delete_view_ex(
         self,
-        request: pds_models.DeleteViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteViewModel:
+        request: standard_models.DeleteViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteViewModel:
         """
         删除指定view_id对应的View
         @tags view
@@ -33726,7 +33504,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteViewModel(),
+                        standard_models.DeleteViewModel(),
                         {
                             'headers': _response.headers
                         }
@@ -33758,9 +33536,9 @@ class Client:
 
     async def delete_view_ex_async(
         self,
-        request: pds_models.DeleteViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.DeleteViewModel:
+        request: standard_models.DeleteViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.DeleteViewModel:
         """
         删除指定view_id对应的View
         @tags view
@@ -33838,7 +33616,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.DeleteViewModel(),
+                        standard_models.DeleteViewModel(),
                         {
                             'headers': _response.headers
                         }
@@ -33870,9 +33648,9 @@ class Client:
 
     def get_view_ex(
         self,
-        request: pds_models.GetViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetViewModel:
+        request: standard_models.GetViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetViewModel:
         """
         获取指定view_id对应的View详细信息。
         @tags view
@@ -33952,7 +33730,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetViewModel(),
+                        standard_models.GetViewModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -33985,9 +33763,9 @@ class Client:
 
     async def get_view_ex_async(
         self,
-        request: pds_models.GetViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.GetViewModel:
+        request: standard_models.GetViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.GetViewModel:
         """
         获取指定view_id对应的View详细信息。
         @tags view
@@ -34067,7 +33845,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.GetViewModel(),
+                        standard_models.GetViewModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34100,9 +33878,9 @@ class Client:
 
     def list_views_ex(
         self,
-        request: pds_models.ListViewsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListViewsModel:
+        request: standard_models.ListViewsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListViewsModel:
         """
         列举View列表
         @tags view
@@ -34181,7 +33959,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListViewsModel(),
+                        standard_models.ListViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34214,9 +33992,9 @@ class Client:
 
     async def list_views_ex_async(
         self,
-        request: pds_models.ListViewsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListViewsModel:
+        request: standard_models.ListViewsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListViewsModel:
         """
         列举View列表
         @tags view
@@ -34295,7 +34073,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListViewsModel(),
+                        standard_models.ListViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34328,9 +34106,9 @@ class Client:
 
     def view_list_file_ex(
         self,
-        request: pds_models.ListViewFilesRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ViewListFileModel:
+        request: standard_models.ListViewFilesRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ViewListFileModel:
         """
         获取视图文件列表
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -34409,7 +34187,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ViewListFileModel(),
+                        standard_models.ViewListFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34442,9 +34220,9 @@ class Client:
 
     async def view_list_file_ex_async(
         self,
-        request: pds_models.ListViewFilesRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ViewListFileModel:
+        request: standard_models.ListViewFilesRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ViewListFileModel:
         """
         获取视图文件列表
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -34523,7 +34301,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ViewListFileModel(),
+                        standard_models.ViewListFileModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34556,9 +34334,9 @@ class Client:
 
     def list_file_views_ex(
         self,
-        request: pds_models.ListFileViewsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileViewsModel:
+        request: standard_models.ListFileViewsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileViewsModel:
         """
         列出文件关联视图
         @tags view
@@ -34638,7 +34416,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileViewsModel(),
+                        standard_models.ListFileViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34671,9 +34449,9 @@ class Client:
 
     async def list_file_views_ex_async(
         self,
-        request: pds_models.ListFileViewsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFileViewsModel:
+        request: standard_models.ListFileViewsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.ListFileViewsModel:
         """
         列出文件关联视图
         @tags view
@@ -34753,7 +34531,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.ListFileViewsModel(),
+                        standard_models.ListFileViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -34786,9 +34564,9 @@ class Client:
 
     def remove_file_ex(
         self,
-        request: pds_models.RemoveViewFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RemoveFileModel:
+        request: standard_models.RemoveViewFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RemoveFileModel:
         """
         从视图中删除文件
         @tags view
@@ -34866,7 +34644,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.RemoveFileModel(),
+                        standard_models.RemoveFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -34898,9 +34676,9 @@ class Client:
 
     async def remove_file_ex_async(
         self,
-        request: pds_models.RemoveViewFileRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.RemoveFileModel:
+        request: standard_models.RemoveViewFileRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.RemoveFileModel:
         """
         从视图中删除文件
         @tags view
@@ -34978,7 +34756,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.RemoveFileModel(),
+                        standard_models.RemoveFileModel(),
                         {
                             'headers': _response.headers
                         }
@@ -35010,9 +34788,9 @@ class Client:
 
     def search_views_ex(
         self,
-        request: pds_models.SearchViewsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchViewsModel:
+        request: standard_models.SearchViewsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchViewsModel:
         """
         搜索View列表
         @tags view
@@ -35091,7 +34869,7 @@ class Client:
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchViewsModel(),
+                        standard_models.SearchViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -35124,9 +34902,9 @@ class Client:
 
     async def search_views_ex_async(
         self,
-        request: pds_models.SearchViewsRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.SearchViewsModel:
+        request: standard_models.SearchViewsRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.SearchViewsModel:
         """
         搜索View列表
         @tags view
@@ -35205,7 +34983,7 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
-                        pds_models.SearchViewsModel(),
+                        standard_models.SearchViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -35238,9 +35016,9 @@ class Client:
 
     def update_view_ex(
         self,
-        request: pds_models.UpdateViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateViewModel:
+        request: standard_models.UpdateViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateViewModel:
         """
         更新指定view的相关信息
         @tags view
@@ -35319,7 +35097,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.UpdateViewModel(),
+                        standard_models.UpdateViewModel(),
                         {
                             'headers': _response.headers
                         }
@@ -35351,9 +35129,9 @@ class Client:
 
     async def update_view_ex_async(
         self,
-        request: pds_models.UpdateViewRequest,
-        runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.UpdateViewModel:
+        request: standard_models.UpdateViewRequest,
+        runtime: standard_models.RuntimeOptions,
+    ) -> standard_models.UpdateViewModel:
         """
         更新指定view的相关信息
         @tags view
@@ -35432,7 +35210,7 @@ class Client:
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 204):
                     return TeaCore.from_map(
-                        pds_models.UpdateViewModel(),
+                        standard_models.UpdateViewModel(),
                         {
                             'headers': _response.headers
                         }
@@ -35464,8 +35242,8 @@ class Client:
 
     def cancel_link(
         self,
-        request: pds_models.CancelLinkRequest,
-    ) -> pds_models.CancelLinkModel:
+        request: standard_models.CancelLinkRequest,
+    ) -> standard_models.CancelLinkModel:
         """
         取消绑定关系，生成新用户，返回访问令牌
         @tags account
@@ -35473,13 +35251,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.cancel_link_ex(request, runtime)
 
     async def cancel_link_async(
         self,
-        request: pds_models.CancelLinkRequest,
-    ) -> pds_models.CancelLinkModel:
+        request: standard_models.CancelLinkRequest,
+    ) -> standard_models.CancelLinkModel:
         """
         取消绑定关系，生成新用户，返回访问令牌
         @tags account
@@ -35487,13 +35265,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.cancel_link_ex_async(request, runtime)
 
     def check_exist(
         self,
-        request: pds_models.CheckExistRequest,
-    ) -> pds_models.CheckExistModel:
+        request: standard_models.CheckExistRequest,
+    ) -> standard_models.CheckExistModel:
         """
         查询手机号是否已被注册
         @tags account
@@ -35502,13 +35280,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.check_exist_ex(request, runtime)
 
     async def check_exist_async(
         self,
-        request: pds_models.CheckExistRequest,
-    ) -> pds_models.CheckExistModel:
+        request: standard_models.CheckExistRequest,
+    ) -> standard_models.CheckExistModel:
         """
         查询手机号是否已被注册
         @tags account
@@ -35517,13 +35295,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.check_exist_ex_async(request, runtime)
 
     def confirm_link(
         self,
-        request: pds_models.ConfirmLinkRequest,
-    ) -> pds_models.ConfirmLinkModel:
+        request: standard_models.ConfirmLinkRequest,
+    ) -> standard_models.ConfirmLinkModel:
         """
         确认绑定关系, 成功后返回访问令牌
         @tags account
@@ -35533,13 +35311,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.confirm_link_ex(request, runtime)
 
     async def confirm_link_async(
         self,
-        request: pds_models.ConfirmLinkRequest,
-    ) -> pds_models.ConfirmLinkModel:
+        request: standard_models.ConfirmLinkRequest,
+    ) -> standard_models.ConfirmLinkModel:
         """
         确认绑定关系, 成功后返回访问令牌
         @tags account
@@ -35549,13 +35327,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.confirm_link_ex_async(request, runtime)
 
     def verify_code(
         self,
-        request: pds_models.VerifyCodeRequest,
-    ) -> pds_models.VerifyCodeModel:
+        request: standard_models.VerifyCodeRequest,
+    ) -> standard_models.VerifyCodeModel:
         """
         校验手机短信验证码，用于重置密码时校验手机，通过校验后返回state，可通过state重新设置密码
         @tags account
@@ -35564,13 +35342,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.verify_code_ex(request, runtime)
 
     async def verify_code_async(
         self,
-        request: pds_models.VerifyCodeRequest,
-    ) -> pds_models.VerifyCodeModel:
+        request: standard_models.VerifyCodeRequest,
+    ) -> standard_models.VerifyCodeModel:
         """
         校验手机短信验证码，用于重置密码时校验手机，通过校验后返回state，可通过state重新设置密码
         @tags account
@@ -35579,13 +35357,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.verify_code_ex_async(request, runtime)
 
     def get_access_token_by_link_info(
         self,
-        request: pds_models.GetAccessTokenByLinkInfoRequest,
-    ) -> pds_models.GetAccessTokenByLinkInfoModel:
+        request: standard_models.GetAccessTokenByLinkInfoRequest,
+    ) -> standard_models.GetAccessTokenByLinkInfoModel:
         """
         管理员通过账号信息直接获取用户的访问令牌
         @tags account
@@ -35594,13 +35372,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_access_token_by_link_info_ex(request, runtime)
 
     async def get_access_token_by_link_info_async(
         self,
-        request: pds_models.GetAccessTokenByLinkInfoRequest,
-    ) -> pds_models.GetAccessTokenByLinkInfoModel:
+        request: standard_models.GetAccessTokenByLinkInfoRequest,
+    ) -> standard_models.GetAccessTokenByLinkInfoModel:
         """
         管理员通过账号信息直接获取用户的访问令牌
         @tags account
@@ -35609,13 +35387,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_access_token_by_link_info_ex_async(request, runtime)
 
     def get_link_info(
         self,
-        request: pds_models.GetByLinkInfoRequest,
-    ) -> pds_models.GetLinkInfoModel:
+        request: standard_models.GetByLinkInfoRequest,
+    ) -> standard_models.GetLinkInfoModel:
         """
         获取用户认证方式详情
         @tags account
@@ -35624,13 +35402,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_link_info_ex(request, runtime)
 
     async def get_link_info_async(
         self,
-        request: pds_models.GetByLinkInfoRequest,
-    ) -> pds_models.GetLinkInfoModel:
+        request: standard_models.GetByLinkInfoRequest,
+    ) -> standard_models.GetLinkInfoModel:
         """
         获取用户认证方式详情
         @tags account
@@ -35639,13 +35417,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_link_info_ex_async(request, runtime)
 
     def get_link_info_by_user_id(
         self,
-        request: pds_models.GetLinkInfoByUserIDRequest,
-    ) -> pds_models.GetLinkInfoByUserIdModel:
+        request: standard_models.GetLinkInfoByUserIDRequest,
+    ) -> standard_models.GetLinkInfoByUserIdModel:
         """
         获取用户的所有绑定信息
         @tags account
@@ -35653,13 +35431,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_link_info_by_user_id_ex(request, runtime)
 
     async def get_link_info_by_user_id_async(
         self,
-        request: pds_models.GetLinkInfoByUserIDRequest,
-    ) -> pds_models.GetLinkInfoByUserIdModel:
+        request: standard_models.GetLinkInfoByUserIDRequest,
+    ) -> standard_models.GetLinkInfoByUserIdModel:
         """
         获取用户的所有绑定信息
         @tags account
@@ -35667,13 +35445,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_link_info_by_user_id_ex_async(request, runtime)
 
     def get_public_key(
         self,
-        request: pds_models.GetPublicKeyRequest,
-    ) -> pds_models.GetPublicKeyModel:
+        request: standard_models.GetPublicKeyRequest,
+    ) -> standard_models.GetPublicKeyModel:
         """
         获取公钥，用于加密对称密钥
         @tags account
@@ -35682,13 +35460,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_public_key_ex(request, runtime)
 
     async def get_public_key_async(
         self,
-        request: pds_models.GetPublicKeyRequest,
-    ) -> pds_models.GetPublicKeyModel:
+        request: standard_models.GetPublicKeyRequest,
+    ) -> standard_models.GetPublicKeyModel:
         """
         获取公钥，用于加密对称密钥
         @tags account
@@ -35697,13 +35475,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_public_key_ex_async(request, runtime)
 
     def link(
         self,
-        request: pds_models.AccountLinkRequest,
-    ) -> pds_models.LinkModel:
+        request: standard_models.AccountLinkRequest,
+    ) -> standard_models.LinkModel:
         """
         绑定用户认证方式
         @tags account
@@ -35713,13 +35491,13 @@ class Client:
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.link_ex(request, runtime)
 
     async def link_async(
         self,
-        request: pds_models.AccountLinkRequest,
-    ) -> pds_models.LinkModel:
+        request: standard_models.AccountLinkRequest,
+    ) -> standard_models.LinkModel:
         """
         绑定用户认证方式
         @tags account
@@ -35729,13 +35507,13 @@ class Client:
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.link_ex_async(request, runtime)
 
     def login(
         self,
-        request: pds_models.LoginRequest,
-    ) -> pds_models.LoginModel:
+        request: standard_models.LoginRequest,
+    ) -> standard_models.LoginModel:
         """
         通过手机号+短信或密码登录，返回刷新令牌和访问令牌
         @tags account
@@ -35744,13 +35522,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.login_ex(request, runtime)
 
     async def login_async(
         self,
-        request: pds_models.LoginRequest,
-    ) -> pds_models.LoginModel:
+        request: standard_models.LoginRequest,
+    ) -> standard_models.LoginModel:
         """
         通过手机号+短信或密码登录，返回刷新令牌和访问令牌
         @tags account
@@ -35759,13 +35537,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.login_ex_async(request, runtime)
 
     def register(
         self,
-        request: pds_models.RegisterRequest,
-    ) -> pds_models.RegisterModel:
+        request: standard_models.RegisterRequest,
+    ) -> standard_models.RegisterModel:
         """
         通过手机号+短信验证码注册账号
         @tags account
@@ -35775,13 +35553,13 @@ class Client:
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.register_ex(request, runtime)
 
     async def register_async(
         self,
-        request: pds_models.RegisterRequest,
-    ) -> pds_models.RegisterModel:
+        request: standard_models.RegisterRequest,
+    ) -> standard_models.RegisterModel:
         """
         通过手机号+短信验证码注册账号
         @tags account
@@ -35791,13 +35569,13 @@ class Client:
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.register_ex_async(request, runtime)
 
     def account_revoke(
         self,
-        request: pds_models.RevokeRequest,
-    ) -> pds_models.AccountRevokeModel:
+        request: standard_models.RevokeRequest,
+    ) -> standard_models.AccountRevokeModel:
         """
         用户退出登录
         @tags account
@@ -35806,13 +35584,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.account_revoke_ex(request, runtime)
 
     async def account_revoke_async(
         self,
-        request: pds_models.RevokeRequest,
-    ) -> pds_models.AccountRevokeModel:
+        request: standard_models.RevokeRequest,
+    ) -> standard_models.AccountRevokeModel:
         """
         用户退出登录
         @tags account
@@ -35821,13 +35599,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.account_revoke_ex_async(request, runtime)
 
     def send_sms_code(
         self,
-        request: pds_models.SendSmsCodeRequest,
-    ) -> pds_models.SendSmsCodeModel:
+        request: standard_models.SendSmsCodeRequest,
+    ) -> standard_models.SendSmsCodeModel:
         """
         发送短信验证码，用于登录、注册、修改密码、绑定等
         @tags account
@@ -35836,13 +35614,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.send_sms_code_ex(request, runtime)
 
     async def send_sms_code_async(
         self,
-        request: pds_models.SendSmsCodeRequest,
-    ) -> pds_models.SendSmsCodeModel:
+        request: standard_models.SendSmsCodeRequest,
+    ) -> standard_models.SendSmsCodeModel:
         """
         发送短信验证码，用于登录、注册、修改密码、绑定等
         @tags account
@@ -35851,13 +35629,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.send_sms_code_ex_async(request, runtime)
 
     def account_token(
         self,
-        request: pds_models.AccountTokenRequest,
-    ) -> pds_models.AccountTokenModel:
+        request: standard_models.AccountTokenRequest,
+    ) -> standard_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
         @tags account
@@ -35866,13 +35644,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.account_token_ex(request, runtime)
 
     async def account_token_async(
         self,
-        request: pds_models.AccountTokenRequest,
-    ) -> pds_models.AccountTokenModel:
+        request: standard_models.AccountTokenRequest,
+    ) -> standard_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
         @tags account
@@ -35881,13 +35659,13 @@ class Client:
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.account_token_ex_async(request, runtime)
 
     def export_audit_log(
         self,
-        request: pds_models.ExportAuditLogRequest,
-    ) -> pds_models.ExportAuditLogModel:
+        request: standard_models.ExportAuditLogRequest,
+    ) -> standard_models.ExportAuditLogModel:
         """
         export audit log
         @tags audit_log
@@ -35895,13 +35673,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.export_audit_log_ex(request, runtime)
 
     async def export_audit_log_async(
         self,
-        request: pds_models.ExportAuditLogRequest,
-    ) -> pds_models.ExportAuditLogModel:
+        request: standard_models.ExportAuditLogRequest,
+    ) -> standard_models.ExportAuditLogModel:
         """
         export audit log
         @tags audit_log
@@ -35909,13 +35687,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.export_audit_log_ex_async(request, runtime)
 
     def search_audit_log(
         self,
-        request: pds_models.SearchAuditLogRequest,
-    ) -> pds_models.SearchAuditLogModel:
+        request: standard_models.SearchAuditLogRequest,
+    ) -> standard_models.SearchAuditLogModel:
         """
         search audit log
         @tags audit_log
@@ -35923,13 +35701,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_audit_log_ex(request, runtime)
 
     async def search_audit_log_async(
         self,
-        request: pds_models.SearchAuditLogRequest,
-    ) -> pds_models.SearchAuditLogModel:
+        request: standard_models.SearchAuditLogRequest,
+    ) -> standard_models.SearchAuditLogModel:
         """
         search audit log
         @tags audit_log
@@ -35937,13 +35715,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_audit_log_ex_async(request, runtime)
 
     def create_identity_to_benefit_pkg_mapping(
         self,
-        request: pds_models.CreateIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.CreateIdentityToBenefitPkgMappingModel:
+        request: standard_models.CreateIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.CreateIdentityToBenefitPkgMappingModel:
         """
         创建实体权益包关联
         @tags benefit
@@ -35953,13 +35731,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_identity_to_benefit_pkg_mapping_ex(request, runtime)
 
     async def create_identity_to_benefit_pkg_mapping_async(
         self,
-        request: pds_models.CreateIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.CreateIdentityToBenefitPkgMappingModel:
+        request: standard_models.CreateIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.CreateIdentityToBenefitPkgMappingModel:
         """
         创建实体权益包关联
         @tags benefit
@@ -35969,13 +35747,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_identity_to_benefit_pkg_mapping_ex_async(request, runtime)
 
     def delete_identity_to_benefit_pkg_mapping(
         self,
-        request: pds_models.DeleteIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.DeleteIdentityToBenefitPkgMappingModel:
+        request: standard_models.DeleteIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.DeleteIdentityToBenefitPkgMappingModel:
         """
         删除实体权益包关联
         @tags benefit
@@ -35984,13 +35762,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_identity_to_benefit_pkg_mapping_ex(request, runtime)
 
     async def delete_identity_to_benefit_pkg_mapping_async(
         self,
-        request: pds_models.DeleteIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.DeleteIdentityToBenefitPkgMappingModel:
+        request: standard_models.DeleteIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.DeleteIdentityToBenefitPkgMappingModel:
         """
         删除实体权益包关联
         @tags benefit
@@ -35999,13 +35777,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_identity_to_benefit_pkg_mapping_ex_async(request, runtime)
 
     def get_identity_to_benefit_pkg_mapping(
         self,
-        request: pds_models.GetIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.GetIdentityToBenefitPkgMappingModel:
+        request: standard_models.GetIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.GetIdentityToBenefitPkgMappingModel:
         """
         获取实体权益包关联
         @tags benefit
@@ -36015,13 +35793,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_identity_to_benefit_pkg_mapping_ex(request, runtime)
 
     async def get_identity_to_benefit_pkg_mapping_async(
         self,
-        request: pds_models.GetIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.GetIdentityToBenefitPkgMappingModel:
+        request: standard_models.GetIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.GetIdentityToBenefitPkgMappingModel:
         """
         获取实体权益包关联
         @tags benefit
@@ -36031,13 +35809,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_identity_to_benefit_pkg_mapping_ex_async(request, runtime)
 
     def list_identity_to_benefit_pkg_mapping(
         self,
-        request: pds_models.ListIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.ListIdentityToBenefitPkgMappingModel:
+        request: standard_models.ListIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.ListIdentityToBenefitPkgMappingModel:
         """
         列举实体关联的所有权益包
         @tags benefit
@@ -36046,13 +35824,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_identity_to_benefit_pkg_mapping_ex(request, runtime)
 
     async def list_identity_to_benefit_pkg_mapping_async(
         self,
-        request: pds_models.ListIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.ListIdentityToBenefitPkgMappingModel:
+        request: standard_models.ListIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.ListIdentityToBenefitPkgMappingModel:
         """
         列举实体关联的所有权益包
         @tags benefit
@@ -36061,13 +35839,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_identity_to_benefit_pkg_mapping_ex_async(request, runtime)
 
     def update_identity_to_benefit_pkg_mapping(
         self,
-        request: pds_models.UpdateIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.UpdateIdentityToBenefitPkgMappingModel:
+        request: standard_models.UpdateIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.UpdateIdentityToBenefitPkgMappingModel:
         """
         更新实体权益包关联
         @tags benefit
@@ -36077,13 +35855,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_identity_to_benefit_pkg_mapping_ex(request, runtime)
 
     async def update_identity_to_benefit_pkg_mapping_async(
         self,
-        request: pds_models.UpdateIdentityToBenefitPkgMappingRequest,
-    ) -> pds_models.UpdateIdentityToBenefitPkgMappingModel:
+        request: standard_models.UpdateIdentityToBenefitPkgMappingRequest,
+    ) -> standard_models.UpdateIdentityToBenefitPkgMappingModel:
         """
         更新实体权益包关联
         @tags benefit
@@ -36093,13 +35871,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_identity_to_benefit_pkg_mapping_ex_async(request, runtime)
 
     def list_identity_benefit_pkg(
         self,
-        request: pds_models.ListIdentityBenefitPkgRequest,
-    ) -> pds_models.ListIdentityBenefitPkgModel:
+        request: standard_models.ListIdentityBenefitPkgRequest,
+    ) -> standard_models.ListIdentityBenefitPkgModel:
         """
         列举实体的权益
         @tags benefit
@@ -36109,13 +35887,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_identity_benefit_pkg_ex(request, runtime)
 
     async def list_identity_benefit_pkg_async(
         self,
-        request: pds_models.ListIdentityBenefitPkgRequest,
-    ) -> pds_models.ListIdentityBenefitPkgModel:
+        request: standard_models.ListIdentityBenefitPkgRequest,
+    ) -> standard_models.ListIdentityBenefitPkgModel:
         """
         列举实体的权益
         @tags benefit
@@ -36125,13 +35903,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_identity_benefit_pkg_ex_async(request, runtime)
 
     def admin_list_stores(
         self,
-        request: pds_models.AdminListStoresRequest,
-    ) -> pds_models.AdminListStoresModel:
+        request: standard_models.AdminListStoresRequest,
+    ) -> standard_models.AdminListStoresModel:
         """
         列举Store列表
         @tags admin
@@ -36139,13 +35917,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.admin_list_stores_ex(request, runtime)
 
     async def admin_list_stores_async(
         self,
-        request: pds_models.AdminListStoresRequest,
-    ) -> pds_models.AdminListStoresModel:
+        request: standard_models.AdminListStoresRequest,
+    ) -> standard_models.AdminListStoresModel:
         """
         列举Store列表
         @tags admin
@@ -36153,13 +35931,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.admin_list_stores_ex_async(request, runtime)
 
     def create_subdomain(
         self,
-        request: pds_models.CreateSubdomainRequest,
-    ) -> pds_models.CreateSubdomainModel:
+        request: standard_models.CreateSubdomainRequest,
+    ) -> standard_models.CreateSubdomainModel:
         """
         create subdomain
         @tags subdomain
@@ -36167,13 +35945,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_subdomain_ex(request, runtime)
 
     async def create_subdomain_async(
         self,
-        request: pds_models.CreateSubdomainRequest,
-    ) -> pds_models.CreateSubdomainModel:
+        request: standard_models.CreateSubdomainRequest,
+    ) -> standard_models.CreateSubdomainModel:
         """
         create subdomain
         @tags subdomain
@@ -36181,13 +35959,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_subdomain_ex_async(request, runtime)
 
     def delete_subdomain(
         self,
-        request: pds_models.DeleteSubdomainRequest,
-    ) -> pds_models.DeleteSubdomainModel:
+        request: standard_models.DeleteSubdomainRequest,
+    ) -> standard_models.DeleteSubdomainModel:
         """
         delete subdomain
         @tags subdomain
@@ -36195,13 +35973,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_subdomain_ex(request, runtime)
 
     async def delete_subdomain_async(
         self,
-        request: pds_models.DeleteSubdomainRequest,
-    ) -> pds_models.DeleteSubdomainModel:
+        request: standard_models.DeleteSubdomainRequest,
+    ) -> standard_models.DeleteSubdomainModel:
         """
         delete subdomain
         @tags subdomain
@@ -36209,13 +35987,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_subdomain_ex_async(request, runtime)
 
     def get_subdomain(
         self,
-        request: pds_models.GetSubdomainRequest,
-    ) -> pds_models.GetSubdomainModel:
+        request: standard_models.GetSubdomainRequest,
+    ) -> standard_models.GetSubdomainModel:
         """
         get subdomain
         @tags subdomain
@@ -36223,13 +36001,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_subdomain_ex(request, runtime)
 
     async def get_subdomain_async(
         self,
-        request: pds_models.GetSubdomainRequest,
-    ) -> pds_models.GetSubdomainModel:
+        request: standard_models.GetSubdomainRequest,
+    ) -> standard_models.GetSubdomainModel:
         """
         get subdomain
         @tags subdomain
@@ -36237,13 +36015,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_subdomain_ex_async(request, runtime)
 
     def list_subdomains(
         self,
-        request: pds_models.ListSubdomainsRequest,
-    ) -> pds_models.ListSubdomainsModel:
+        request: standard_models.ListSubdomainsRequest,
+    ) -> standard_models.ListSubdomainsModel:
         """
         list subdomain
         @tags subdomain
@@ -36251,13 +36029,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_subdomains_ex(request, runtime)
 
     async def list_subdomains_async(
         self,
-        request: pds_models.ListSubdomainsRequest,
-    ) -> pds_models.ListSubdomainsModel:
+        request: standard_models.ListSubdomainsRequest,
+    ) -> standard_models.ListSubdomainsModel:
         """
         list subdomain
         @tags subdomain
@@ -36265,13 +36043,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_subdomains_ex_async(request, runtime)
 
     def update_subdomain(
         self,
-        request: pds_models.UpdateSubdomainRequest,
-    ) -> pds_models.UpdateSubdomainModel:
+        request: standard_models.UpdateSubdomainRequest,
+    ) -> standard_models.UpdateSubdomainModel:
         """
         update subdomain
         @tags subdomain
@@ -36279,13 +36057,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_subdomain_ex(request, runtime)
 
     async def update_subdomain_async(
         self,
-        request: pds_models.UpdateSubdomainRequest,
-    ) -> pds_models.UpdateSubdomainModel:
+        request: standard_models.UpdateSubdomainRequest,
+    ) -> standard_models.UpdateSubdomainModel:
         """
         update subdomain
         @tags subdomain
@@ -36293,13 +36071,13 @@ class Client:
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_subdomain_ex_async(request, runtime)
 
     def get_user_access_token(
         self,
-        request: pds_models.GetUserAccessTokenRequest,
-    ) -> pds_models.GetUserAccessTokenModel:
+        request: standard_models.GetUserAccessTokenRequest,
+    ) -> standard_models.GetUserAccessTokenModel:
         """
         获取用户的accessToken
         @tags admin
@@ -36309,13 +36087,13 @@ class Client:
         @error undefined undefined
         @error undefined undefined
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_user_access_token_ex(request, runtime)
 
     async def get_user_access_token_async(
         self,
-        request: pds_models.GetUserAccessTokenRequest,
-    ) -> pds_models.GetUserAccessTokenModel:
+        request: standard_models.GetUserAccessTokenRequest,
+    ) -> standard_models.GetUserAccessTokenModel:
         """
         获取用户的accessToken
         @tags admin
@@ -36325,45 +36103,13 @@ class Client:
         @error undefined undefined
         @error undefined undefined
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_user_access_token_ex_async(request, runtime)
-
-    def punish_file(
-        self,
-        request: pds_models.PunishFileRequest,
-    ) -> pds_models.PunishFileModel:
-        """
-        指定文件或文件夹ID，删除文件或者文件夹。
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = pds_models.RuntimeOptions()
-        return self.punish_file_ex(request, runtime)
-
-    async def punish_file_async(
-        self,
-        request: pds_models.PunishFileRequest,
-    ) -> pds_models.PunishFileModel:
-        """
-        指定文件或文件夹ID，删除文件或者文件夹。
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = pds_models.RuntimeOptions()
-        return await self.punish_file_ex_async(request, runtime)
 
     def get_async_task_info(
         self,
-        request: pds_models.GetAsyncTaskRequest,
-    ) -> pds_models.GetAsyncTaskInfoModel:
+        request: standard_models.GetAsyncTaskRequest,
+    ) -> standard_models.GetAsyncTaskInfoModel:
         """
         如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
         通过此接口获取异步任务的信息，以确定任务是否执行成功。
@@ -36375,13 +36121,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_async_task_info_ex(request, runtime)
 
     async def get_async_task_info_async(
         self,
-        request: pds_models.GetAsyncTaskRequest,
-    ) -> pds_models.GetAsyncTaskInfoModel:
+        request: standard_models.GetAsyncTaskRequest,
+    ) -> standard_models.GetAsyncTaskInfoModel:
         """
         如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
         通过此接口获取异步任务的信息，以确定任务是否执行成功。
@@ -36393,13 +36139,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_async_task_info_ex_async(request, runtime)
 
     def batch_operation(
         self,
-        request: pds_models.BatchRequest,
-    ) -> pds_models.BatchOperationModel:
+        request: standard_models.BatchRequest,
+    ) -> standard_models.BatchOperationModel:
         """
         对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
         支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
@@ -36410,13 +36156,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.batch_operation_ex(request, runtime)
 
     async def batch_operation_async(
         self,
-        request: pds_models.BatchRequest,
-    ) -> pds_models.BatchOperationModel:
+        request: standard_models.BatchRequest,
+    ) -> standard_models.BatchOperationModel:
         """
         对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
         支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
@@ -36427,13 +36173,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.batch_operation_ex_async(request, runtime)
 
     def create_drive(
         self,
-        request: pds_models.CreateDriveRequest,
-    ) -> pds_models.CreateDriveModel:
+        request: standard_models.CreateDriveRequest,
+    ) -> standard_models.CreateDriveModel:
         """
         支持normal和large两种drive，
         large类型的drive用于文件数多的场景，不支持list操作，
@@ -36445,13 +36191,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_drive_ex(request, runtime)
 
     async def create_drive_async(
         self,
-        request: pds_models.CreateDriveRequest,
-    ) -> pds_models.CreateDriveModel:
+        request: standard_models.CreateDriveRequest,
+    ) -> standard_models.CreateDriveModel:
         """
         支持normal和large两种drive，
         large类型的drive用于文件数多的场景，不支持list操作，
@@ -36463,13 +36209,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_drive_ex_async(request, runtime)
 
     def delete_drive(
         self,
-        request: pds_models.DeleteDriveRequest,
-    ) -> pds_models.DeleteDriveModel:
+        request: standard_models.DeleteDriveRequest,
+    ) -> standard_models.DeleteDriveModel:
         """
         删除指定drive_id对应的Drive
         @tags drive
@@ -36479,13 +36225,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_drive_ex(request, runtime)
 
     async def delete_drive_async(
         self,
-        request: pds_models.DeleteDriveRequest,
-    ) -> pds_models.DeleteDriveModel:
+        request: standard_models.DeleteDriveRequest,
+    ) -> standard_models.DeleteDriveModel:
         """
         删除指定drive_id对应的Drive
         @tags drive
@@ -36495,13 +36241,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_drive_ex_async(request, runtime)
 
     def get_drive(
         self,
-        request: pds_models.GetDriveRequest,
-    ) -> pds_models.GetDriveModel:
+        request: standard_models.GetDriveRequest,
+    ) -> standard_models.GetDriveModel:
         """
         获取指定drive_id对应的Drive详细信息。
         @tags drive
@@ -36512,13 +36258,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_drive_ex(request, runtime)
 
     async def get_drive_async(
         self,
-        request: pds_models.GetDriveRequest,
-    ) -> pds_models.GetDriveModel:
+        request: standard_models.GetDriveRequest,
+    ) -> standard_models.GetDriveModel:
         """
         获取指定drive_id对应的Drive详细信息。
         @tags drive
@@ -36529,13 +36275,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_drive_ex_async(request, runtime)
 
     def get_default_drive(
         self,
-        request: pds_models.GetDefaultDriveRequest,
-    ) -> pds_models.GetDefaultDriveModel:
+        request: standard_models.GetDefaultDriveRequest,
+    ) -> standard_models.GetDefaultDriveModel:
         """
         一个用户可拥有多个drive，在创建drive时通过参数指定是否为这个用户的默认drive，
         每个用户只能设置一个默认drive。
@@ -36547,13 +36293,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_default_drive_ex(request, runtime)
 
     async def get_default_drive_async(
         self,
-        request: pds_models.GetDefaultDriveRequest,
-    ) -> pds_models.GetDefaultDriveModel:
+        request: standard_models.GetDefaultDriveRequest,
+    ) -> standard_models.GetDefaultDriveModel:
         """
         一个用户可拥有多个drive，在创建drive时通过参数指定是否为这个用户的默认drive，
         每个用户只能设置一个默认drive。
@@ -36565,13 +36311,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_default_drive_ex_async(request, runtime)
 
     def list_drives(
         self,
-        request: pds_models.ListDriveRequest,
-    ) -> pds_models.ListDrivesModel:
+        request: standard_models.ListDriveRequest,
+    ) -> standard_models.ListDrivesModel:
         """
         管理员列举指定用户的Drive
         @tags drive
@@ -36581,13 +36327,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_drives_ex(request, runtime)
 
     async def list_drives_async(
         self,
-        request: pds_models.ListDriveRequest,
-    ) -> pds_models.ListDrivesModel:
+        request: standard_models.ListDriveRequest,
+    ) -> standard_models.ListDrivesModel:
         """
         管理员列举指定用户的Drive
         @tags drive
@@ -36597,13 +36343,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_drives_ex_async(request, runtime)
 
     def list_my_drives(
         self,
-        request: pds_models.ListMyDriveRequest,
-    ) -> pds_models.ListMyDrivesModel:
+        request: standard_models.ListMyDriveRequest,
+    ) -> standard_models.ListMyDrivesModel:
         """
         列举当前用户（访问令牌）的Drive
         @tags drive
@@ -36613,13 +36359,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_my_drives_ex(request, runtime)
 
     async def list_my_drives_async(
         self,
-        request: pds_models.ListMyDriveRequest,
-    ) -> pds_models.ListMyDrivesModel:
+        request: standard_models.ListMyDriveRequest,
+    ) -> standard_models.ListMyDrivesModel:
         """
         列举当前用户（访问令牌）的Drive
         @tags drive
@@ -36629,13 +36375,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_my_drives_ex_async(request, runtime)
 
     def search_drives(
         self,
-        request: pds_models.SearchDriveRequest,
-    ) -> pds_models.SearchDrivesModel:
+        request: standard_models.SearchDriveRequest,
+    ) -> standard_models.SearchDrivesModel:
         """
         按照名称或拥有者搜索相关Drive
         @tags drive
@@ -36645,13 +36391,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_drives_ex(request, runtime)
 
     async def search_drives_async(
         self,
-        request: pds_models.SearchDriveRequest,
-    ) -> pds_models.SearchDrivesModel:
+        request: standard_models.SearchDriveRequest,
+    ) -> standard_models.SearchDrivesModel:
         """
         按照名称或拥有者搜索相关Drive
         @tags drive
@@ -36661,13 +36407,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_drives_ex_async(request, runtime)
 
     def update_drive(
         self,
-        request: pds_models.UpdateDriveRequest,
-    ) -> pds_models.UpdateDriveModel:
+        request: standard_models.UpdateDriveRequest,
+    ) -> standard_models.UpdateDriveModel:
         """
         更新指定drive_id的Drive信息
         @tags drive
@@ -36678,13 +36424,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_drive_ex(request, runtime)
 
     async def update_drive_async(
         self,
-        request: pds_models.UpdateDriveRequest,
-    ) -> pds_models.UpdateDriveModel:
+        request: standard_models.UpdateDriveRequest,
+    ) -> standard_models.UpdateDriveModel:
         """
         更新指定drive_id的Drive信息
         @tags drive
@@ -36695,13 +36441,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_drive_ex_async(request, runtime)
 
     def add_permission(
         self,
-        request: pds_models.FileAddPermissionRequest,
-    ) -> pds_models.AddPermissionModel:
+        request: standard_models.FileAddPermissionRequest,
+    ) -> standard_models.AddPermissionModel:
         """
         将文件共享/授权给其他用户或团队
         @tags file
@@ -36712,13 +36458,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.add_permission_ex(request, runtime)
 
     async def add_permission_async(
         self,
-        request: pds_models.FileAddPermissionRequest,
-    ) -> pds_models.AddPermissionModel:
+        request: standard_models.FileAddPermissionRequest,
+    ) -> standard_models.AddPermissionModel:
         """
         将文件共享/授权给其他用户或团队
         @tags file
@@ -36729,13 +36475,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.add_permission_ex_async(request, runtime)
 
     def archive_files(
         self,
-        request: pds_models.CCPArchiveFilesRequest,
-    ) -> pds_models.ArchiveFilesModel:
+        request: standard_models.CCPArchiveFilesRequest,
+    ) -> standard_models.ArchiveFilesModel:
         """
         archive_files
         @tags file
@@ -36745,13 +36491,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.archive_files_ex(request, runtime)
 
     async def archive_files_async(
         self,
-        request: pds_models.CCPArchiveFilesRequest,
-    ) -> pds_models.ArchiveFilesModel:
+        request: standard_models.CCPArchiveFilesRequest,
+    ) -> standard_models.ArchiveFilesModel:
         """
         archive_files
         @tags file
@@ -36761,13 +36507,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.archive_files_ex_async(request, runtime)
 
     def complete_file(
         self,
-        request: pds_models.CompleteFileRequest,
-    ) -> pds_models.CompleteFileModel:
+        request: standard_models.CompleteFileRequest,
+    ) -> standard_models.CompleteFileModel:
         """
         完成文件上传。
         @tags file
@@ -36778,13 +36524,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.complete_file_ex(request, runtime)
 
     async def complete_file_async(
         self,
-        request: pds_models.CompleteFileRequest,
-    ) -> pds_models.CompleteFileModel:
+        request: standard_models.CompleteFileRequest,
+    ) -> standard_models.CompleteFileModel:
         """
         完成文件上传。
         @tags file
@@ -36795,13 +36541,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.complete_file_ex_async(request, runtime)
 
     def complete_file_with_store_info(
         self,
-        request: pds_models.UCCompleteFileRequest,
-    ) -> pds_models.CompleteFileWithStoreInfoModel:
+        request: standard_models.UCCompleteFileRequest,
+    ) -> standard_models.CompleteFileWithStoreInfoModel:
         """
         UCCompleteFileRequest
         @tags file
@@ -36811,13 +36557,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.complete_file_with_store_info_ex(request, runtime)
 
     async def complete_file_with_store_info_async(
         self,
-        request: pds_models.UCCompleteFileRequest,
-    ) -> pds_models.CompleteFileWithStoreInfoModel:
+        request: standard_models.UCCompleteFileRequest,
+    ) -> standard_models.CompleteFileWithStoreInfoModel:
         """
         UCCompleteFileRequest
         @tags file
@@ -36827,13 +36573,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.complete_file_with_store_info_ex_async(request, runtime)
 
     def copy_file(
         self,
-        request: pds_models.CopyFileRequest,
-    ) -> pds_models.CopyFileModel:
+        request: standard_models.CopyFileRequest,
+    ) -> standard_models.CopyFileModel:
         """
         指定源文件或文件夹，拷贝到指定的文件夹。
         @tags file
@@ -36844,13 +36590,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.copy_file_ex(request, runtime)
 
     async def copy_file_async(
         self,
-        request: pds_models.CopyFileRequest,
-    ) -> pds_models.CopyFileModel:
+        request: standard_models.CopyFileRequest,
+    ) -> standard_models.CopyFileModel:
         """
         指定源文件或文件夹，拷贝到指定的文件夹。
         @tags file
@@ -36861,13 +36607,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.copy_file_ex_async(request, runtime)
 
     def create_file(
         self,
-        request: pds_models.CreateFileRequest,
-    ) -> pds_models.CreateFileModel:
+        request: standard_models.CreateFileRequest,
+    ) -> standard_models.CreateFileModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -36880,13 +36626,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_file_ex(request, runtime)
 
     async def create_file_async(
         self,
-        request: pds_models.CreateFileRequest,
-    ) -> pds_models.CreateFileModel:
+        request: standard_models.CreateFileRequest,
+    ) -> standard_models.CreateFileModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -36899,13 +36645,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_file_ex_async(request, runtime)
 
     def create_file_with_proof(
         self,
-        request: pds_models.CreateFileRequest,
-    ) -> pds_models.CreateFileWithProofModel:
+        request: standard_models.CreateFileRequest,
+    ) -> standard_models.CreateFileWithProofModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -36918,13 +36664,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_file_with_proof_ex(request, runtime)
 
     async def create_file_with_proof_async(
         self,
-        request: pds_models.CreateFileRequest,
-    ) -> pds_models.CreateFileWithProofModel:
+        request: standard_models.CreateFileRequest,
+    ) -> standard_models.CreateFileWithProofModel:
         """
         在指定文件夹下创建文件或者文件夹，
         根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
@@ -36937,13 +36683,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_file_with_proof_ex_async(request, runtime)
 
     def create_file_with_signature(
         self,
-        request: pds_models.UCCreateFileRequest,
-    ) -> pds_models.CreateFileWithSignatureModel:
+        request: standard_models.UCCreateFileRequest,
+    ) -> standard_models.CreateFileWithSignatureModel:
         """
         CreateFileWithSignature
         @tags file
@@ -36953,13 +36699,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_file_with_signature_ex(request, runtime)
 
     async def create_file_with_signature_async(
         self,
-        request: pds_models.UCCreateFileRequest,
-    ) -> pds_models.CreateFileWithSignatureModel:
+        request: standard_models.UCCreateFileRequest,
+    ) -> standard_models.CreateFileWithSignatureModel:
         """
         CreateFileWithSignature
         @tags file
@@ -36969,13 +36715,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_file_with_signature_ex_async(request, runtime)
 
     def delete_file(
         self,
-        request: pds_models.DeleteFileRequest,
-    ) -> pds_models.DeleteFileModel:
+        request: standard_models.DeleteFileRequest,
+    ) -> standard_models.DeleteFileModel:
         """
         指定文件或文件夹ID，删除文件或者文件夹。
         @tags file
@@ -36986,13 +36732,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_file_ex(request, runtime)
 
     async def delete_file_async(
         self,
-        request: pds_models.DeleteFileRequest,
-    ) -> pds_models.DeleteFileModel:
+        request: standard_models.DeleteFileRequest,
+    ) -> standard_models.DeleteFileModel:
         """
         指定文件或文件夹ID，删除文件或者文件夹。
         @tags file
@@ -37003,13 +36749,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_file_ex_async(request, runtime)
 
     def delete_usertags(
         self,
-        request: pds_models.DeleteFileUserTagsRequest,
-    ) -> pds_models.DeleteUsertagsModel:
+        request: standard_models.DeleteFileUserTagsRequest,
+    ) -> standard_models.DeleteUsertagsModel:
         """
         对指定的文件或文件夹删除 user tags。
         @tags file
@@ -37021,13 +36767,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_usertags_ex(request, runtime)
 
     async def delete_usertags_async(
         self,
-        request: pds_models.DeleteFileUserTagsRequest,
-    ) -> pds_models.DeleteUsertagsModel:
+        request: standard_models.DeleteFileUserTagsRequest,
+    ) -> standard_models.DeleteUsertagsModel:
         """
         对指定的文件或文件夹删除 user tags。
         @tags file
@@ -37039,13 +36785,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_usertags_ex_async(request, runtime)
 
     def get_file(
         self,
-        request: pds_models.GetFileRequest,
-    ) -> pds_models.GetFileModel:
+        request: standard_models.GetFileRequest,
+    ) -> standard_models.GetFileModel:
         """
         获取指定文件或文件夹ID的信息。
         @tags file
@@ -37056,13 +36802,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_file_ex(request, runtime)
 
     async def get_file_async(
         self,
-        request: pds_models.GetFileRequest,
-    ) -> pds_models.GetFileModel:
+        request: standard_models.GetFileRequest,
+    ) -> standard_models.GetFileModel:
         """
         获取指定文件或文件夹ID的信息。
         @tags file
@@ -37073,13 +36819,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_file_ex_async(request, runtime)
 
     def get_file_by_path(
         self,
-        request: pds_models.GetFileByPathRequest,
-    ) -> pds_models.GetFileByPathModel:
+        request: standard_models.GetFileByPathRequest,
+    ) -> standard_models.GetFileByPathModel:
         """
         根据路径获取指定文件或文件夹的信息。
         @tags file
@@ -37090,13 +36836,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_file_by_path_ex(request, runtime)
 
     async def get_file_by_path_async(
         self,
-        request: pds_models.GetFileByPathRequest,
-    ) -> pds_models.GetFileByPathModel:
+        request: standard_models.GetFileByPathRequest,
+    ) -> standard_models.GetFileByPathModel:
         """
         根据路径获取指定文件或文件夹的信息。
         @tags file
@@ -37107,13 +36853,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_file_by_path_ex_async(request, runtime)
 
     def get_download_url(
         self,
-        request: pds_models.GetDownloadUrlRequest,
-    ) -> pds_models.GetDownloadUrlModel:
+        request: standard_models.GetDownloadUrlRequest,
+    ) -> standard_models.GetDownloadUrlModel:
         """
         获取文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -37124,13 +36870,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_download_url_ex(request, runtime)
 
     async def get_download_url_async(
         self,
-        request: pds_models.GetDownloadUrlRequest,
-    ) -> pds_models.GetDownloadUrlModel:
+        request: standard_models.GetDownloadUrlRequest,
+    ) -> standard_models.GetDownloadUrlModel:
         """
         获取文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -37141,13 +36887,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_download_url_ex_async(request, runtime)
 
     def get_last_cursor(
         self,
-        request: pds_models.GetLastCursorRequest,
-    ) -> pds_models.GetLastCursorModel:
+        request: standard_models.GetLastCursorRequest,
+    ) -> standard_models.GetLastCursorModel:
         """
         获取drive内，增量数据最新的游标
         @tags file_delta
@@ -37158,13 +36904,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_last_cursor_ex(request, runtime)
 
     async def get_last_cursor_async(
         self,
-        request: pds_models.GetLastCursorRequest,
-    ) -> pds_models.GetLastCursorModel:
+        request: standard_models.GetLastCursorRequest,
+    ) -> standard_models.GetLastCursorModel:
         """
         获取drive内，增量数据最新的游标
         @tags file_delta
@@ -37175,13 +36921,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_last_cursor_ex_async(request, runtime)
 
     def get_media_play_url(
         self,
-        request: pds_models.GetMediaPlayURLRequest,
-    ) -> pds_models.GetMediaPlayUrlModel:
+        request: standard_models.GetMediaPlayURLRequest,
+    ) -> standard_models.GetMediaPlayUrlModel:
         """
         获取media文件播放URL地址（当前仅支持m3u8）
         @tags file
@@ -37191,13 +36937,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_media_play_url_ex(request, runtime)
 
     async def get_media_play_url_async(
         self,
-        request: pds_models.GetMediaPlayURLRequest,
-    ) -> pds_models.GetMediaPlayUrlModel:
+        request: standard_models.GetMediaPlayURLRequest,
+    ) -> standard_models.GetMediaPlayUrlModel:
         """
         获取media文件播放URL地址（当前仅支持m3u8）
         @tags file
@@ -37207,13 +36953,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_media_play_url_ex_async(request, runtime)
 
     def get_office_edit_url(
         self,
-        request: pds_models.GetOfficeEditUrlRequest,
-    ) -> pds_models.GetOfficeEditUrlModel:
+        request: standard_models.GetOfficeEditUrlRequest,
+    ) -> standard_models.GetOfficeEditUrlModel:
         """
         获取文档的在线编辑地址
         @tags file
@@ -37224,13 +36970,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_office_edit_url_ex(request, runtime)
 
     async def get_office_edit_url_async(
         self,
-        request: pds_models.GetOfficeEditUrlRequest,
-    ) -> pds_models.GetOfficeEditUrlModel:
+        request: standard_models.GetOfficeEditUrlRequest,
+    ) -> standard_models.GetOfficeEditUrlModel:
         """
         获取文档的在线编辑地址
         @tags file
@@ -37241,13 +36987,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_office_edit_url_ex_async(request, runtime)
 
     def get_office_preview_url(
         self,
-        request: pds_models.GetOfficePreviewUrlRequest,
-    ) -> pds_models.GetOfficePreviewUrlModel:
+        request: standard_models.GetOfficePreviewUrlRequest,
+    ) -> standard_models.GetOfficePreviewUrlModel:
         """
         获取文档的预览地址（office文档）
         @tags file
@@ -37258,13 +37004,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_office_preview_url_ex(request, runtime)
 
     async def get_office_preview_url_async(
         self,
-        request: pds_models.GetOfficePreviewUrlRequest,
-    ) -> pds_models.GetOfficePreviewUrlModel:
+        request: standard_models.GetOfficePreviewUrlRequest,
+    ) -> standard_models.GetOfficePreviewUrlModel:
         """
         获取文档的预览地址（office文档）
         @tags file
@@ -37275,13 +37021,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_office_preview_url_ex_async(request, runtime)
 
     def get_share_link_download_url(
         self,
-        request: pds_models.GetShareLinkDownloadURLRequest,
-    ) -> pds_models.GetShareLinkDownloadUrlModel:
+        request: standard_models.GetShareLinkDownloadURLRequest,
+    ) -> standard_models.GetShareLinkDownloadUrlModel:
         """
         获取分享中文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -37292,13 +37038,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_link_download_url_ex(request, runtime)
 
     async def get_share_link_download_url_async(
         self,
-        request: pds_models.GetShareLinkDownloadURLRequest,
-    ) -> pds_models.GetShareLinkDownloadUrlModel:
+        request: standard_models.GetShareLinkDownloadURLRequest,
+    ) -> standard_models.GetShareLinkDownloadUrlModel:
         """
         获取分享中文件的下载地址，调用者可自己设置range头并发下载。
         @tags file
@@ -37309,13 +37055,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_link_download_url_ex_async(request, runtime)
 
     def get_share_link_video_preview_play_info(
         self,
-        request: pds_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
-    ) -> pds_models.GetShareLinkVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
+    ) -> standard_models.GetShareLinkVideoPreviewPlayInfoModel:
         """
         获取分享中文件播放信息
         @tags file
@@ -37326,13 +37072,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_link_video_preview_play_info_ex(request, runtime)
 
     async def get_share_link_video_preview_play_info_async(
         self,
-        request: pds_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
-    ) -> pds_models.GetShareLinkVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetShareLinkVideoPreviewPlayInfoRequest,
+    ) -> standard_models.GetShareLinkVideoPreviewPlayInfoModel:
         """
         获取分享中文件播放信息
         @tags file
@@ -37343,13 +37089,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_link_video_preview_play_info_ex_async(request, runtime)
 
     def get_file_signature(
         self,
-        request: pds_models.UCFileGetSignatureRequest,
-    ) -> pds_models.GetFileSignatureModel:
+        request: standard_models.UCFileGetSignatureRequest,
+    ) -> standard_models.GetFileSignatureModel:
         """
         GetFileSignature
         @tags file
@@ -37359,13 +37105,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_file_signature_ex(request, runtime)
 
     async def get_file_signature_async(
         self,
-        request: pds_models.UCFileGetSignatureRequest,
-    ) -> pds_models.GetFileSignatureModel:
+        request: standard_models.UCFileGetSignatureRequest,
+    ) -> standard_models.GetFileSignatureModel:
         """
         GetFileSignature
         @tags file
@@ -37375,13 +37121,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_file_signature_ex_async(request, runtime)
 
     def get_upload_url(
         self,
-        request: pds_models.GetUploadUrlRequest,
-    ) -> pds_models.GetUploadUrlModel:
+        request: standard_models.GetUploadUrlRequest,
+    ) -> standard_models.GetUploadUrlModel:
         """
         可指定分片信息，一次获取多个分片的上传地址。
         @tags file
@@ -37392,13 +37138,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_upload_url_ex(request, runtime)
 
     async def get_upload_url_async(
         self,
-        request: pds_models.GetUploadUrlRequest,
-    ) -> pds_models.GetUploadUrlModel:
+        request: standard_models.GetUploadUrlRequest,
+    ) -> standard_models.GetUploadUrlModel:
         """
         可指定分片信息，一次获取多个分片的上传地址。
         @tags file
@@ -37409,13 +37155,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_upload_url_ex_async(request, runtime)
 
     def get_video_preview_play_info(
         self,
-        request: pds_models.CCPGetVideoPreviewPlayInfoRequest,
-    ) -> pds_models.GetVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetVideoPreviewPlayInfoRequest,
+    ) -> standard_models.GetVideoPreviewPlayInfoModel:
         """
         获取视频文件播放信息
         @tags file
@@ -37424,13 +37170,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_video_preview_play_info_ex(request, runtime)
 
     async def get_video_preview_play_info_async(
         self,
-        request: pds_models.CCPGetVideoPreviewPlayInfoRequest,
-    ) -> pds_models.GetVideoPreviewPlayInfoModel:
+        request: standard_models.CCPGetVideoPreviewPlayInfoRequest,
+    ) -> standard_models.GetVideoPreviewPlayInfoModel:
         """
         获取视频文件播放信息
         @tags file
@@ -37439,13 +37185,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_video_preview_play_info_ex_async(request, runtime)
 
     def get_video_preview_sprite_url(
         self,
-        request: pds_models.GetVideoPreviewSpriteURLRequest,
-    ) -> pds_models.GetVideoPreviewSpriteUrlModel:
+        request: standard_models.GetVideoPreviewSpriteURLRequest,
+    ) -> standard_models.GetVideoPreviewSpriteUrlModel:
         """
         获取视频雪碧图地址
         @tags file
@@ -37456,13 +37202,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_video_preview_sprite_url_ex(request, runtime)
 
     async def get_video_preview_sprite_url_async(
         self,
-        request: pds_models.GetVideoPreviewSpriteURLRequest,
-    ) -> pds_models.GetVideoPreviewSpriteUrlModel:
+        request: standard_models.GetVideoPreviewSpriteURLRequest,
+    ) -> standard_models.GetVideoPreviewSpriteUrlModel:
         """
         获取视频雪碧图地址
         @tags file
@@ -37473,13 +37219,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_video_preview_sprite_url_ex_async(request, runtime)
 
     def get_video_preview_url(
         self,
-        request: pds_models.GetVideoPreviewURLRequest,
-    ) -> pds_models.GetVideoPreviewUrlModel:
+        request: standard_models.GetVideoPreviewURLRequest,
+    ) -> standard_models.GetVideoPreviewUrlModel:
         """
         获取视频播放地址
         @tags file
@@ -37490,13 +37236,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_video_preview_url_ex(request, runtime)
 
     async def get_video_preview_url_async(
         self,
-        request: pds_models.GetVideoPreviewURLRequest,
-    ) -> pds_models.GetVideoPreviewUrlModel:
+        request: standard_models.GetVideoPreviewURLRequest,
+    ) -> standard_models.GetVideoPreviewUrlModel:
         """
         获取视频播放地址
         @tags file
@@ -37507,13 +37253,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_video_preview_url_ex_async(request, runtime)
 
     def list_file(
         self,
-        request: pds_models.ListFileRequest,
-    ) -> pds_models.ListFileModel:
+        request: standard_models.ListFileRequest,
+    ) -> standard_models.ListFileModel:
         """
         列举指定目录下的文件或文件夹。
         @tags file
@@ -37524,13 +37270,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_file_ex(request, runtime)
 
     async def list_file_async(
         self,
-        request: pds_models.ListFileRequest,
-    ) -> pds_models.ListFileModel:
+        request: standard_models.ListFileRequest,
+    ) -> standard_models.ListFileModel:
         """
         列举指定目录下的文件或文件夹。
         @tags file
@@ -37541,13 +37287,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_file_ex_async(request, runtime)
 
     def list_file_activity(
         self,
-        request: pds_models.ListFileActivityRequest,
-    ) -> pds_models.ListFileActivityModel:
+        request: standard_models.ListFileActivityRequest,
+    ) -> standard_models.ListFileActivityModel:
         """
         list file activity
         @tags file
@@ -37558,13 +37304,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_file_activity_ex(request, runtime)
 
     async def list_file_activity_async(
         self,
-        request: pds_models.ListFileActivityRequest,
-    ) -> pds_models.ListFileActivityModel:
+        request: standard_models.ListFileActivityRequest,
+    ) -> standard_models.ListFileActivityModel:
         """
         list file activity
         @tags file
@@ -37575,13 +37321,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_file_activity_ex_async(request, runtime)
 
     def list_file_by_anonymous(
         self,
-        request: pds_models.ListByAnonymousRequest,
-    ) -> pds_models.ListFileByAnonymousModel:
+        request: standard_models.ListByAnonymousRequest,
+    ) -> standard_models.ListFileByAnonymousModel:
         """
         查看分享中的文件列表
         @tags share_link
@@ -37591,13 +37337,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_file_by_anonymous_ex(request, runtime)
 
     async def list_file_by_anonymous_async(
         self,
-        request: pds_models.ListByAnonymousRequest,
-    ) -> pds_models.ListFileByAnonymousModel:
+        request: standard_models.ListByAnonymousRequest,
+    ) -> standard_models.ListFileByAnonymousModel:
         """
         查看分享中的文件列表
         @tags share_link
@@ -37607,13 +37353,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_file_by_anonymous_ex_async(request, runtime)
 
     def list_file_by_custom_index_key(
         self,
-        request: pds_models.ListFileByCustomIndexKeyRequest,
-    ) -> pds_models.ListFileByCustomIndexKeyModel:
+        request: standard_models.ListFileByCustomIndexKeyRequest,
+    ) -> standard_models.ListFileByCustomIndexKeyModel:
         """
         根据自定义同步索引键列举文件或文件夹。
         @tags file
@@ -37624,13 +37370,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_file_by_custom_index_key_ex(request, runtime)
 
     async def list_file_by_custom_index_key_async(
         self,
-        request: pds_models.ListFileByCustomIndexKeyRequest,
-    ) -> pds_models.ListFileByCustomIndexKeyModel:
+        request: standard_models.ListFileByCustomIndexKeyRequest,
+    ) -> standard_models.ListFileByCustomIndexKeyModel:
         """
         根据自定义同步索引键列举文件或文件夹。
         @tags file
@@ -37641,13 +37387,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_file_by_custom_index_key_ex_async(request, runtime)
 
     def list_file_delta(
         self,
-        request: pds_models.ListFileDeltaRequest,
-    ) -> pds_models.ListFileDeltaModel:
+        request: standard_models.ListFileDeltaRequest,
+    ) -> standard_models.ListFileDeltaModel:
         """
         获取drive内，增量数据列表
         @tags file_delta
@@ -37658,13 +37404,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_file_delta_ex(request, runtime)
 
     async def list_file_delta_async(
         self,
-        request: pds_models.ListFileDeltaRequest,
-    ) -> pds_models.ListFileDeltaModel:
+        request: standard_models.ListFileDeltaRequest,
+    ) -> standard_models.ListFileDeltaModel:
         """
         获取drive内，增量数据列表
         @tags file_delta
@@ -37675,13 +37421,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_file_delta_ex_async(request, runtime)
 
     def list_manage_sharing_file(
         self,
-        request: pds_models.ListMangeSharingFileRequest,
-    ) -> pds_models.ListManageSharingFileModel:
+        request: standard_models.ListMangeSharingFileRequest,
+    ) -> standard_models.ListManageSharingFileModel:
         """
         列举当前用户管理的共享记录
         @tags file
@@ -37691,13 +37437,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_manage_sharing_file_ex(request, runtime)
 
     async def list_manage_sharing_file_async(
         self,
-        request: pds_models.ListMangeSharingFileRequest,
-    ) -> pds_models.ListManageSharingFileModel:
+        request: standard_models.ListMangeSharingFileRequest,
+    ) -> standard_models.ListManageSharingFileModel:
         """
         列举当前用户管理的共享记录
         @tags file
@@ -37707,13 +37453,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_manage_sharing_file_ex_async(request, runtime)
 
     def list_permission(
         self,
-        request: pds_models.FileListPermissionRequest,
-    ) -> pds_models.ListPermissionModel:
+        request: standard_models.FileListPermissionRequest,
+    ) -> standard_models.ListPermissionModel:
         """
         列举文件的共享/授权记录
         @tags file
@@ -37724,13 +37470,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_permission_ex(request, runtime)
 
     async def list_permission_async(
         self,
-        request: pds_models.FileListPermissionRequest,
-    ) -> pds_models.ListPermissionModel:
+        request: standard_models.FileListPermissionRequest,
+    ) -> standard_models.ListPermissionModel:
         """
         列举文件的共享/授权记录
         @tags file
@@ -37741,13 +37487,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_permission_ex_async(request, runtime)
 
     def list_received_file(
         self,
-        request: pds_models.ListReceivedFileRequest,
-    ) -> pds_models.ListReceivedFileModel:
+        request: standard_models.ListReceivedFileRequest,
+    ) -> standard_models.ListReceivedFileModel:
         """
         列举当前用户收到的共享记录
         @tags file
@@ -37757,13 +37503,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_received_file_ex(request, runtime)
 
     async def list_received_file_async(
         self,
-        request: pds_models.ListReceivedFileRequest,
-    ) -> pds_models.ListReceivedFileModel:
+        request: standard_models.ListReceivedFileRequest,
+    ) -> standard_models.ListReceivedFileModel:
         """
         列举当前用户收到的共享记录
         @tags file
@@ -37773,13 +37519,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_received_file_ex_async(request, runtime)
 
     def list_sharing_file(
         self,
-        request: pds_models.ListSharingFileRequest,
-    ) -> pds_models.ListSharingFileModel:
+        request: standard_models.ListSharingFileRequest,
+    ) -> standard_models.ListSharingFileModel:
         """
         列举当前用户的共享记录
         @tags file
@@ -37789,13 +37535,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_sharing_file_ex(request, runtime)
 
     async def list_sharing_file_async(
         self,
-        request: pds_models.ListSharingFileRequest,
-    ) -> pds_models.ListSharingFileModel:
+        request: standard_models.ListSharingFileRequest,
+    ) -> standard_models.ListSharingFileModel:
         """
         列举当前用户的共享记录
         @tags file
@@ -37805,13 +37551,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_sharing_file_ex_async(request, runtime)
 
     def list_uploaded_parts(
         self,
-        request: pds_models.ListUploadedPartRequest,
-    ) -> pds_models.ListUploadedPartsModel:
+        request: standard_models.ListUploadedPartRequest,
+    ) -> standard_models.ListUploadedPartsModel:
         """
         列举upload_id对应的已上传分片。
         @tags file
@@ -37822,13 +37568,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_uploaded_parts_ex(request, runtime)
 
     async def list_uploaded_parts_async(
         self,
-        request: pds_models.ListUploadedPartRequest,
-    ) -> pds_models.ListUploadedPartsModel:
+        request: standard_models.ListUploadedPartRequest,
+    ) -> standard_models.ListUploadedPartsModel:
         """
         列举upload_id对应的已上传分片。
         @tags file
@@ -37839,13 +37585,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_uploaded_parts_ex_async(request, runtime)
 
     def live_transcode(
         self,
-        request: pds_models.CCPLiveTranscodeRequest,
-    ) -> pds_models.LiveTranscodeModel:
+        request: standard_models.CCPLiveTranscodeRequest,
+    ) -> standard_models.LiveTranscodeModel:
         """
         live_transcode
         @tags file
@@ -37854,13 +37600,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.live_transcode_ex(request, runtime)
 
     async def live_transcode_async(
         self,
-        request: pds_models.CCPLiveTranscodeRequest,
-    ) -> pds_models.LiveTranscodeModel:
+        request: standard_models.CCPLiveTranscodeRequest,
+    ) -> standard_models.LiveTranscodeModel:
         """
         live_transcode
         @tags file
@@ -37869,13 +37615,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.live_transcode_ex_async(request, runtime)
 
     def move_file(
         self,
-        request: pds_models.MoveFileRequest,
-    ) -> pds_models.MoveFileModel:
+        request: standard_models.MoveFileRequest,
+    ) -> standard_models.MoveFileModel:
         """
         指定源文件或文件夹，移动到指定的文件夹。
         @tags file
@@ -37886,13 +37632,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.move_file_ex(request, runtime)
 
     async def move_file_async(
         self,
-        request: pds_models.MoveFileRequest,
-    ) -> pds_models.MoveFileModel:
+        request: standard_models.MoveFileRequest,
+    ) -> standard_models.MoveFileModel:
         """
         指定源文件或文件夹，移动到指定的文件夹。
         @tags file
@@ -37903,13 +37649,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.move_file_ex_async(request, runtime)
 
     def put_usertags(
         self,
-        request: pds_models.PutFileUserTagsRequest,
-    ) -> pds_models.PutUsertagsModel:
+        request: standard_models.PutFileUserTagsRequest,
+    ) -> standard_models.PutUsertagsModel:
         """
         对指定的文件或文件夹更新 user tags。
         @tags file
@@ -37921,13 +37667,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.put_usertags_ex(request, runtime)
 
     async def put_usertags_async(
         self,
-        request: pds_models.PutFileUserTagsRequest,
-    ) -> pds_models.PutUsertagsModel:
+        request: standard_models.PutFileUserTagsRequest,
+    ) -> standard_models.PutUsertagsModel:
         """
         对指定的文件或文件夹更新 user tags。
         @tags file
@@ -37939,13 +37685,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.put_usertags_ex_async(request, runtime)
 
     def token(
         self,
-        request: pds_models.RefreshOfficeEditTokenRequest,
-    ) -> pds_models.TokenModel:
+        request: standard_models.RefreshOfficeEditTokenRequest,
+    ) -> standard_models.TokenModel:
         """
         刷新在线编辑Token
         @tags file, refresh, office, edit
@@ -37956,13 +37702,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.token_ex(request, runtime)
 
     async def token_async(
         self,
-        request: pds_models.RefreshOfficeEditTokenRequest,
-    ) -> pds_models.TokenModel:
+        request: standard_models.RefreshOfficeEditTokenRequest,
+    ) -> standard_models.TokenModel:
         """
         刷新在线编辑Token
         @tags file, refresh, office, edit
@@ -37973,13 +37719,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.token_ex_async(request, runtime)
 
     def remove_permission(
         self,
-        request: pds_models.FileRemovePermissionRequest,
-    ) -> pds_models.RemovePermissionModel:
+        request: standard_models.FileRemovePermissionRequest,
+    ) -> standard_models.RemovePermissionModel:
         """
         取消文件共享/授权
         @tags file
@@ -37990,13 +37736,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.remove_permission_ex(request, runtime)
 
     async def remove_permission_async(
         self,
-        request: pds_models.FileRemovePermissionRequest,
-    ) -> pds_models.RemovePermissionModel:
+        request: standard_models.FileRemovePermissionRequest,
+    ) -> standard_models.RemovePermissionModel:
         """
         取消文件共享/授权
         @tags file
@@ -38007,13 +37753,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.remove_permission_ex_async(request, runtime)
 
     def scan_file_meta(
         self,
-        request: pds_models.ScanFileMetaRequest,
-    ) -> pds_models.ScanFileMetaModel:
+        request: standard_models.ScanFileMetaRequest,
+    ) -> standard_models.ScanFileMetaModel:
         """
         在指定drive下全量获取文件元信息。
         @tags file
@@ -38024,13 +37770,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.scan_file_meta_ex(request, runtime)
 
     async def scan_file_meta_async(
         self,
-        request: pds_models.ScanFileMetaRequest,
-    ) -> pds_models.ScanFileMetaModel:
+        request: standard_models.ScanFileMetaRequest,
+    ) -> standard_models.ScanFileMetaModel:
         """
         在指定drive下全量获取文件元信息。
         @tags file
@@ -38041,13 +37787,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.scan_file_meta_ex_async(request, runtime)
 
     def search_file(
         self,
-        request: pds_models.SearchFileRequest,
-    ) -> pds_models.SearchFileModel:
+        request: standard_models.SearchFileRequest,
+    ) -> standard_models.SearchFileModel:
         """
         根据筛选条件，在指定drive下搜索文件。
         @tags file
@@ -38058,13 +37804,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_file_ex(request, runtime)
 
     async def search_file_async(
         self,
-        request: pds_models.SearchFileRequest,
-    ) -> pds_models.SearchFileModel:
+        request: standard_models.SearchFileRequest,
+    ) -> standard_models.SearchFileModel:
         """
         根据筛选条件，在指定drive下搜索文件。
         @tags file
@@ -38075,13 +37821,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_file_ex_async(request, runtime)
 
     def update_file(
         self,
-        request: pds_models.UpdateFileMetaRequest,
-    ) -> pds_models.UpdateFileModel:
+        request: standard_models.UpdateFileMetaRequest,
+    ) -> standard_models.UpdateFileModel:
         """
         对指定的文件或文件夹更新信息。
         @tags file
@@ -38093,13 +37839,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_file_ex(request, runtime)
 
     async def update_file_async(
         self,
-        request: pds_models.UpdateFileMetaRequest,
-    ) -> pds_models.UpdateFileModel:
+        request: standard_models.UpdateFileMetaRequest,
+    ) -> standard_models.UpdateFileModel:
         """
         对指定的文件或文件夹更新信息。
         @tags file
@@ -38111,13 +37857,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_file_ex_async(request, runtime)
 
     def update_file_upload_content_hash(
         self,
-        request: pds_models.UCUpdateUploadContentHashRequest,
-    ) -> pds_models.UpdateFileUploadContentHashModel:
+        request: standard_models.UCUpdateUploadContentHashRequest,
+    ) -> standard_models.UpdateFileUploadContentHashModel:
         """
         UpdateFileUploadContentHash
         @tags file
@@ -38127,13 +37873,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_file_upload_content_hash_ex(request, runtime)
 
     async def update_file_upload_content_hash_async(
         self,
-        request: pds_models.UCUpdateUploadContentHashRequest,
-    ) -> pds_models.UpdateFileUploadContentHashModel:
+        request: standard_models.UCUpdateUploadContentHashRequest,
+    ) -> standard_models.UpdateFileUploadContentHashModel:
         """
         UpdateFileUploadContentHash
         @tags file
@@ -38143,13 +37889,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_file_upload_content_hash_ex_async(request, runtime)
 
     def walk_file(
         self,
-        request: pds_models.CCPWalkFileRequest,
-    ) -> pds_models.WalkFileModel:
+        request: standard_models.CCPWalkFileRequest,
+    ) -> standard_models.WalkFileModel:
         """
         walk file
         @tags file
@@ -38160,13 +37906,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.walk_file_ex(request, runtime)
 
     async def walk_file_async(
         self,
-        request: pds_models.CCPWalkFileRequest,
-    ) -> pds_models.WalkFileModel:
+        request: standard_models.CCPWalkFileRequest,
+    ) -> standard_models.WalkFileModel:
         """
         walk file
         @tags file
@@ -38177,13 +37923,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.walk_file_ex_async(request, runtime)
 
     def clear_recyclebin(
         self,
-        request: pds_models.ClearRecycleBinRequest,
-    ) -> pds_models.ClearRecyclebinModel:
+        request: standard_models.ClearRecycleBinRequest,
+    ) -> standard_models.ClearRecyclebinModel:
         """
         clear_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38191,13 +37937,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.clear_recyclebin_ex(request, runtime)
 
     async def clear_recyclebin_async(
         self,
-        request: pds_models.ClearRecycleBinRequest,
-    ) -> pds_models.ClearRecyclebinModel:
+        request: standard_models.ClearRecycleBinRequest,
+    ) -> standard_models.ClearRecyclebinModel:
         """
         clear_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38205,13 +37951,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.clear_recyclebin_ex_async(request, runtime)
 
     def list_recyclebin(
         self,
-        request: pds_models.ListFileInRecycleBinRequest,
-    ) -> pds_models.ListRecyclebinModel:
+        request: standard_models.ListFileInRecycleBinRequest,
+    ) -> standard_models.ListRecyclebinModel:
         """
         list_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38219,13 +37965,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_recyclebin_ex(request, runtime)
 
     async def list_recyclebin_async(
         self,
-        request: pds_models.ListFileInRecycleBinRequest,
-    ) -> pds_models.ListRecyclebinModel:
+        request: standard_models.ListFileInRecycleBinRequest,
+    ) -> standard_models.ListRecyclebinModel:
         """
         list_recyclebin
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38233,13 +37979,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_recyclebin_ex_async(request, runtime)
 
     def restore_file(
         self,
-        request: pds_models.RestoreFileRequest,
-    ) -> pds_models.RestoreFileModel:
+        request: standard_models.RestoreFileRequest,
+    ) -> standard_models.RestoreFileModel:
         """
         restore_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38247,13 +37993,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.restore_file_ex(request, runtime)
 
     async def restore_file_async(
         self,
-        request: pds_models.RestoreFileRequest,
-    ) -> pds_models.RestoreFileModel:
+        request: standard_models.RestoreFileRequest,
+    ) -> standard_models.RestoreFileModel:
         """
         restore_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38261,13 +38007,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.restore_file_ex_async(request, runtime)
 
     def trash_file(
         self,
-        request: pds_models.TrashFileRequest,
-    ) -> pds_models.TrashFileModel:
+        request: standard_models.TrashFileRequest,
+    ) -> standard_models.TrashFileModel:
         """
         trash_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38275,13 +38021,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.trash_file_ex(request, runtime)
 
     async def trash_file_async(
         self,
-        request: pds_models.TrashFileRequest,
-    ) -> pds_models.TrashFileModel:
+        request: standard_models.TrashFileRequest,
+    ) -> standard_models.TrashFileModel:
         """
         trash_file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38289,13 +38035,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.trash_file_ex_async(request, runtime)
 
     def report_event(
         self,
-        request: pds_models.ReportEventRequest,
-    ) -> pds_models.ReportEventModel:
+        request: standard_models.ReportEventRequest,
+    ) -> standard_models.ReportEventModel:
         """
         上报事件
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38304,13 +38050,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.report_event_ex(request, runtime)
 
     async def report_event_async(
         self,
-        request: pds_models.ReportEventRequest,
-    ) -> pds_models.ReportEventModel:
+        request: standard_models.ReportEventRequest,
+    ) -> standard_models.ReportEventModel:
         """
         上报事件
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38319,13 +38065,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.report_event_ex_async(request, runtime)
 
     def create_share(
         self,
-        request: pds_models.CreateShareRequest,
-    ) -> pds_models.CreateShareModel:
+        request: standard_models.CreateShareRequest,
+    ) -> standard_models.CreateShareModel:
         """
         创建共享。
         @tags share
@@ -38336,13 +38082,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_share_ex(request, runtime)
 
     async def create_share_async(
         self,
-        request: pds_models.CreateShareRequest,
-    ) -> pds_models.CreateShareModel:
+        request: standard_models.CreateShareRequest,
+    ) -> standard_models.CreateShareModel:
         """
         创建共享。
         @tags share
@@ -38353,13 +38099,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_share_ex_async(request, runtime)
 
     def delete_share(
         self,
-        request: pds_models.DeleteShareRequest,
-    ) -> pds_models.DeleteShareModel:
+        request: standard_models.DeleteShareRequest,
+    ) -> standard_models.DeleteShareModel:
         """
         删除指定共享
         @tags share
@@ -38369,13 +38115,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_share_ex(request, runtime)
 
     async def delete_share_async(
         self,
-        request: pds_models.DeleteShareRequest,
-    ) -> pds_models.DeleteShareModel:
+        request: standard_models.DeleteShareRequest,
+    ) -> standard_models.DeleteShareModel:
         """
         删除指定共享
         @tags share
@@ -38385,13 +38131,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_share_ex_async(request, runtime)
 
     def get_share(
         self,
-        request: pds_models.GetShareRequest,
-    ) -> pds_models.GetShareModel:
+        request: standard_models.GetShareRequest,
+    ) -> standard_models.GetShareModel:
         """
         获取共享信息。
         @tags share
@@ -38402,13 +38148,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_ex(request, runtime)
 
     async def get_share_async(
         self,
-        request: pds_models.GetShareRequest,
-    ) -> pds_models.GetShareModel:
+        request: standard_models.GetShareRequest,
+    ) -> standard_models.GetShareModel:
         """
         获取共享信息。
         @tags share
@@ -38419,13 +38165,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_ex_async(request, runtime)
 
     def list_share(
         self,
-        request: pds_models.ListShareRequest,
-    ) -> pds_models.ListShareModel:
+        request: standard_models.ListShareRequest,
+    ) -> standard_models.ListShareModel:
         """
         列举指定用户的共享
         @tags share
@@ -38435,13 +38181,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_share_ex(request, runtime)
 
     async def list_share_async(
         self,
-        request: pds_models.ListShareRequest,
-    ) -> pds_models.ListShareModel:
+        request: standard_models.ListShareRequest,
+    ) -> standard_models.ListShareModel:
         """
         列举指定用户的共享
         @tags share
@@ -38451,13 +38197,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_share_ex_async(request, runtime)
 
     def update_share(
         self,
-        request: pds_models.UpdateShareRequest,
-    ) -> pds_models.UpdateShareModel:
+        request: standard_models.UpdateShareRequest,
+    ) -> standard_models.UpdateShareModel:
         """
         修改指定共享
         @tags share
@@ -38468,13 +38214,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_share_ex(request, runtime)
 
     async def update_share_async(
         self,
-        request: pds_models.UpdateShareRequest,
-    ) -> pds_models.UpdateShareModel:
+        request: standard_models.UpdateShareRequest,
+    ) -> standard_models.UpdateShareModel:
         """
         修改指定共享
         @tags share
@@ -38485,13 +38231,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_share_ex_async(request, runtime)
 
     def cancel_share_link(
         self,
-        request: pds_models.CancelShareLinkRequest,
-    ) -> pds_models.CancelShareLinkModel:
+        request: standard_models.CancelShareLinkRequest,
+    ) -> standard_models.CancelShareLinkModel:
         """
         取消指定分享
         @tags share_link
@@ -38501,13 +38247,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.cancel_share_link_ex(request, runtime)
 
     async def cancel_share_link_async(
         self,
-        request: pds_models.CancelShareLinkRequest,
-    ) -> pds_models.CancelShareLinkModel:
+        request: standard_models.CancelShareLinkRequest,
+    ) -> standard_models.CancelShareLinkModel:
         """
         取消指定分享
         @tags share_link
@@ -38517,13 +38263,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.cancel_share_link_ex_async(request, runtime)
 
     def create_share_link(
         self,
-        request: pds_models.CreateShareLinkRequest,
-    ) -> pds_models.CreateShareLinkModel:
+        request: standard_models.CreateShareLinkRequest,
+    ) -> standard_models.CreateShareLinkModel:
         """
         创建分享。
         @tags share_link
@@ -38534,13 +38280,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_share_link_ex(request, runtime)
 
     async def create_share_link_async(
         self,
-        request: pds_models.CreateShareLinkRequest,
-    ) -> pds_models.CreateShareLinkModel:
+        request: standard_models.CreateShareLinkRequest,
+    ) -> standard_models.CreateShareLinkModel:
         """
         创建分享。
         @tags share_link
@@ -38551,13 +38297,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_share_link_ex_async(request, runtime)
 
     def get_share_link(
         self,
-        request: pds_models.GetShareLinkRequest,
-    ) -> pds_models.GetShareLinkModel:
+        request: standard_models.GetShareLinkRequest,
+    ) -> standard_models.GetShareLinkModel:
         """
         查看分享的所有信息
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38565,13 +38311,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_link_ex(request, runtime)
 
     async def get_share_link_async(
         self,
-        request: pds_models.GetShareLinkRequest,
-    ) -> pds_models.GetShareLinkModel:
+        request: standard_models.GetShareLinkRequest,
+    ) -> standard_models.GetShareLinkModel:
         """
         查看分享的所有信息
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38579,13 +38325,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_link_ex_async(request, runtime)
 
     def get_share_by_anonymous(
         self,
-        request: pds_models.GetShareLinkByAnonymousRequest,
-    ) -> pds_models.GetShareByAnonymousModel:
+        request: standard_models.GetShareLinkByAnonymousRequest,
+    ) -> standard_models.GetShareByAnonymousModel:
         """
         查看分享的基本信息，比如分享者、到期时间等
         @tags share_link
@@ -38594,13 +38340,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_by_anonymous_ex(request, runtime)
 
     async def get_share_by_anonymous_async(
         self,
-        request: pds_models.GetShareLinkByAnonymousRequest,
-    ) -> pds_models.GetShareByAnonymousModel:
+        request: standard_models.GetShareLinkByAnonymousRequest,
+    ) -> standard_models.GetShareByAnonymousModel:
         """
         查看分享的基本信息，比如分享者、到期时间等
         @tags share_link
@@ -38609,13 +38355,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_by_anonymous_ex_async(request, runtime)
 
     def get_share_id(
         self,
-        request: pds_models.GetShareLinkIDRequest,
-    ) -> pds_models.GetShareIdModel:
+        request: standard_models.GetShareLinkIDRequest,
+    ) -> standard_models.GetShareIdModel:
         """
         使用分享口令换取分享id
         @tags share_link
@@ -38625,13 +38371,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_id_ex(request, runtime)
 
     async def get_share_id_async(
         self,
-        request: pds_models.GetShareLinkIDRequest,
-    ) -> pds_models.GetShareIdModel:
+        request: standard_models.GetShareLinkIDRequest,
+    ) -> standard_models.GetShareIdModel:
         """
         使用分享口令换取分享id
         @tags share_link
@@ -38641,13 +38387,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_id_ex_async(request, runtime)
 
     def get_share_token(
         self,
-        request: pds_models.GetShareLinkTokenRequest,
-    ) -> pds_models.GetShareTokenModel:
+        request: standard_models.GetShareLinkTokenRequest,
+    ) -> standard_models.GetShareTokenModel:
         """
         使用分享码+提取码换取分享token
         @tags share_link
@@ -38656,13 +38402,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_share_token_ex(request, runtime)
 
     async def get_share_token_async(
         self,
-        request: pds_models.GetShareLinkTokenRequest,
-    ) -> pds_models.GetShareTokenModel:
+        request: standard_models.GetShareLinkTokenRequest,
+    ) -> standard_models.GetShareTokenModel:
         """
         使用分享码+提取码换取分享token
         @tags share_link
@@ -38671,13 +38417,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_share_token_ex_async(request, runtime)
 
     def list_share_link(
         self,
-        request: pds_models.ListShareLinkRequest,
-    ) -> pds_models.ListShareLinkModel:
+        request: standard_models.ListShareLinkRequest,
+    ) -> standard_models.ListShareLinkModel:
         """
         列举指定用户的分享
         @tags share_link
@@ -38687,13 +38433,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_share_link_ex(request, runtime)
 
     async def list_share_link_async(
         self,
-        request: pds_models.ListShareLinkRequest,
-    ) -> pds_models.ListShareLinkModel:
+        request: standard_models.ListShareLinkRequest,
+    ) -> standard_models.ListShareLinkModel:
         """
         列举指定用户的分享
         @tags share_link
@@ -38703,13 +38449,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_share_link_ex_async(request, runtime)
 
     def update_share_link(
         self,
-        request: pds_models.UpdateShareLinkRequest,
-    ) -> pds_models.UpdateShareLinkModel:
+        request: standard_models.UpdateShareLinkRequest,
+    ) -> standard_models.UpdateShareLinkModel:
         """
         更新分享。
         @tags share_link
@@ -38719,13 +38465,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_share_link_ex(request, runtime)
 
     async def update_share_link_async(
         self,
-        request: pds_models.UpdateShareLinkRequest,
-    ) -> pds_models.UpdateShareLinkModel:
+        request: standard_models.UpdateShareLinkRequest,
+    ) -> standard_models.UpdateShareLinkModel:
         """
         更新分享。
         @tags share_link
@@ -38735,13 +38481,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_share_link_ex_async(request, runtime)
 
     def get_drive_used_size(
         self,
-        request: pds_models.GetDriveUsedSizeRequest,
-    ) -> pds_models.GetDriveUsedSizeModel:
+        request: standard_models.GetDriveUsedSizeRequest,
+    ) -> standard_models.GetDriveUsedSizeModel:
         """
         查询 Drive 使用空间
         @tags statistics
@@ -38751,13 +38497,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_drive_used_size_ex(request, runtime)
 
     async def get_drive_used_size_async(
         self,
-        request: pds_models.GetDriveUsedSizeRequest,
-    ) -> pds_models.GetDriveUsedSizeModel:
+        request: standard_models.GetDriveUsedSizeRequest,
+    ) -> standard_models.GetDriveUsedSizeModel:
         """
         查询 Drive 使用空间
         @tags statistics
@@ -38767,13 +38513,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_drive_used_size_ex_async(request, runtime)
 
     def get_file_count(
         self,
-        request: pds_models.GetFileCountRequest,
-    ) -> pds_models.GetFileCountModel:
+        request: standard_models.GetFileCountRequest,
+    ) -> standard_models.GetFileCountModel:
         """
         查询 Domain 或 Drive 下文件数
         @tags statistics
@@ -38783,13 +38529,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_file_count_ex(request, runtime)
 
     async def get_file_count_async(
         self,
-        request: pds_models.GetFileCountRequest,
-    ) -> pds_models.GetFileCountModel:
+        request: standard_models.GetFileCountRequest,
+    ) -> standard_models.GetFileCountModel:
         """
         查询 Domain 或 Drive 下文件数
         @tags statistics
@@ -38799,13 +38545,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_file_count_ex_async(request, runtime)
 
     def get_subdomain_summary(
         self,
-        request: pds_models.GetSubdomainSummaryRequest,
-    ) -> pds_models.GetSubdomainSummaryModel:
+        request: standard_models.GetSubdomainSummaryRequest,
+    ) -> standard_models.GetSubdomainSummaryModel:
         """
         获取 Subdomain summary
         @tags statistics
@@ -38815,13 +38561,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_subdomain_summary_ex(request, runtime)
 
     async def get_subdomain_summary_async(
         self,
-        request: pds_models.GetSubdomainSummaryRequest,
-    ) -> pds_models.GetSubdomainSummaryModel:
+        request: standard_models.GetSubdomainSummaryRequest,
+    ) -> standard_models.GetSubdomainSummaryModel:
         """
         获取 Subdomain summary
         @tags statistics
@@ -38831,13 +38577,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_subdomain_summary_ex_async(request, runtime)
 
     def get_domain_summary(
         self,
-        request: pds_models.GetDomainSummaryRequest,
-    ) -> pds_models.GetDomainSummaryModel:
+        request: standard_models.GetDomainSummaryRequest,
+    ) -> standard_models.GetDomainSummaryModel:
         """
         获取 Domain summary
         @tags statistics
@@ -38847,13 +38593,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_domain_summary_ex(request, runtime)
 
     async def get_domain_summary_async(
         self,
-        request: pds_models.GetDomainSummaryRequest,
-    ) -> pds_models.GetDomainSummaryModel:
+        request: standard_models.GetDomainSummaryRequest,
+    ) -> standard_models.GetDomainSummaryModel:
         """
         获取 Domain summary
         @tags statistics
@@ -38863,13 +38609,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_domain_summary_ex_async(request, runtime)
 
     def create_group(
         self,
-        request: pds_models.CreateGroupRequest,
-    ) -> pds_models.CreateGroupModel:
+        request: standard_models.CreateGroupRequest,
+    ) -> standard_models.CreateGroupModel:
         """
         创建用户组
         @tags group
@@ -38879,13 +38625,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_group_ex(request, runtime)
 
     async def create_group_async(
         self,
-        request: pds_models.CreateGroupRequest,
-    ) -> pds_models.CreateGroupModel:
+        request: standard_models.CreateGroupRequest,
+    ) -> standard_models.CreateGroupModel:
         """
         创建用户组
         @tags group
@@ -38895,13 +38641,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_group_ex_async(request, runtime)
 
     def delete_group(
         self,
-        request: pds_models.DeleteGroupRequest,
-    ) -> pds_models.DeleteGroupModel:
+        request: standard_models.DeleteGroupRequest,
+    ) -> standard_models.DeleteGroupModel:
         """
         删除用户组
         @tags group
@@ -38911,13 +38657,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_group_ex(request, runtime)
 
     async def delete_group_async(
         self,
-        request: pds_models.DeleteGroupRequest,
-    ) -> pds_models.DeleteGroupModel:
+        request: standard_models.DeleteGroupRequest,
+    ) -> standard_models.DeleteGroupModel:
         """
         删除用户组
         @tags group
@@ -38927,13 +38673,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_group_ex_async(request, runtime)
 
     def get_group(
         self,
-        request: pds_models.GetGroupRequest,
-    ) -> pds_models.GetGroupModel:
+        request: standard_models.GetGroupRequest,
+    ) -> standard_models.GetGroupModel:
         """
         获取用户组
         @tags group
@@ -38943,13 +38689,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_group_ex(request, runtime)
 
     async def get_group_async(
         self,
-        request: pds_models.GetGroupRequest,
-    ) -> pds_models.GetGroupModel:
+        request: standard_models.GetGroupRequest,
+    ) -> standard_models.GetGroupModel:
         """
         获取用户组
         @tags group
@@ -38959,13 +38705,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_group_ex_async(request, runtime)
 
     def list_group(
         self,
-        request: pds_models.ListGroupRequest,
-    ) -> pds_models.ListGroupModel:
+        request: standard_models.ListGroupRequest,
+    ) -> standard_models.ListGroupModel:
         """
         列举用户组
         @tags group
@@ -38975,13 +38721,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_group_ex(request, runtime)
 
     async def list_group_async(
         self,
-        request: pds_models.ListGroupRequest,
-    ) -> pds_models.ListGroupModel:
+        request: standard_models.ListGroupRequest,
+    ) -> standard_models.ListGroupModel:
         """
         列举用户组
         @tags group
@@ -38991,13 +38737,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_group_ex_async(request, runtime)
 
     def search_group(
         self,
-        request: pds_models.SearchGroupRequest,
-    ) -> pds_models.SearchGroupModel:
+        request: standard_models.SearchGroupRequest,
+    ) -> standard_models.SearchGroupModel:
         """
         搜索用户组
         @tags group
@@ -39007,13 +38753,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_group_ex(request, runtime)
 
     async def search_group_async(
         self,
-        request: pds_models.SearchGroupRequest,
-    ) -> pds_models.SearchGroupModel:
+        request: standard_models.SearchGroupRequest,
+    ) -> standard_models.SearchGroupModel:
         """
         搜索用户组
         @tags group
@@ -39023,13 +38769,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_group_ex_async(request, runtime)
 
     def update_group(
         self,
-        request: pds_models.UpdateGroupRequest,
-    ) -> pds_models.UpdateGroupModel:
+        request: standard_models.UpdateGroupRequest,
+    ) -> standard_models.UpdateGroupModel:
         """
         更新用户组
         @tags group
@@ -39039,13 +38785,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_group_ex(request, runtime)
 
     async def update_group_async(
         self,
-        request: pds_models.UpdateGroupRequest,
-    ) -> pds_models.UpdateGroupModel:
+        request: standard_models.UpdateGroupRequest,
+    ) -> standard_models.UpdateGroupModel:
         """
         更新用户组
         @tags group
@@ -39055,13 +38801,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_group_ex_async(request, runtime)
 
     def create_membership(
         self,
-        request: pds_models.CreateMembershipRequest,
-    ) -> pds_models.CreateMembershipModel:
+        request: standard_models.CreateMembershipRequest,
+    ) -> standard_models.CreateMembershipModel:
         """
         创建membership
         @tags membership
@@ -39071,13 +38817,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_membership_ex(request, runtime)
 
     async def create_membership_async(
         self,
-        request: pds_models.CreateMembershipRequest,
-    ) -> pds_models.CreateMembershipModel:
+        request: standard_models.CreateMembershipRequest,
+    ) -> standard_models.CreateMembershipModel:
         """
         创建membership
         @tags membership
@@ -39087,13 +38833,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_membership_ex_async(request, runtime)
 
     def delete_membership(
         self,
-        request: pds_models.DeleteMembershipRequest,
-    ) -> pds_models.DeleteMembershipModel:
+        request: standard_models.DeleteMembershipRequest,
+    ) -> standard_models.DeleteMembershipModel:
         """
         删除membership
         @tags membership
@@ -39103,13 +38849,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_membership_ex(request, runtime)
 
     async def delete_membership_async(
         self,
-        request: pds_models.DeleteMembershipRequest,
-    ) -> pds_models.DeleteMembershipModel:
+        request: standard_models.DeleteMembershipRequest,
+    ) -> standard_models.DeleteMembershipModel:
         """
         删除membership
         @tags membership
@@ -39119,13 +38865,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_membership_ex_async(request, runtime)
 
     def get_membership(
         self,
-        request: pds_models.GetMembershipRequest,
-    ) -> pds_models.GetMembershipModel:
+        request: standard_models.GetMembershipRequest,
+    ) -> standard_models.GetMembershipModel:
         """
         获取membership
         @tags membership
@@ -39135,13 +38881,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_membership_ex(request, runtime)
 
     async def get_membership_async(
         self,
-        request: pds_models.GetMembershipRequest,
-    ) -> pds_models.GetMembershipModel:
+        request: standard_models.GetMembershipRequest,
+    ) -> standard_models.GetMembershipModel:
         """
         获取membership
         @tags membership
@@ -39151,13 +38897,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_membership_ex_async(request, runtime)
 
     def has_member(
         self,
-        request: pds_models.HasMemberRequest,
-    ) -> pds_models.HasMemberModel:
+        request: standard_models.HasMemberRequest,
+    ) -> standard_models.HasMemberModel:
         """
         检查group是否包含某个member
         @tags membership
@@ -39167,13 +38913,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.has_member_ex(request, runtime)
 
     async def has_member_async(
         self,
-        request: pds_models.HasMemberRequest,
-    ) -> pds_models.HasMemberModel:
+        request: standard_models.HasMemberRequest,
+    ) -> standard_models.HasMemberModel:
         """
         检查group是否包含某个member
         @tags membership
@@ -39183,13 +38929,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.has_member_ex_async(request, runtime)
 
     def list_direct_child_memberships(
         self,
-        request: pds_models.ListDirectChildMembershipsRequest,
-    ) -> pds_models.ListDirectChildMembershipsModel:
+        request: standard_models.ListDirectChildMembershipsRequest,
+    ) -> standard_models.ListDirectChildMembershipsModel:
         """
         列举直属的子membership
         @tags membership
@@ -39199,13 +38945,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_direct_child_memberships_ex(request, runtime)
 
     async def list_direct_child_memberships_async(
         self,
-        request: pds_models.ListDirectChildMembershipsRequest,
-    ) -> pds_models.ListDirectChildMembershipsModel:
+        request: standard_models.ListDirectChildMembershipsRequest,
+    ) -> standard_models.ListDirectChildMembershipsModel:
         """
         列举直属的子membership
         @tags membership
@@ -39215,13 +38961,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_direct_child_memberships_ex_async(request, runtime)
 
     def list_direct_memberships(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-    ) -> pds_models.ListDirectMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+    ) -> standard_models.ListDirectMembershipsModel:
         """
         列举直属的membership
         @tags membership
@@ -39231,13 +38977,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_direct_memberships_ex(request, runtime)
 
     async def list_direct_memberships_async(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-    ) -> pds_models.ListDirectMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+    ) -> standard_models.ListDirectMembershipsModel:
         """
         列举直属的membership
         @tags membership
@@ -39247,13 +38993,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_direct_memberships_ex_async(request, runtime)
 
     def list_direct_parent_memberships(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-    ) -> pds_models.ListDirectParentMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+    ) -> standard_models.ListDirectParentMembershipsModel:
         """
         列举直属的父membership
         @tags membership
@@ -39263,13 +39009,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_direct_parent_memberships_ex(request, runtime)
 
     async def list_direct_parent_memberships_async(
         self,
-        request: pds_models.ListDirectParentMembershipsRequest,
-    ) -> pds_models.ListDirectParentMembershipsModel:
+        request: standard_models.ListDirectParentMembershipsRequest,
+    ) -> standard_models.ListDirectParentMembershipsModel:
         """
         列举直属的父membership
         @tags membership
@@ -39279,13 +39025,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_direct_parent_memberships_ex_async(request, runtime)
 
     def update_membership(
         self,
-        request: pds_models.UpdateMembershipRequest,
-    ) -> pds_models.UpdateMembershipModel:
+        request: standard_models.UpdateMembershipRequest,
+    ) -> standard_models.UpdateMembershipModel:
         """
         更新membership
         @tags membership
@@ -39295,13 +39041,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_membership_ex(request, runtime)
 
     async def update_membership_async(
         self,
-        request: pds_models.UpdateMembershipRequest,
-    ) -> pds_models.UpdateMembershipModel:
+        request: standard_models.UpdateMembershipRequest,
+    ) -> standard_models.UpdateMembershipModel:
         """
         更新membership
         @tags membership
@@ -39311,13 +39057,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_membership_ex_async(request, runtime)
 
     def add_user_to_subdomain(
         self,
-        request: pds_models.AddUserToSubdomainRequest,
-    ) -> pds_models.AddUserToSubdomainModel:
+        request: standard_models.AddUserToSubdomainRequest,
+    ) -> standard_models.AddUserToSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -39327,13 +39073,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.add_user_to_subdomain_ex(request, runtime)
 
     async def add_user_to_subdomain_async(
         self,
-        request: pds_models.AddUserToSubdomainRequest,
-    ) -> pds_models.AddUserToSubdomainModel:
+        request: standard_models.AddUserToSubdomainRequest,
+    ) -> standard_models.AddUserToSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -39343,13 +39089,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.add_user_to_subdomain_ex_async(request, runtime)
 
     def create_user(
         self,
-        request: pds_models.CreateUserRequest,
-    ) -> pds_models.CreateUserModel:
+        request: standard_models.CreateUserRequest,
+    ) -> standard_models.CreateUserModel:
         """
         创建用户，只有管理员可以调用
         @tags user
@@ -39359,13 +39105,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_user_ex(request, runtime)
 
     async def create_user_async(
         self,
-        request: pds_models.CreateUserRequest,
-    ) -> pds_models.CreateUserModel:
+        request: standard_models.CreateUserRequest,
+    ) -> standard_models.CreateUserModel:
         """
         创建用户，只有管理员可以调用
         @tags user
@@ -39375,13 +39121,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_user_ex_async(request, runtime)
 
     def delete_user(
         self,
-        request: pds_models.DeleteUserRequest,
-    ) -> pds_models.DeleteUserModel:
+        request: standard_models.DeleteUserRequest,
+    ) -> standard_models.DeleteUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -39391,13 +39137,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_user_ex(request, runtime)
 
     async def delete_user_async(
         self,
-        request: pds_models.DeleteUserRequest,
-    ) -> pds_models.DeleteUserModel:
+        request: standard_models.DeleteUserRequest,
+    ) -> standard_models.DeleteUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -39407,13 +39153,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_user_ex_async(request, runtime)
 
     def get_user(
         self,
-        request: pds_models.GetUserRequest,
-    ) -> pds_models.GetUserModel:
+        request: standard_models.GetUserRequest,
+    ) -> standard_models.GetUserModel:
         """
         获取用户详细信息，普通用户只能获取自己的信息，管理员可以获取任意用户的信息。
         @tags user
@@ -39424,13 +39170,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_user_ex(request, runtime)
 
     async def get_user_async(
         self,
-        request: pds_models.GetUserRequest,
-    ) -> pds_models.GetUserModel:
+        request: standard_models.GetUserRequest,
+    ) -> standard_models.GetUserModel:
         """
         获取用户详细信息，普通用户只能获取自己的信息，管理员可以获取任意用户的信息。
         @tags user
@@ -39441,13 +39187,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_user_ex_async(request, runtime)
 
     def import_user(
         self,
-        request: pds_models.ImportUserRequest,
-    ) -> pds_models.ImportUserModel:
+        request: standard_models.ImportUserRequest,
+    ) -> standard_models.ImportUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -39457,13 +39203,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.import_user_ex(request, runtime)
 
     async def import_user_async(
         self,
-        request: pds_models.ImportUserRequest,
-    ) -> pds_models.ImportUserModel:
+        request: standard_models.ImportUserRequest,
+    ) -> standard_models.ImportUserModel:
         """
         只有管理员可以调用
         @tags user
@@ -39473,13 +39219,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.import_user_ex_async(request, runtime)
 
     def list_users(
         self,
-        request: pds_models.ListUserRequest,
-    ) -> pds_models.ListUsersModel:
+        request: standard_models.ListUserRequest,
+    ) -> standard_models.ListUsersModel:
         """
         只有管理员可以调用
         @tags user
@@ -39489,13 +39235,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_users_ex(request, runtime)
 
     async def list_users_async(
         self,
-        request: pds_models.ListUserRequest,
-    ) -> pds_models.ListUsersModel:
+        request: standard_models.ListUserRequest,
+    ) -> standard_models.ListUsersModel:
         """
         只有管理员可以调用
         @tags user
@@ -39505,13 +39251,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_users_ex_async(request, runtime)
 
     def migrate_user_to_subdomain(
         self,
-        request: pds_models.MigrateUserToSubdomainRequest,
-    ) -> pds_models.MigrateUserToSubdomainModel:
+        request: standard_models.MigrateUserToSubdomainRequest,
+    ) -> standard_models.MigrateUserToSubdomainModel:
         """
         migrate_user_to_subdomain
         @tags user
@@ -39521,13 +39267,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.migrate_user_to_subdomain_ex(request, runtime)
 
     async def migrate_user_to_subdomain_async(
         self,
-        request: pds_models.MigrateUserToSubdomainRequest,
-    ) -> pds_models.MigrateUserToSubdomainModel:
+        request: standard_models.MigrateUserToSubdomainRequest,
+    ) -> standard_models.MigrateUserToSubdomainModel:
         """
         migrate_user_to_subdomain
         @tags user
@@ -39537,13 +39283,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.migrate_user_to_subdomain_ex_async(request, runtime)
 
     def remove_user_from_subdomain(
         self,
-        request: pds_models.RemoveUserFromSubdomainRequest,
-    ) -> pds_models.RemoveUserFromSubdomainModel:
+        request: standard_models.RemoveUserFromSubdomainRequest,
+    ) -> standard_models.RemoveUserFromSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -39553,13 +39299,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.remove_user_from_subdomain_ex(request, runtime)
 
     async def remove_user_from_subdomain_async(
         self,
-        request: pds_models.RemoveUserFromSubdomainRequest,
-    ) -> pds_models.RemoveUserFromSubdomainModel:
+        request: standard_models.RemoveUserFromSubdomainRequest,
+    ) -> standard_models.RemoveUserFromSubdomainModel:
         """
         只有管理员可以调用
         @tags user
@@ -39569,13 +39315,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.remove_user_from_subdomain_ex_async(request, runtime)
 
     def rollback_user_from_subdomain(
         self,
-        request: pds_models.RollbackUserFromSubdomainRequest,
-    ) -> pds_models.RollbackUserFromSubdomainModel:
+        request: standard_models.RollbackUserFromSubdomainRequest,
+    ) -> standard_models.RollbackUserFromSubdomainModel:
         """
         rollback_from_subdomain
         @tags user
@@ -39585,13 +39331,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.rollback_user_from_subdomain_ex(request, runtime)
 
     async def rollback_user_from_subdomain_async(
         self,
-        request: pds_models.RollbackUserFromSubdomainRequest,
-    ) -> pds_models.RollbackUserFromSubdomainModel:
+        request: standard_models.RollbackUserFromSubdomainRequest,
+    ) -> standard_models.RollbackUserFromSubdomainModel:
         """
         rollback_from_subdomain
         @tags user
@@ -39601,13 +39347,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.rollback_user_from_subdomain_ex_async(request, runtime)
 
     def search_user(
         self,
-        request: pds_models.SearchUserRequest,
-    ) -> pds_models.SearchUserModel:
+        request: standard_models.SearchUserRequest,
+    ) -> standard_models.SearchUserModel:
         """
         该接口将会根据条件查询用户，只有管理员可以调用
         @tags user
@@ -39617,13 +39363,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_user_ex(request, runtime)
 
     async def search_user_async(
         self,
-        request: pds_models.SearchUserRequest,
-    ) -> pds_models.SearchUserModel:
+        request: standard_models.SearchUserRequest,
+    ) -> standard_models.SearchUserModel:
         """
         该接口将会根据条件查询用户，只有管理员可以调用
         @tags user
@@ -39633,13 +39379,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_user_ex_async(request, runtime)
 
     def update_user(
         self,
-        request: pds_models.UpdateUserRequest,
-    ) -> pds_models.UpdateUserModel:
+        request: standard_models.UpdateUserRequest,
+    ) -> standard_models.UpdateUserModel:
         """
         用户可以修改自己的description，nick_name，avatar；
         管理员在用户基础上还可修改status（可以修改任意用户）；
@@ -39652,13 +39398,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_user_ex(request, runtime)
 
     async def update_user_async(
         self,
-        request: pds_models.UpdateUserRequest,
-    ) -> pds_models.UpdateUserModel:
+        request: standard_models.UpdateUserRequest,
+    ) -> standard_models.UpdateUserModel:
         """
         用户可以修改自己的description，nick_name，avatar；
         管理员在用户基础上还可修改status（可以修改任意用户）；
@@ -39671,13 +39417,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_user_ex_async(request, runtime)
 
     def search_user_group(
         self,
-        request: pds_models.SearchUserAndGroupRequest,
-    ) -> pds_models.SearchUserGroupModel:
+        request: standard_models.SearchUserAndGroupRequest,
+    ) -> standard_models.SearchUserGroupModel:
         """
         该接口将会根据条件查询用户和团队，只有管理员可以调用
         @tags user_group
@@ -39687,13 +39433,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_user_group_ex(request, runtime)
 
     async def search_user_group_async(
         self,
-        request: pds_models.SearchUserAndGroupRequest,
-    ) -> pds_models.SearchUserGroupModel:
+        request: standard_models.SearchUserAndGroupRequest,
+    ) -> standard_models.SearchUserGroupModel:
         """
         该接口将会根据条件查询用户和团队，只有管理员可以调用
         @tags user_group
@@ -39703,13 +39449,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_user_group_ex_async(request, runtime)
 
     def merge(
         self,
-        request: pds_models.MergeFaceGroupRequest,
-    ) -> pds_models.MergeModel:
+        request: standard_models.MergeFaceGroupRequest,
+    ) -> standard_models.MergeModel:
         """
         该接口将会对两个人脸分组进行合并
         @tags face_group
@@ -39719,13 +39465,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.merge_ex(request, runtime)
 
     async def merge_async(
         self,
-        request: pds_models.MergeFaceGroupRequest,
-    ) -> pds_models.MergeModel:
+        request: standard_models.MergeFaceGroupRequest,
+    ) -> standard_models.MergeModel:
         """
         该接口将会对两个人脸分组进行合并
         @tags face_group
@@ -39735,13 +39481,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.merge_ex_async(request, runtime)
 
     def unassign_facegroup_item(
         self,
-        request: pds_models.UnAssignFaceGroupItemRequest,
-    ) -> pds_models.UnassignFacegroupItemModel:
+        request: standard_models.UnAssignFaceGroupItemRequest,
+    ) -> standard_models.UnassignFacegroupItemModel:
         """
         该接口将会对移除人脸分组中指定的图片
         @tags albums
@@ -39751,13 +39497,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.unassign_facegroup_item_ex(request, runtime)
 
     async def unassign_facegroup_item_async(
         self,
-        request: pds_models.UnAssignFaceGroupItemRequest,
-    ) -> pds_models.UnassignFacegroupItemModel:
+        request: standard_models.UnAssignFaceGroupItemRequest,
+    ) -> standard_models.UnassignFacegroupItemModel:
         """
         该接口将会对移除人脸分组中指定的图片
         @tags albums
@@ -39767,13 +39513,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.unassign_facegroup_item_ex_async(request, runtime)
 
     def create_story(
         self,
-        request: pds_models.CreateStoryRequest,
-    ) -> pds_models.CreateStoryModel:
+        request: standard_models.CreateStoryRequest,
+    ) -> standard_models.CreateStoryModel:
         """
         该接口将会创建故事
         @tags image
@@ -39784,13 +39530,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_story_ex(request, runtime)
 
     async def create_story_async(
         self,
-        request: pds_models.CreateStoryRequest,
-    ) -> pds_models.CreateStoryModel:
+        request: standard_models.CreateStoryRequest,
+    ) -> standard_models.CreateStoryModel:
         """
         该接口将会创建故事
         @tags image
@@ -39801,13 +39547,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_story_ex_async(request, runtime)
 
     def delete_story(
         self,
-        request: pds_models.DeleteStoryRequest,
-    ) -> pds_models.DeleteStoryModel:
+        request: standard_models.DeleteStoryRequest,
+    ) -> standard_models.DeleteStoryModel:
         """
         该接口将会删除故事
         @tags image
@@ -39818,13 +39564,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_story_ex(request, runtime)
 
     async def delete_story_async(
         self,
-        request: pds_models.DeleteStoryRequest,
-    ) -> pds_models.DeleteStoryModel:
+        request: standard_models.DeleteStoryRequest,
+    ) -> standard_models.DeleteStoryModel:
         """
         该接口将会删除故事
         @tags image
@@ -39835,13 +39581,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_story_ex_async(request, runtime)
 
     def find_stories(
         self,
-        request: pds_models.FindStoriesRequest,
-    ) -> pds_models.FindStoriesModel:
+        request: standard_models.FindStoriesRequest,
+    ) -> standard_models.FindStoriesModel:
         """
         该接口将会查询故事列表
         @tags image
@@ -39852,13 +39598,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.find_stories_ex(request, runtime)
 
     async def find_stories_async(
         self,
-        request: pds_models.FindStoriesRequest,
-    ) -> pds_models.FindStoriesModel:
+        request: standard_models.FindStoriesRequest,
+    ) -> standard_models.FindStoriesModel:
         """
         该接口将会查询故事列表
         @tags image
@@ -39869,13 +39615,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.find_stories_ex_async(request, runtime)
 
     def get_photo_count(
         self,
-        request: pds_models.GetImageCountRequest,
-    ) -> pds_models.GetPhotoCountModel:
+        request: standard_models.GetImageCountRequest,
+    ) -> standard_models.GetPhotoCountModel:
         """
         该接口将返回用户Drive下的云照片个数
         @tags image
@@ -39886,13 +39632,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_photo_count_ex(request, runtime)
 
     async def get_photo_count_async(
         self,
-        request: pds_models.GetImageCountRequest,
-    ) -> pds_models.GetPhotoCountModel:
+        request: standard_models.GetImageCountRequest,
+    ) -> standard_models.GetPhotoCountModel:
         """
         该接口将返回用户Drive下的云照片个数
         @tags image
@@ -39903,13 +39649,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_photo_count_ex_async(request, runtime)
 
     def get_story(
         self,
-        request: pds_models.GetStoryRequest,
-    ) -> pds_models.GetStoryModel:
+        request: standard_models.GetStoryRequest,
+    ) -> standard_models.GetStoryModel:
         """
         该接口将会获取故事详情
         @tags image
@@ -39920,13 +39666,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_story_ex(request, runtime)
 
     async def get_story_async(
         self,
-        request: pds_models.GetStoryRequest,
-    ) -> pds_models.GetStoryModel:
+        request: standard_models.GetStoryRequest,
+    ) -> standard_models.GetStoryModel:
         """
         该接口将会获取故事详情
         @tags image
@@ -39937,13 +39683,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_story_ex_async(request, runtime)
 
     def list_address_groups(
         self,
-        request: pds_models.ListImageAddressGroupsRequest,
-    ) -> pds_models.ListAddressGroupsModel:
+        request: standard_models.ListImageAddressGroupsRequest,
+    ) -> standard_models.ListAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -39954,13 +39700,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_address_groups_ex(request, runtime)
 
     async def list_address_groups_async(
         self,
-        request: pds_models.ListImageAddressGroupsRequest,
-    ) -> pds_models.ListAddressGroupsModel:
+        request: standard_models.ListImageAddressGroupsRequest,
+    ) -> standard_models.ListAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -39971,13 +39717,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_address_groups_ex_async(request, runtime)
 
     def list_facegroups(
         self,
-        request: pds_models.ListImageFaceGroupsRequest,
-    ) -> pds_models.ListFacegroupsModel:
+        request: standard_models.ListImageFaceGroupsRequest,
+    ) -> standard_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -39988,13 +39734,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_facegroups_ex(request, runtime)
 
     async def list_facegroups_async(
         self,
-        request: pds_models.ListImageFaceGroupsRequest,
-    ) -> pds_models.ListFacegroupsModel:
+        request: standard_models.ListImageFaceGroupsRequest,
+    ) -> standard_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -40005,13 +39751,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_facegroups_ex_async(request, runtime)
 
     def list_tags(
         self,
-        request: pds_models.ListImageTagsRequest,
-    ) -> pds_models.ListTagsModel:
+        request: standard_models.ListImageTagsRequest,
+    ) -> standard_models.ListTagsModel:
         """
         该接口将会展示场景标记
         @tags image
@@ -40022,13 +39768,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_tags_ex(request, runtime)
 
     async def list_tags_async(
         self,
-        request: pds_models.ListImageTagsRequest,
-    ) -> pds_models.ListTagsModel:
+        request: standard_models.ListImageTagsRequest,
+    ) -> standard_models.ListTagsModel:
         """
         该接口将会展示场景标记
         @tags image
@@ -40039,13 +39785,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_tags_ex_async(request, runtime)
 
     def parse_keywords(
         self,
-        request: pds_models.ParseKeywordsRequest,
-    ) -> pds_models.ParseKeywordsModel:
+        request: standard_models.ParseKeywordsRequest,
+    ) -> standard_models.ParseKeywordsModel:
         """
         该接口将会对用户输入内容语义解析出标签，地点，时间
         @tags image
@@ -40055,13 +39801,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.parse_keywords_ex(request, runtime)
 
     async def parse_keywords_async(
         self,
-        request: pds_models.ParseKeywordsRequest,
-    ) -> pds_models.ParseKeywordsModel:
+        request: standard_models.ParseKeywordsRequest,
+    ) -> standard_models.ParseKeywordsModel:
         """
         该接口将会对用户输入内容语义解析出标签，地点，时间
         @tags image
@@ -40071,13 +39817,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.parse_keywords_ex_async(request, runtime)
 
     def search_address_groups(
         self,
-        request: pds_models.SearchImageAddressGroupsRequest,
-    ) -> pds_models.SearchAddressGroupsModel:
+        request: standard_models.SearchImageAddressGroupsRequest,
+    ) -> standard_models.SearchAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -40088,13 +39834,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_address_groups_ex(request, runtime)
 
     async def search_address_groups_async(
         self,
-        request: pds_models.SearchImageAddressGroupsRequest,
-    ) -> pds_models.SearchAddressGroupsModel:
+        request: standard_models.SearchImageAddressGroupsRequest,
+    ) -> standard_models.SearchAddressGroupsModel:
         """
         该接口将会展示用户图片的地点分组
         @tags image
@@ -40105,13 +39851,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_address_groups_ex_async(request, runtime)
 
     def update_facegroup_info(
         self,
-        request: pds_models.UpdateFaceGroupInfoRequest,
-    ) -> pds_models.UpdateFacegroupInfoModel:
+        request: standard_models.UpdateFaceGroupInfoRequest,
+    ) -> standard_models.UpdateFacegroupInfoModel:
         """
         该接口将会更新人脸分组信息
         @tags image
@@ -40122,13 +39868,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_facegroup_info_ex(request, runtime)
 
     async def update_facegroup_info_async(
         self,
-        request: pds_models.UpdateFaceGroupInfoRequest,
-    ) -> pds_models.UpdateFacegroupInfoModel:
+        request: standard_models.UpdateFaceGroupInfoRequest,
+    ) -> standard_models.UpdateFacegroupInfoModel:
         """
         该接口将会更新人脸分组信息
         @tags image
@@ -40139,13 +39885,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_facegroup_info_ex_async(request, runtime)
 
     def add_file(
         self,
-        request: pds_models.AddViewFileRequest,
-    ) -> pds_models.AddFileModel:
+        request: standard_models.AddViewFileRequest,
+    ) -> standard_models.AddFileModel:
         """
         视图添加文件
         @tags view
@@ -40157,13 +39903,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.add_file_ex(request, runtime)
 
     async def add_file_async(
         self,
-        request: pds_models.AddViewFileRequest,
-    ) -> pds_models.AddFileModel:
+        request: standard_models.AddViewFileRequest,
+    ) -> standard_models.AddFileModel:
         """
         视图添加文件
         @tags view
@@ -40175,13 +39921,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.add_file_ex_async(request, runtime)
 
     def create_view(
         self,
-        request: pds_models.CreateViewRequest,
-    ) -> pds_models.CreateViewModel:
+        request: standard_models.CreateViewRequest,
+    ) -> standard_models.CreateViewModel:
         """
         该接口将会创建一个逻辑视图
         @tags view
@@ -40192,13 +39938,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.create_view_ex(request, runtime)
 
     async def create_view_async(
         self,
-        request: pds_models.CreateViewRequest,
-    ) -> pds_models.CreateViewModel:
+        request: standard_models.CreateViewRequest,
+    ) -> standard_models.CreateViewModel:
         """
         该接口将会创建一个逻辑视图
         @tags view
@@ -40209,13 +39955,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.create_view_ex_async(request, runtime)
 
     def delete_view(
         self,
-        request: pds_models.DeleteViewRequest,
-    ) -> pds_models.DeleteViewModel:
+        request: standard_models.DeleteViewRequest,
+    ) -> standard_models.DeleteViewModel:
         """
         删除指定view_id对应的View
         @tags view
@@ -40226,13 +39972,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.delete_view_ex(request, runtime)
 
     async def delete_view_async(
         self,
-        request: pds_models.DeleteViewRequest,
-    ) -> pds_models.DeleteViewModel:
+        request: standard_models.DeleteViewRequest,
+    ) -> standard_models.DeleteViewModel:
         """
         删除指定view_id对应的View
         @tags view
@@ -40243,13 +39989,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.delete_view_ex_async(request, runtime)
 
     def get_view(
         self,
-        request: pds_models.GetViewRequest,
-    ) -> pds_models.GetViewModel:
+        request: standard_models.GetViewRequest,
+    ) -> standard_models.GetViewModel:
         """
         获取指定view_id对应的View详细信息。
         @tags view
@@ -40260,13 +40006,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.get_view_ex(request, runtime)
 
     async def get_view_async(
         self,
-        request: pds_models.GetViewRequest,
-    ) -> pds_models.GetViewModel:
+        request: standard_models.GetViewRequest,
+    ) -> standard_models.GetViewModel:
         """
         获取指定view_id对应的View详细信息。
         @tags view
@@ -40277,13 +40023,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.get_view_ex_async(request, runtime)
 
     def list_views(
         self,
-        request: pds_models.ListViewsRequest,
-    ) -> pds_models.ListViewsModel:
+        request: standard_models.ListViewsRequest,
+    ) -> standard_models.ListViewsModel:
         """
         列举View列表
         @tags view
@@ -40293,13 +40039,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_views_ex(request, runtime)
 
     async def list_views_async(
         self,
-        request: pds_models.ListViewsRequest,
-    ) -> pds_models.ListViewsModel:
+        request: standard_models.ListViewsRequest,
+    ) -> standard_models.ListViewsModel:
         """
         列举View列表
         @tags view
@@ -40309,13 +40055,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_views_ex_async(request, runtime)
 
     def view_list_file(
         self,
-        request: pds_models.ListViewFilesRequest,
-    ) -> pds_models.ViewListFileModel:
+        request: standard_models.ListViewFilesRequest,
+    ) -> standard_models.ViewListFileModel:
         """
         获取视图文件列表
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -40325,13 +40071,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.view_list_file_ex(request, runtime)
 
     async def view_list_file_async(
         self,
-        request: pds_models.ListViewFilesRequest,
-    ) -> pds_models.ViewListFileModel:
+        request: standard_models.ListViewFilesRequest,
+    ) -> standard_models.ViewListFileModel:
         """
         获取视图文件列表
         @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -40341,13 +40087,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.view_list_file_ex_async(request, runtime)
 
     def list_file_views(
         self,
-        request: pds_models.ListFileViewsRequest,
-    ) -> pds_models.ListFileViewsModel:
+        request: standard_models.ListFileViewsRequest,
+    ) -> standard_models.ListFileViewsModel:
         """
         列出文件关联视图
         @tags view
@@ -40358,13 +40104,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.list_file_views_ex(request, runtime)
 
     async def list_file_views_async(
         self,
-        request: pds_models.ListFileViewsRequest,
-    ) -> pds_models.ListFileViewsModel:
+        request: standard_models.ListFileViewsRequest,
+    ) -> standard_models.ListFileViewsModel:
         """
         列出文件关联视图
         @tags view
@@ -40375,13 +40121,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.list_file_views_ex_async(request, runtime)
 
     def remove_file(
         self,
-        request: pds_models.RemoveViewFileRequest,
-    ) -> pds_models.RemoveFileModel:
+        request: standard_models.RemoveViewFileRequest,
+    ) -> standard_models.RemoveFileModel:
         """
         从视图中删除文件
         @tags view
@@ -40392,13 +40138,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.remove_file_ex(request, runtime)
 
     async def remove_file_async(
         self,
-        request: pds_models.RemoveViewFileRequest,
-    ) -> pds_models.RemoveFileModel:
+        request: standard_models.RemoveViewFileRequest,
+    ) -> standard_models.RemoveFileModel:
         """
         从视图中删除文件
         @tags view
@@ -40409,13 +40155,13 @@ class Client:
         @error TooManyRequests Too many requests
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.remove_file_ex_async(request, runtime)
 
     def search_views(
         self,
-        request: pds_models.SearchViewsRequest,
-    ) -> pds_models.SearchViewsModel:
+        request: standard_models.SearchViewsRequest,
+    ) -> standard_models.SearchViewsModel:
         """
         搜索View列表
         @tags view
@@ -40425,13 +40171,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.search_views_ex(request, runtime)
 
     async def search_views_async(
         self,
-        request: pds_models.SearchViewsRequest,
-    ) -> pds_models.SearchViewsModel:
+        request: standard_models.SearchViewsRequest,
+    ) -> standard_models.SearchViewsModel:
         """
         搜索View列表
         @tags view
@@ -40441,13 +40187,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.search_views_ex_async(request, runtime)
 
     def update_view(
         self,
-        request: pds_models.UpdateViewRequest,
-    ) -> pds_models.UpdateViewModel:
+        request: standard_models.UpdateViewRequest,
+    ) -> standard_models.UpdateViewModel:
         """
         更新指定view的相关信息
         @tags view
@@ -40459,13 +40205,13 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return self.update_view_ex(request, runtime)
 
     async def update_view_async(
         self,
-        request: pds_models.UpdateViewRequest,
-    ) -> pds_models.UpdateViewModel:
+        request: standard_models.UpdateViewRequest,
+    ) -> standard_models.UpdateViewModel:
         """
         更新指定view的相关信息
         @tags view
@@ -40477,7 +40223,7 @@ class Client:
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions()
+        runtime = standard_models.RuntimeOptions()
         return await self.update_view_ex_async(request, runtime)
 
     def get_pathname(

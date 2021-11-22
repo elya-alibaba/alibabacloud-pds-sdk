@@ -29,7 +29,7 @@ Created on 16/11/2021
 @author: Alibaba Cloud SDK
 """
 
-PACKAGE = "alibabacloud_pds_sdk"
+PACKAGE = "alibabacloud_standard_sdk"
 NAME = "alibabacloud_pds_sdk" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud standard SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
