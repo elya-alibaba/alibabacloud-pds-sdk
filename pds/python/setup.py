@@ -22,19 +22,19 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_pds_sdk.
+setup module for alibabacloud_standard_sdk.
 
-Created on 18/10/2021
+Created on 16/11/2021
 
 @author: Alibaba Cloud SDK
 """
 
-PACKAGE = "alibabacloud_pds_sdk"
-NAME = "alibabacloud_pds_sdk" or "alibabacloud-package"
-DESCRIPTION = "Alibaba Cloud PDS SDK Library for Python"
+PACKAGE = "alibabacloud_standard_sdk"
+NAME = "alibabacloud_standard_sdk" or "alibabacloud-package"
+DESCRIPTION = "Alibaba Cloud standard SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
-URL = "https://github.com/aliyun/alibabacloud-pds-sdk"
+URL = "https://github.com/aliyun/aliyun-ccp"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.5, <1.0.0",
@@ -58,7 +58,7 @@ setup(
     author_email=AUTHOR_EMAIL,
     license="Apache License 2.0",
     url=URL,
-    keywords=["alibabacloud","pds","sdk"],
+    keywords=["alibabacloud","standard","sdk"],
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     platforms="any",
